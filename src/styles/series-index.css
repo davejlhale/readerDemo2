@@ -1,187 +1,141 @@
 :root {
-  --card-height: 190px; /* landscape - increases card size but not at this size*/
-  --series-list-height: auto; /*in landscape will match screen height for list page */
+  --card-height: 190px;
+  --series-list-height: auto;
 }
 
+/* Base Layout (mobile first) */
 .series-index-page {
   display: flex;
   min-height: 100svh;
 }
-/* Section wrapper */
+
 .series-list {
   display: flex;
   flex-direction: column;
-  border: 5px solid #ccc;
-
   background-color: #ccc;
+  border: 5px solid #ccc;
   min-height: var(--series-list-height);
-  min-width: 0; /* keep this */
+  min-width: 0;
 }
+
 .series-list h1 {
   padding-left: 1rem;
 }
 
-/* Card container */
+/* Card Row */
 .series-row {
   display: flex;
-  gap: 1.5rem;
   flex-wrap: nowrap;
-  /* min-width: 0; */
-  background-color: rgb(255, 255, 255);
+  gap: 1.5rem;
+  background-color: #fff;
   scroll-behavior: smooth;
 }
 
 .series-row > * {
-  flex: 0 1 auto; /* 👈 prevents shrinking */
+  flex: 0 1 auto;
 }
-/* Series Card */
+
+/* Card */
 .series-card {
-  min-width: var(--card-height);
   display: flex;
   flex-direction: column;
-
+  min-width: var(--card-height);
   background: rgb(128, 109, 109);
   border-radius: 12px;
   border: 1px solid #1b1b1b;
 }
 
-/* Image */
 .series-card img {
   object-fit: contain;
 }
 
-/* Title */
 .series-card span {
-  padding: 0.75rem;
+  padding: 0.75rem 0.75rem 0.5rem;
   font-weight: 600;
   line-height: 1.2;
-  padding-top: 0.5rem;
 }
-/* Small Landscape Phones */
+
+/* --------------------------------------------- */
+/* SMALL SCREENS (≤450px) — mobile-first default */
+/* --------------------------------------------- */
+
+@media (max-width: 450px) {
+  :root {
+    --card-size: 25vw;
+    --series-list-height: 100svh;
+  }
+
+  .series-index-page {
+    border: 2px solid rgb(88, 87, 87);
+  }
+
+  .series-row::after,
+  .series-row::before {
+    content: "";
+    position: sticky;
+    inset: -20px;
+    border: 7px solid #fff;
+    pointer-events: none;
+  }
+
+  .series-row {
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+    border: 3px solid rgb(128, 109, 109);
+    border-radius: 12px;
+    align-items: stretch;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90svh;
+  }
+
+  .series-list h1 {
+    text-align: center;
+  }
+
+  .series-card img {
+    padding: 5px 0;
+    border-radius: 12px;
+  }
+}
+
+/* ------------------------------------------------------ */
+/* SMALL LANDSCAPE PHONES (landscape ≤900px)              */
+/* ------------------------------------------------------ */
+
 @media (orientation: landscape) and (max-width: 900px) {
   :root {
     --card-size: 25vw;
-    /* scale with width */
     --series-list-height: 100svh;
-    /* match viewport height */
   }
 
   .series-row {
     flex-direction: row;
   }
 }
-/* Responsive switch */
-@media (max-width: 450px) {
-  :root {
-    --card-size: 25vw;
-    /* scale with width */
-    --series-list-height: 100svh;
-    /* match viewport height */
-  }
-  /* Stop vertical centering on small screens */
-  .series-index-page {
-    border: rgb(88, 87, 87) 2px solid;
-  }
-  .series-row::after {
-    content: "";
-    position: sticky;
-    inset: -20px;
-    border: 7px solid rgb(255, 255, 255);
-    pointer-events: none;
-  }
-  .series-row::before {
-    content: "";
-    position: sticky;
-    inset: -20px;
-    border: 7px solid rgb(255, 255, 255);
-    pointer-events: none;
-  }
-  /* Row switches to vertical stack */
-  .series-row {
-    flex-direction: column;
-    width: 90%;
-    margin: auto;
-    border: rgb(128, 109, 109) 3px solid;
-    padding: 1rem;
-    align-items: stretch;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 90svh; /* prevents pushing off bottom */
-    border-radius: 12px;
-  }
 
-  /* Optional: center the title */
-  .series-list h1 {
-    text-align: center;
-  }
+/* ------------------------------------------------------ */
+/* DESKTOP BLOCK (≥450px)                                 */
+/* ------------------------------------------------------ */
 
-  .series-card img {
-    border-radius: 12px;
-    padding: 5px 0px;
-  }
-}
-
-/* desktop block */
-/* horizontal single row */
 @media (min-width: 450px) {
-  @media (orientation: portrait) {
-    :root {
-      --series-list-height: 100svh;
-      --card-size: 50svh;
-    }
-    .series-row {
-      flex-direction: column;
-      flex-direction: column;
-      width: 90%;
-      margin: auto;
-      border: rgb(128, 109, 109) 3px solid;
-      padding: 1rem;
-      align-items: stretch;
-      overflow-x: hidden;
-      overflow-y: auto;
-      max-height: 90svh; /* prevents pushing off bottom */
-      border-radius: 12px;
-    }
-    .series-list {
-      align-items: center;
-    }
-  }
-  @media (orientation: landscape) {
-    :root {
-      --series-list-height: 100svh;
-      --card-size: 50svh;
-    }
-    @media (min-width: 1000px) {
-      :root {
-        --card-size: 58svh;
-        --series-list-height: 100svh;
-      }
-      @media (min-height: 600px) {
-        :root {
-          --card-size: 52svh;
-        }
-      }
-    }
-  }
   .series-index-page {
     align-items: center;
   }
-  .series-row::after {
-    content: "";
-    position: sticky;
-    inset: -8px;
-    border: 5px solid rgb(255, 255, 255);
-    pointer-events: none;
-  }
+
+  .series-row::after,
   .series-row::before {
     content: "";
     position: sticky;
     inset: -8px;
-    border: 5px solid rgb(255, 255, 255);
+    border: 5px solid #fff;
     pointer-events: none;
   }
+
   .series-list {
-    margin: 0rem;
+    margin: 0;
     border-radius: 12px;
     border: 3px solid #1b1b1b;
   }
@@ -189,38 +143,108 @@
   .series-row {
     padding: 0.4rem;
     margin: 0.4rem;
-    overflow-x: auto;
-    align-items: stretch;
     border-radius: 9px;
     border: 3px inset rgb(171, 169, 169);
+    align-items: stretch;
+    overflow-x: auto;
   }
 
   .series-card img {
     width: 100%;
-    padding: 3px 0px;
-    border-radius: 10px 10px 10px 10px;
+    padding: 3px 0;
+    border-radius: 10px;
     object-fit: contain;
   }
 }
 
-/* True Desktop / Large Screens */
-/* @media (min-width: 900px) {
+/* ------------------------------------------------------ */
+/* DESKTOP PORTRAIT (≥450px & portrait)                   */
+/* ------------------------------------------------------ */
+
+@media (min-width: 450px) and (orientation: portrait) {
   :root {
-    --card-size: 320px;
-    --series-list-height: 80vh;
+    --series-list-height: 100svh;
+    --card-size: 50svh;
   }
 
   .series-row {
-    display: flex;
-    flex: 1 1 auto;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+    border: 3px solid rgb(128, 109, 109);
+    border-radius: 12px;
+    align-items: stretch;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90svh;
   }
-  .series-card {
-    justify-content: center;
-  }
-  .series-index-page {
+
+  .series-list {
     align-items: center;
   }
-} */
+}
+
+/* ------------------------------------------------------ */
+/* DESKTOP LANDSCAPE (≥450px & landscape)                 */
+/* ------------------------------------------------------ */
+
+@media (min-width: 450px) and (orientation: landscape) {
+  :root {
+    --series-list-height: 100svh;
+    --card-size: 50svh;
+  }
+}
+
+/* ------------------------------------------------------ */
+/* LARGE LANDSCAPE (≥1000px)                              */
+/* ------------------------------------------------------ */
+
+@media (min-width: 1000px) {
+  :root {
+    --card-size: 58svh;
+    --series-list-height: 100svh;
+  }
+}
+
+/* ------------------------------------------------------ */
+/* LARGE + TALL (≥1000px & ≥600px height)                 */
+/* ------------------------------------------------------ */
+
+@media (min-width: 768px) and (min-height: 600px) and (orientation: portrait) {
+  :root {
+    --card-size: 60svw;
+    --series-list-height: 60svh;
+  }
+  .series-list {
+    max-width: var(series-list-height);
+    margin: auto;
+  }
+  .series-row {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .series-card {
+    width: fit-content;
+    height: var(--series-list-height);
+    min-height: var(--series-list-height);
+  }
+  .series-card img {
+    width: 100%;
+    height: 100%; /* 👈 fill card */
+    object-fit: contain;
+  }
+  .series-row::after,
+  .series-row::before {
+    content: "";
+    position: sticky;
+    inset: -20px;
+    border: 9px solid #fff;
+    pointer-events: none;
+  }
+}
+
+/* Variable-driven sizing */
 .series-card {
   min-width: var(--card-size);
 }
