@@ -13,7 +13,7 @@ export function SeriesImageCard({ title, imageBasePath, onSelect }: Props) {
         loading="lazy"
         draggable={false}
       />
-      <span>{title}</span>
+      {/* <span>{title}</span> */}
     </button>
   );
 }

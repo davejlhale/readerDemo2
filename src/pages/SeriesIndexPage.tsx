@@ -48,6 +48,7 @@ export function SeriesIndexPage() {
           <p className="series-card">g</p>
           <p className="series-card">g</p>
         </div> */}
+
         <div className="series-row">
           {data.map((series) => (
             <SeriesImageCard

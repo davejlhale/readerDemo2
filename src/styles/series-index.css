@@ -1,53 +1,48 @@
+:root {
+  --card-height: 190px; /* landscape - increases card size but not at this size*/
+  --series-list-height: auto; /*in landscape will match screen height for list page */
+}
+
 .series-index-page {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: red;
   min-height: 100svh;
 }
 /* Section wrapper */
 .series-list {
   display: flex;
   flex-direction: column;
-  border: 2px solid #dfbdbd;
-  border-radius: 12px;
-  background-color: #d5d2d2;
-  margin: 1rem;
-  min-height: 300px;
+  border: 5px solid #ccc;
+
+  background-color: #ccc;
+  min-height: var(--series-list-height);
   min-width: 0; /* keep this */
 }
 .series-list h1 {
   padding-left: 1rem;
-  background-color: aquamarine;
 }
 
 /* Card container */
 .series-row {
-  background-color: bisque;
   display: flex;
-  flex-direction: row;
   gap: 1.5rem;
-  flex-wrap: nowrap; /* 👈 important */
-  min-width: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  background-color: white;
+  flex-wrap: nowrap;
+  /* min-width: 0; */
+  background-color: rgb(255, 255, 255);
   scroll-behavior: smooth;
 }
 
 .series-row > * {
-  flex: 1 1 auto; /* 👈 prevents shrinking */
+  flex: 0 1 auto; /* 👈 prevents shrinking */
 }
 /* Series Card */
 .series-card {
-  min-width: 140px;
-
+  min-width: var(--card-height);
   display: flex;
   flex-direction: column;
 
   background: rgb(128, 109, 109);
   border-radius: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #1b1b1b;
 }
 
 /* Image */
@@ -60,96 +55,176 @@
   padding: 0.75rem;
   font-weight: 600;
   line-height: 1.2;
+  padding-top: 0.5rem;
 }
+/* Small Landscape Phones */
+@media (orientation: landscape) and (max-width: 900px) {
+  :root {
+    --card-size: 25vw;
+    /* scale with width */
+    --series-list-height: 100svh;
+    /* match viewport height */
+  }
 
+  .series-row {
+    flex-direction: row;
+  }
+}
 /* Responsive switch */
 @media (max-width: 450px) {
+  :root {
+    --card-size: 25vw;
+    /* scale with width */
+    --series-list-height: 100svh;
+    /* match viewport height */
+  }
   /* Stop vertical centering on small screens */
   .series-index-page {
-    align-items: stretch;
-    justify-content: flex-start;
+    border: rgb(88, 87, 87) 2px solid;
   }
-
-  /* Series list fills width */
-  .series-list {
-    width: 100%;
-    margin: 1rem 0;
+  .series-row::after {
+    content: "";
+    position: sticky;
+    inset: -20px;
+    border: 7px solid rgb(255, 255, 255);
+    pointer-events: none;
   }
-
+  .series-row::before {
+    content: "";
+    position: sticky;
+    inset: -20px;
+    border: 7px solid rgb(255, 255, 255);
+    pointer-events: none;
+  }
   /* Row switches to vertical stack */
   .series-row {
     flex-direction: column;
-
-    width: 100%;
+    width: 90%;
+    margin: auto;
+    border: rgb(128, 109, 109) 3px solid;
+    padding: 1rem;
     align-items: stretch;
-
     overflow-x: hidden;
     overflow-y: auto;
-
-    max-height: 80svh; /* prevents pushing off bottom */
-  }
-
-  /* Cards fill available width */
-  .series-row > * {
-    width: 100%;
-    width: 100%;
+    max-height: 90svh; /* prevents pushing off bottom */
+    border-radius: 12px;
   }
 
   /* Optional: center the title */
   .series-list h1 {
     text-align: center;
   }
-}
 
-@media (max-height: 400px) {
-  .series-index-page {
-  }
-  .series-list {
-    min-height: 90svh;
+  .series-card img {
+    border-radius: 12px;
+    padding: 5px 0px;
   }
 }
 
 /* desktop block */
+/* horizontal single row */
 @media (min-width: 450px) {
+  @media (orientation: portrait) {
+    :root {
+      --series-list-height: 100svh;
+      --card-size: 50svh;
+    }
+    .series-row {
+      flex-direction: column;
+      flex-direction: column;
+      width: 90%;
+      margin: auto;
+      border: rgb(128, 109, 109) 3px solid;
+      padding: 1rem;
+      align-items: stretch;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 90svh; /* prevents pushing off bottom */
+      border-radius: 12px;
+    }
+    .series-list {
+      align-items: center;
+    }
+  }
+  @media (orientation: landscape) {
+    :root {
+      --series-list-height: 100svh;
+      --card-size: 50svh;
+    }
+    @media (min-width: 1000px) {
+      :root {
+        --card-size: 58svh;
+        --series-list-height: 100svh;
+      }
+      @media (min-height: 600px) {
+        :root {
+          --card-size: 52svh;
+        }
+      }
+    }
+  }
   .series-index-page {
     align-items: center;
-    justify-content: center;
   }
-
+  .series-row::after {
+    content: "";
+    position: sticky;
+    inset: -8px;
+    border: 5px solid rgb(255, 255, 255);
+    pointer-events: none;
+  }
+  .series-row::before {
+    content: "";
+    position: sticky;
+    inset: -8px;
+    border: 5px solid rgb(255, 255, 255);
+    pointer-events: none;
+  }
   .series-list {
-    margin: 1rem;
+    margin: 0rem;
     border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    flex: 1;
+    border: 3px solid #1b1b1b;
   }
 
   .series-row {
-    display: flex;
-    flex-direction: row;
-
+    padding: 0.4rem;
+    margin: 0.4rem;
     overflow-x: auto;
-    overflow-y: hidden;
-    background-color: pink;
     align-items: stretch;
-    flex: 1;
+    border-radius: 9px;
+    border: 3px inset rgb(171, 169, 169);
   }
 
-  .series-row {
-    flex: 1;
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    align-items: stretch;
-  }
-  .series-card {
-    flex: 0 1 auto; /* no grow, no shrink */
-  }
   .series-card img {
     width: 100%;
-    flex: 1; /* fills remaining card space */
+    padding: 3px 0px;
+    border-radius: 10px 10px 10px 10px;
     object-fit: contain;
   }
+}
+
+/* True Desktop / Large Screens */
+/* @media (min-width: 900px) {
+  :root {
+    --card-size: 320px;
+    --series-list-height: 80vh;
+  }
+
+  .series-row {
+    display: flex;
+    flex: 1 1 auto;
+  }
+  .series-card {
+    justify-content: center;
+  }
+  .series-index-page {
+    align-items: center;
+  }
+} */
+.series-card {
+  min-width: var(--card-size);
+}
+
+.series-list {
+  min-height: var(--series-list-height);
 }
