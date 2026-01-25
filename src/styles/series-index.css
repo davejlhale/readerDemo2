@@ -203,7 +203,7 @@
 
 @media (min-width: 768px) and (min-height: 600px) and (orientation: portrait) {
   :root {
-    --card-size: 60svw;
+    --card-size: 50svw;
     --series-list-height: 60svh;
   }
 
