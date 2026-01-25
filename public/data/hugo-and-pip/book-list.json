@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "id": "hugo-and-pip-go-to-the-zoo",
+      "title": "Hugo and Pip Go to the Zoo",
+      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/cover"
+    },
+    {
       "id": "hugo-and-pip-go-to-the-bakery",
       "title": "Hugo and Pip Go to the Bakery",
       "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-bakery/cover"
@@ -99,11 +104,6 @@
       "id": "hugo-and-pip-go-to-the-train-station",
       "title": "Hugo and Pip Go to the Train Station",
       "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-train-station/cover"
-    },
-    {
-      "id": "hugo-and-pip-go-to-the-zoo",
-      "title": "Hugo and Pip Go to the Zoo",
-      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/cover"
     }
   ]
 }
