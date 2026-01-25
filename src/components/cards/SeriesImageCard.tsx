@@ -5,6 +5,7 @@ type Props = {
 };
 
 export function SeriesImageCard({ title, imageBasePath, onSelect }: Props) {
+  console.log(title);
   return (
     <button className="series-card" onClick={onSelect}>
       <img
