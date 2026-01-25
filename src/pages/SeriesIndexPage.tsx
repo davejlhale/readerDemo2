@@ -33,47 +33,8 @@ export function SeriesIndexPage() {
     <main className="series-index-page">
       <section className="series-list">
         <h1>Book Series</h1>
-        {/* <div className="series-row">
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-          <p className="series-card">g</p>
-        </div> */}
 
         <div className="series-row">
-          {data.map((series) => (
-            <SeriesImageCard
-              key={series.id}
-              title={series.title}
-              imageBasePath={series.cardImage}
-              onSelect={() => navigate(`/series/${series.id}`)}
-            />
-          ))}
-          {data.map((series) => (
-            <SeriesImageCard
-              key={series.id}
-              title={series.title}
-              imageBasePath={series.cardImage}
-              onSelect={() => navigate(`/series/${series.id}`)}
-            />
-          ))}{" "}
-          {data.map((series) => (
-            <SeriesImageCard
-              key={series.id}
-              title={series.title}
-              imageBasePath={series.cardImage}
-              onSelect={() => navigate(`/series/${series.id}`)}
-            />
-          ))}{" "}
           {data.map((series) => (
             <SeriesImageCard
               key={series.id}

@@ -16,3 +16,60 @@
  * - Reading UI or page-by-page logic
  * - Deep explanation of the series (belongs in SeriesDetailPage)
  */
+/**
+ * SeriesIndexPage
+ * --------------------------------------------------
+ * Route: /series
+ *
+ * Purpose:
+ * - Displays a list of all available reading series
+ * - Acts as the primary browsing / discovery page
+ *
+ * Should contain:
+ * - Grid or list of series cards (minimal info and image)
+ * - Navigation to SeriesBooksPage
+ * - Optional link to SeriesDetailPage (about/info)
+ *
+ * Should NOT contain:
+ * - Book-level logic
+ * - Reading logic
+ * - Series pedagogy explanations (belongs in SeriesDetailPage)
+ */
+import { useNavigate } from "react-router-dom";
+import { useBookList } from "../hooks/useBookList";
+import { SeriesImageCard } from "../components/cards/SeriesImageCard";
+import "../styles/series-index.css";
+import { useParams } from "react-router-dom";
+
+export function SeriesBooksPage() {
+  const { seriesId } = useParams<{ seriesId: string }>();
+  const navigate = useNavigate();
+  console.log(seriesId + " book id being looked for");
+  const { data, loading, error } = useBookList(seriesId);
+
+  if (!seriesId) return <p>Invalid series</p>;
+  if (loading) return <p>Loading…</p>;
+  if (error || !data) {
+    console.log(error, data);
+    return <p>Failed to load books.</p>;
+  }
+
+  return (
+    <main className="series-index-page">
+      <section className="series-list">
+        <h1>Book Series</h1>
+
+        <div className="series-row">
+          {data.map((series) => (
+            <SeriesImageCard
+              key={series.id}
+              title={series.title}
+              imageBasePath={series.coverImage}
+              onSelect={() => navigate(`/series/${seriesId}/book/${series.id}`)}
+            />
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}

@@ -10,7 +10,7 @@ export function SeriesImageCard({ title, imageBasePath, onSelect }: Props) {
     <button className="series-card" onClick={onSelect}>
       <img
         src={`${imageBasePath}.png`}
-        alt=""
+        alt={title}
         loading="lazy"
         draggable={false}
       />
