@@ -1,0 +1,155 @@
+.series-index-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  min-height: 100svh;
+}
+/* Section wrapper */
+.series-list {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #dfbdbd;
+  border-radius: 12px;
+  background-color: #d5d2d2;
+  margin: 1rem;
+  min-height: 300px;
+  min-width: 0; /* keep this */
+}
+.series-list h1 {
+  padding-left: 1rem;
+  background-color: aquamarine;
+}
+
+/* Card container */
+.series-row {
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  flex-wrap: nowrap; /* 👈 important */
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: white;
+  scroll-behavior: smooth;
+}
+
+.series-row > * {
+  flex: 1 1 auto; /* 👈 prevents shrinking */
+}
+/* Series Card */
+.series-card {
+  min-width: 140px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgb(128, 109, 109);
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+/* Image */
+.series-card img {
+  object-fit: contain;
+}
+
+/* Title */
+.series-card span {
+  padding: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Responsive switch */
+@media (max-width: 450px) {
+  /* Stop vertical centering on small screens */
+  .series-index-page {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  /* Series list fills width */
+  .series-list {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  /* Row switches to vertical stack */
+  .series-row {
+    flex-direction: column;
+
+    width: 100%;
+    align-items: stretch;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    max-height: 80svh; /* prevents pushing off bottom */
+  }
+
+  /* Cards fill available width */
+  .series-row > * {
+    width: 100%;
+    width: 100%;
+  }
+
+  /* Optional: center the title */
+  .series-list h1 {
+    text-align: center;
+  }
+}
+
+@media (max-height: 400px) {
+  .series-index-page {
+  }
+  .series-list {
+    min-height: 90svh;
+  }
+}
+
+/* desktop block */
+@media (min-width: 450px) {
+  .series-index-page {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .series-list {
+    margin: 1rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1;
+  }
+
+  .series-row {
+    display: flex;
+    flex-direction: row;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: pink;
+    align-items: stretch;
+    flex: 1;
+  }
+
+  .series-row {
+    flex: 1;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    align-items: stretch;
+  }
+  .series-card {
+    flex: 0 1 auto; /* no grow, no shrink */
+  }
+  .series-card img {
+    width: 100%;
+    flex: 1; /* fills remaining card space */
+    object-fit: contain;
+  }
+}

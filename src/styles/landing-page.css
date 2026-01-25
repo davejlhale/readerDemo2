@@ -1,0 +1,60 @@
+/* =========================================
+   Landing Page
+   ========================================= */
+
+.landing {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f7f9;
+}
+
+/* =========================================
+   Content
+   ========================================= */
+
+.landing-content {
+  max-width: 640px;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  text-align: center;
+}
+
+.landing-content h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.landing-content .intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+/* =========================================
+   Primary Action
+   ========================================= */
+
+.primary-action {
+  display: inline-block;
+  min-width: 12rem;
+
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+
+  border-radius: 999px;
+  background: #005fcc;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.primary-action:hover {
+  background: #004bb5;
+}
+
+.primary-action:focus-visible {
+  outline: 4px solid #ffbf47;
+  outline-offset: 2px;
+}
