@@ -25,6 +25,10 @@
   border: 5px solid var(--color-border-dark);
   min-height: var(--series-list-height);
   min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .series-list h1 {
@@ -38,6 +42,7 @@
   gap: 1.5rem;
   background-color: var(--color-bg-white);
   scroll-behavior: smooth;
+  padding: 0px;
 }
 
 .series-row > * {
@@ -85,8 +90,6 @@
 
   .series-row {
     flex-direction: column;
-    width: 90%;
-    margin: auto;
     padding: 1rem;
     border: 3px inset var(--color-border-light);
     align-items: stretch;
@@ -155,7 +158,6 @@
   .series-row {
     flex-direction: column;
     width: 90%;
-    margin: auto;
     padding: 1rem;
     align-items: stretch;
     overflow-x: hidden;
@@ -202,18 +204,15 @@
 
   .series-list {
     max-width: var(--series-list-height);
-    margin: auto;
   }
 
   .series-row {
     width: 100%;
-    margin: 0 auto;
   }
 
   .series-card {
     height: var(--series-list-height);
     min-height: var(--series-list-height);
-    padding: 0;
   }
 
   .series-row::after,
@@ -226,11 +225,15 @@
   }
 }
 
+@media {
+  .series-row {
+  }
+}
 /* Variable-driven sizing */
-/* .series-card {
+.series-card {
   min-width: var(--card-size);
 }
 
 .series-list {
   min-height: var(--series-list-height);
-} */
+}

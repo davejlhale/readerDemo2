@@ -38,7 +38,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
 import { SeriesImageCard } from "../components/cards/SeriesImageCard";
-import "../styles/series-index.css";
+// import "../styles/series-index.css";
 import { useEffect } from "react";
 
 export function SeriesBooksPage() {

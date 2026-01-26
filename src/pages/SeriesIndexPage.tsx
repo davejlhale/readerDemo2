@@ -42,6 +42,30 @@ export function SeriesIndexPage() {
               imageBasePath={series.cardImage}
               onSelect={() => navigate(`/series/${series.id}`)}
             />
+          ))}{" "}
+          {data.map((series) => (
+            <SeriesImageCard
+              key={series.id}
+              title={series.title}
+              imageBasePath={series.cardImage}
+              onSelect={() => navigate(`/series/${series.id}`)}
+            />
+          ))}{" "}
+          {data.map((series) => (
+            <SeriesImageCard
+              key={series.id}
+              title={series.title}
+              imageBasePath={series.cardImage}
+              onSelect={() => navigate(`/series/${series.id}`)}
+            />
+          ))}{" "}
+          {data.map((series) => (
+            <SeriesImageCard
+              key={series.id}
+              title={series.title}
+              imageBasePath={series.cardImage}
+              onSelect={() => navigate(`/series/${series.id}`)}
+            />
           ))}
         </div>
       </section>
