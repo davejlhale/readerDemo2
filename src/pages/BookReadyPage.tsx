@@ -42,6 +42,7 @@ export function BookReadyPage() {
   const navigate = useNavigate();
   const { data, loading, error } = useBookTextRetrieval(seriesId, bookId);
 
+  console.log(data, loading);
   //if landing here without url params (how! given app routing but...)
   if (error) {
     navigate("/error", {
