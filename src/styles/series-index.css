@@ -49,10 +49,13 @@
   display: flex;
   flex-direction: column;
   min-width: var(--card-height);
+  padding: 0;
 }
 
 .series-card img {
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 .series-card span {
@@ -95,10 +98,6 @@
   .series-list h1 {
     text-align: center;
   }
-
-  .series-card img {
-    /* padding: 5px 0; */
-  }
 }
 
 /* ------------------------------------------------------ */
@@ -140,12 +139,6 @@
     border: 3px inset var(--color-border-light);
     align-items: stretch;
     overflow-x: auto;
-  }
-
-  .series-card img {
-    width: 100%;
-    padding: 3px 0;
-    object-fit: contain;
   }
 }
 
@@ -220,12 +213,7 @@
   .series-card {
     height: var(--series-list-height);
     min-height: var(--series-list-height);
-  }
-
-  .series-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    padding: 0;
   }
 
   .series-row::after,
@@ -239,10 +227,10 @@
 }
 
 /* Variable-driven sizing */
-.series-card {
+/* .series-card {
   min-width: var(--card-size);
 }
 
 .series-list {
   min-height: var(--series-list-height);
-}
+} */

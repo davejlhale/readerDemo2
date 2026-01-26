@@ -39,37 +39,40 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
 import { SeriesImageCard } from "../components/cards/SeriesImageCard";
 import "../styles/series-index.css";
+import { useEffect } from "react";
 
 export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
   const navigate = useNavigate();
-  console.log(seriesId + " book id being looked for");
+
   const { data, loading, error } = useBookList(seriesId);
 
+  useEffect(() => {
+    if (!seriesId) {
+      navigate("/error", {
+        state: {
+          seriesId,
+          message: "No seriesId provided.",
+          source: "SeriesBooksPage",
+        },
+      });
+    }
+  }, [seriesId, navigate]);
+
+  useEffect(() => {
+    if (error) {
+      navigate("/error", {
+        state: {
+          seriesId,
+          message: error,
+          source: "SeriesBooksPage",
+        },
+      });
+    }
+  }, [error, navigate, seriesId]);
+
   if (loading) return <p>Loading…</p>;
-  if (!seriesId) {
-    navigate("/error", {
-      state: {
-        seriesId,
-        message: `Book Series ${seriesId} Not Found.`,
-        source: "SeriesBooksPage",
-      },
-    });
-
-    return null;
-  }
-
-  if (error || !data) {
-    navigate("/error", {
-      state: {
-        seriesId,
-        message: `Book list for ${seriesId} returned no data.`,
-        source: "SeriesBooksPage",
-      },
-    });
-
-    return null;
-  }
+  if (!data) return null; // navigation will handle
 
   return (
     <main className="series-index-page">
@@ -77,15 +80,12 @@ export function SeriesBooksPage() {
         <h1>Book Series</h1>
 
         <div className="series-row">
-          {data.map((series) => (
+          {data.map((book) => (
             <SeriesImageCard
-              key={series.id}
-              title={series.title}
-              imageBasePath={series.coverImage}
-              onSelect={() => {
-                console.log("selected book", series?.id);
-                navigate(`/series/${seriesId}/${series.id}`);
-              }}
+              key={book.id}
+              title={book.title}
+              imageBasePath={book.coverImage}
+              onSelect={() => navigate(`/series/${seriesId}/${book.id}`)}
             />
           ))}
         </div>

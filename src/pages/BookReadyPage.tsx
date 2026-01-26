@@ -32,14 +32,26 @@
  */
 //import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-//import { useBookTextRetrieval } from "../hooks/useBookTextRetrieval";
+import { useBookTextRetrieval } from "../hooks/useBookTextRetrieval";
 
 export function BookReadyPage() {
   const { seriesId, bookId } = useParams<{
     seriesId: string;
     bookId: string;
   }>();
+  const navigate = useNavigate();
+  const { data, loading, error } = useBookTextRetrieval(seriesId, bookId);
 
+  //if landing here without url params (how! given app routing but...)
+  if (error) {
+    navigate("/error", {
+      state: {
+        seriesId,
+        message: error,
+        source: "SeriesBooksPage",
+      },
+    });
+  }
   return (
     <>
       {console.log(`seriesId ${seriesId},bookId ${bookId}`)}

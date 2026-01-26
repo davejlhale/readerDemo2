@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 type ErrorState = {
   seriesId?: string;
+  bookId?: string;
   message?: string;
   source?: string;
 };
@@ -17,7 +18,7 @@ export function ErrorPage() {
   const source = state?.source ?? "Unknown source.";
 
   // Developer log
-  console.error("Navigation Error:", {
+  console.error("error page data:", {
     seriesId,
     message,
     source,

@@ -14,7 +14,7 @@ export default function App() {
           <Route path="/series" element={<SeriesIndexPage />} />
           <Route path="/series/:seriesId" element={<SeriesBooksPage />} />
           <Route path="/series/:seriesId/:bookId" element={<BookReadyPage />} />
-          <Route path="/error" element={<ErrorPage />} />;
+          <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </div>
     </BrowserRouter>

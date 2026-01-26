@@ -8,42 +8,45 @@ export type BooksMeta = {
 
 export function useBookList(seriesId?: string) {
   const [data, setData] = useState<BooksMeta[] | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
-    if (!seriesId) return;
-    setLoading(true);
-    setError(null);
-    const url = `/data/${seriesId}/book-list.json`;
-    console.log("Fetching:", url);
+    if (!seriesId) {
+      setError("No seriesId provided.");
+      return;
+    }
 
-    console.log(`data/${seriesId}/book-list.json`);
-    const cleanId = seriesId?.replace(/^\//, "");
+    const fetchBooks = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-    const burl = `/data/${cleanId}/book-list.json`;
-    console.log("clean " + burl);
-    fetch(burl)
-      .then((r) => {
-        if (!r.ok) {
-          throw new Error(`HTTP ${r.status} – ${r.statusText}`);
+        const cleanId = seriesId.replace(/^\//, "");
+        const url = `/data/${cleanId}/book-list.json`;
+
+        console.log("Fetching:", url);
+
+        const res = await fetch(url);
+
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status} – ${res.statusText}`);
         }
-        return r.json();
-      })
-      .then((json) => {
-        // JSON.stringify(json, null, 2);
 
+        const json = await res.json();
         setData(json.books);
-        console.log(json.books);
-        setLoading(false);
-      })
-      .catch((err: unknown) => {
+      } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
         } else {
           setError("Unknown error");
         }
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchBooks();
   }, [seriesId]);
 
   return { data, loading, error };
