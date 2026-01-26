@@ -30,7 +30,7 @@ export function useBookList(seriesId?: string) {
         return r.json();
       })
       .then((json) => {
-        console.log(JSON.stringify(json, null, 2));
+        // JSON.stringify(json, null, 2);
 
         setData(json.books);
         console.log(json.books);

@@ -30,3 +30,23 @@
  * - Assumptions that all pages are loaded
  * - Reader navigation or pagination logic
  */
+//import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+//import { useBookTextRetrieval } from "../hooks/useBookTextRetrieval";
+
+export function BookReadyPage() {
+  const { seriesId, bookId } = useParams<{
+    seriesId: string;
+    bookId: string;
+  }>();
+
+  return (
+    <>
+      {console.log(`seriesId ${seriesId},bookId ${bookId}`)}
+      <h1>
+        BookReadyPage {seriesId}
+        {bookId}
+      </h1>
+    </>
+  );
+}

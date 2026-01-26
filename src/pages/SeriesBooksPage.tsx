@@ -35,11 +35,10 @@
  * - Reading logic
  * - Series pedagogy explanations (belongs in SeriesDetailPage)
  */
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
 import { SeriesImageCard } from "../components/cards/SeriesImageCard";
 import "../styles/series-index.css";
-import { useParams } from "react-router-dom";
 
 export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
@@ -47,11 +46,29 @@ export function SeriesBooksPage() {
   console.log(seriesId + " book id being looked for");
   const { data, loading, error } = useBookList(seriesId);
 
-  if (!seriesId) return <p>Invalid series</p>;
   if (loading) return <p>Loading…</p>;
+  if (!seriesId) {
+    navigate("/error", {
+      state: {
+        seriesId,
+        message: `Book Series ${seriesId} Not Found.`,
+        source: "SeriesBooksPage",
+      },
+    });
+
+    return null;
+  }
+
   if (error || !data) {
-    console.log(error, data);
-    return <p>Failed to load books.</p>;
+    navigate("/error", {
+      state: {
+        seriesId,
+        message: `Book list for ${seriesId} returned no data.`,
+        source: "SeriesBooksPage",
+      },
+    });
+
+    return null;
   }
 
   return (
@@ -65,7 +82,10 @@ export function SeriesBooksPage() {
               key={series.id}
               title={series.title}
               imageBasePath={series.coverImage}
-              onSelect={() => navigate(`/series/${seriesId}/book/${series.id}`)}
+              onSelect={() => {
+                console.log("selected book", series?.id);
+                navigate(`/series/${seriesId}/${series.id}`);
+              }}
             />
           ))}
         </div>
