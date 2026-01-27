@@ -1,34 +1,35 @@
 /**
- * BookReadyPage
+ * NOTE ON FUTURE ARCHITECTURE
  * --------------------------------------------------
- * Route: /series/:seriesId/book/:bookId
+ * BookReadyPage currently acts as a staging screen:
+ * - It loads the book JSON
+ * - It preloads the first 1–2 pages
+ * - It unlocks "Let's Read" once the reader is guaranteed to render
+ * - It gives us a clean place to debug loading behaviour
  *
- * Purpose:
- * - Transitional staging page between book selection and reading
- * - Prepares book data without blocking user navigation
+ * However, this page is not strictly required in the long term.
  *
- * Behaviour:
- * - Begins loading book metadata and page content on mount
- * - Prioritises loading page 1 (and optionally page 2)
- * - Enables "Let's read" as soon as page 1 is ready
- * - Continues loading remaining pages silently in the background
- * - Yields control to the user as early as possible
+ * Once the ReaderPage becomes responsible for:
+ *   • loading the starting page immediately (page 1 or last-read page)
+ *   • running the priority-based preload strategy (start → forward → backward)
+ *   • showing placeholders until images arrive
+ *   • tracking reading behaviour and progress
  *
- * UX guarantees:
- * - User can always return to the series book list
- * - Navigation is never blocked by background loading
- * - ReaderPage is entered only when page 1 is available
+ * …then BookReadyPage can be merged into ReaderPage entirely.
  *
- * Should contain:
- * - Book cover and summary
- * - Loading / preparation status
- * - "Let's read" action (gated by page 1 readiness)
- * - Link back to SeriesBooksPage
+ * In that future design:
+ *   - "Read" simply opens ReaderPage at page 1
+ *   - "Continue Reading" opens ReaderPage at the user's last-read page
+ *   - ReaderPage loads the required page first, then preloads the rest
+ *   - No separate staging screen is needed
  *
- * Should NOT contain:
- * - Page-by-page reading UI
- * - Assumptions that all pages are loaded
- * - Reader navigation or pagination logic
+ * Keeping BookReadyPage for now is intentional:
+ *   • It isolates preload logic while we refine it
+ *   • It gives us a safe place to experiment with loading UX
+ *   • It avoids complicating ReaderPage during early development
+ *
+ * When the reader engine is mature, this page can be removed cleanly.
+ * The reader will become both the staging and reading experience.
  */
 //import { useEffect, useState } from "react";
 import { useEffect } from "react";
@@ -39,10 +40,14 @@ export function BookReadyPage() {
   const { seriesId, bookId } = useParams();
   const navigate = useNavigate();
 
-  const { data, initialReady, backgroundLoading, error } = useBookTextRetrieval(
-    seriesId,
-    bookId,
-  );
+  const {
+    data,
+    initialReady,
+    backgroundLoading,
+    loadedCount,
+    totalPages,
+    error,
+  } = useBookTextRetrieval(seriesId, bookId);
 
   useEffect(() => {
     if (error) {
@@ -64,21 +69,26 @@ export function BookReadyPage() {
 
       {/* 3. Show preparation status until initial pages are ready */}
       {!initialReady && (
-        <div className="tiny-loader">Preparing first pages…</div>
+        <div className="tiny-loader">
+          Preparing page {loadedCount + 1} of {totalPages}…
+        </div>
       )}
 
       {/* 4. Button unlocks as soon as initialReady flips true */}
       <button
         disabled={!initialReady}
         className={initialReady ? "ready" : "disabled"}
-        onClick={() => navigate(`/reader/${seriesId}/${bookId}`)}
+        // onClick={() => navigate(`/reader/${seriesId}/${bookId}`)}
+        onClick={() => navigate(`/`)}
       >
         Let’s Read
       </button>
 
       {/* 5. Background loading continues silently */}
       {backgroundLoading && (
-        <div className="tiny-loader">Loading remaining pages…</div>
+        <div className="tiny-loader">
+          Loaded {loadedCount}/{totalPages} pages…
+        </div>
       )}
     </div>
   );
