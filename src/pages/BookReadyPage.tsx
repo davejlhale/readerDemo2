@@ -31,35 +31,55 @@
  * - Reader navigation or pagination logic
  */
 //import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useBookTextRetrieval } from "../hooks/useBookTextRetrieval";
 
 export function BookReadyPage() {
-  const { seriesId, bookId } = useParams<{
-    seriesId: string;
-    bookId: string;
-  }>();
+  const { seriesId, bookId } = useParams();
   const navigate = useNavigate();
-  const { data, loading, error } = useBookTextRetrieval(seriesId, bookId);
 
-  console.log(data, loading);
-  //if landing here without url params (how! given app routing but...)
-  if (error) {
-    navigate("/error", {
-      state: {
-        seriesId,
-        message: error,
-        source: "SeriesBooksPage",
-      },
-    });
+  const { data, initialReady, backgroundLoading, error } = useBookTextRetrieval(
+    seriesId,
+    bookId,
+  );
+
+  useEffect(() => {
+    if (error) {
+      navigate("/error", {
+        state: { seriesId, message: error, source: "BookReadyPage" },
+      });
+    }
+  }, [error, navigate, seriesId]);
+
+  // 1. JSON not loaded yet → show loading
+  if (!data) {
+    return <div>Loading book…</div>;
   }
+
+  // 2. JSON loaded → show book info immediately
   return (
-    <>
-      {console.log(`seriesId ${seriesId},bookId ${bookId}`)}
-      <h1>
-        BookReadyPage {seriesId}
-        {bookId}
-      </h1>
-    </>
+    <div>
+      <h1>{data.title}</h1>
+
+      {/* 3. Show preparation status until initial pages are ready */}
+      {!initialReady && (
+        <div className="tiny-loader">Preparing first pages…</div>
+      )}
+
+      {/* 4. Button unlocks as soon as initialReady flips true */}
+      <button
+        disabled={!initialReady}
+        className={initialReady ? "ready" : "disabled"}
+        onClick={() => navigate(`/reader/${seriesId}/${bookId}`)}
+      >
+        Let’s Read
+      </button>
+
+      {/* 5. Background loading continues silently */}
+      {backgroundLoading && (
+        <div className="tiny-loader">Loading remaining pages…</div>
+      )}
+    </div>
   );
 }

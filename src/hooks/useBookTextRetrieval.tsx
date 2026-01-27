@@ -15,8 +15,11 @@ export type BookTextData = {
 
 export function useBookTextRetrieval(seriesId?: string, bookId?: string) {
   const [data, setData] = useState<BookTextData | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [initialReady, setInitialReady] = useState(false);
+  const [backgroundLoading, setBackgroundLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const READY_COUNT = 2; // or whatever you want
 
   useEffect(() => {
     if (!seriesId || !bookId) {
@@ -24,35 +27,67 @@ export function useBookTextRetrieval(seriesId?: string, bookId?: string) {
       return;
     }
 
-    const fetchBook = async () => {
+    let cancelled = false;
+
+    async function loadJson() {
       try {
-        setLoading(true);
         setError(null);
 
         const url = `/data/${seriesId}/${bookId}.json`;
-
         const res = await fetch(url);
-
-        if (!res.ok) {
-          console.log("resource fetch failed");
-          throw new Error(`HTTP ${res.status} – ${res.statusText}`);
-        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const json = await res.json();
-        setData(json);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("Unknown error");
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
+        if (!cancelled) setData(json);
 
-    fetchBook();
+        // Start image loading
+        console.log(json.pages);
+        preloadImages(json.pages);
+      } catch (err) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : "Unknown error");
+        }
+      }
+    }
+
+    function preloadImages(pages: BookTextData["pages"]) {
+      console.log(pages);
+      let loadedCount = 0;
+      const fileType = ".png";
+      pages.forEach((page, index) => {
+        const img = new Image();
+        img.src = page.imageBaseURL + fileType;
+        console.log(img.src);
+        img.onload = () => {
+          loadedCount++;
+
+          // First N pages ready → unlock UI
+          if (!initialReady && loadedCount >= READY_COUNT) {
+            setInitialReady(true);
+          }
+
+          // When loading beyond READY_COUNT → background mode
+          if (loadedCount === READY_COUNT) {
+            setBackgroundLoading(true);
+          }
+
+          // When all pages done
+          if (loadedCount === pages.length) {
+            setBackgroundLoading(false);
+          }
+        };
+
+        img.onerror = () => {
+          console.warn("Image failed:", img.src);
+        };
+      });
+    }
+
+    loadJson();
+    return () => {
+      cancelled = true;
+    };
   }, [seriesId, bookId]);
 
-  return { data, loading, error };
+  return { data, initialReady, backgroundLoading, error };
 }
