@@ -38,7 +38,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
 import { SeriesImageCard } from "../components/cards/SeriesImageCard";
-// import "../styles/series-index.css";
 import { useEffect } from "react";
 
 export function SeriesBooksPage() {
@@ -83,10 +82,13 @@ export function SeriesBooksPage() {
           {data.map((book) => (
             <SeriesImageCard
               key={book.id}
+              seriesId={seriesId!}
               title={book.title}
               imageBasePath={book.coverImage}
-              onSelect={() => navigate(`/series/${seriesId}/${book.id}`)}
-            />
+              onSelect={() => navigate(`/reader/${seriesId}/${book.id}/1`)}
+            >
+              <img alt="preloadicon"></img>
+            </SeriesImageCard>
           ))}
         </div>
       </section>

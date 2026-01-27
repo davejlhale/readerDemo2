@@ -1,7 +1,19 @@
 import { useEffect, useState } from "react";
-import type { BookTextData } from "./useBookTextRetrieval";
 
-export function useBookJson(seriesId?: string, bookId?: string) {
+export type BookTextData = {
+  id: string;
+  seriesId: string;
+  title: string;
+  cover: string;
+  pages: {
+    pageNumber: string;
+    imageBaseURL: string;
+    lines: string[];
+    metaData: string;
+  }[];
+};
+
+export function useBookData(seriesId?: string, bookId?: string) {
   const [data, setData] = useState<BookTextData | null>(null);
   const [error, setError] = useState<string | null>(null);
 

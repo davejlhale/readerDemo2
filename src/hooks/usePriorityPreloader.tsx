@@ -5,12 +5,34 @@ import { useEffect, useState, useCallback } from "react";
 // -----------------------------------------------------
 function buildInitialLoadOrder(start: number, total: number): number[] {
   const order: number[] = [start];
+
   let forward = start + 1;
   let backward = start - 1;
 
+  // forwardWeight = how many forward pages to load before one backward
+  const forwardWeight = 4;
+  let forwardCount = 0;
+
   while (forward <= total || backward >= 1) {
-    if (forward <= total) order.push(forward++);
-    if (backward >= 1) order.push(backward--);
+    // Load forward pages first, up to the weight
+    if (forward <= total && forwardCount < forwardWeight) {
+      order.push(forward++);
+      forwardCount++;
+      continue;
+    }
+
+    // Then load one backward page
+    if (backward >= 1) {
+      order.push(backward--);
+      forwardCount = 0; // reset forward streak
+      continue;
+    }
+
+    // If backward is exhausted, keep pushing forward
+    if (forward <= total) {
+      order.push(forward++);
+      forwardCount++;
+    }
   }
 
   return order;

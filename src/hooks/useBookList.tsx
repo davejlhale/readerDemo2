@@ -34,7 +34,13 @@ export function useBookList(seriesId?: string) {
         }
 
         const json = await res.json();
-        setData(json.books);
+        const books: BooksMeta[] = json.books.map((b: any) => ({
+          id: String(b.id),
+          title: String(b.title),
+          coverImage: String(b.coverImage),
+        }));
+
+        setData(books);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);

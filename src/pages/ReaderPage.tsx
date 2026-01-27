@@ -41,13 +41,13 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
-import { useBookJson } from "../hooks/useBookJson";
+import { useBookData } from "../hooks/useBookData";
 
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const startPage = Number(pageNumber);
 
-  const { data: book, error } = useBookJson(seriesId, bookId);
+  const { data: book, error } = useBookData(seriesId, bookId);
   const [currentPage, setCurrentPage] = useState(startPage);
 
   // Only now is it safe to build safePages
