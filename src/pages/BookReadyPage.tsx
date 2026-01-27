@@ -78,8 +78,8 @@ export function BookReadyPage() {
       <button
         disabled={!initialReady}
         className={initialReady ? "ready" : "disabled"}
-        // onClick={() => navigate(`/reader/${seriesId}/${bookId}`)}
-        onClick={() => navigate(`/`)}
+        onClick={() => navigate(`/reader/${seriesId}/${bookId}/1`)}
+        // onClick={() => navigate(`/`)}
       >
         Let’s Read
       </button>

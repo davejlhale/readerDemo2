@@ -37,3 +37,11 @@
  * When the reader engine is mature, ReaderPage will absorb
  * all staging responsibilities and BookReadyPage can be removed.
  */
+
+export function ReaderPage() {
+  return (
+    <>
+      <h1>readerpage</h1>
+    </>
+  );
+}

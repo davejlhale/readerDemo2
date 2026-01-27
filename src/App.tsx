@@ -4,6 +4,7 @@ import { SeriesIndexPage } from "./pages/SeriesIndexPage";
 import { SeriesBooksPage } from "./pages/SeriesBooksPage";
 import { BookReadyPage } from "./pages/BookReadyPage";
 import { ErrorPage } from "./pages/ErrorPage";
+import { ReaderPage } from "./pages/ReaderPage";
 
 export default function App() {
   return (
@@ -14,6 +15,10 @@ export default function App() {
           <Route path="/series" element={<SeriesIndexPage />} />
           <Route path="/series/:seriesId" element={<SeriesBooksPage />} />
           <Route path="/series/:seriesId/:bookId" element={<BookReadyPage />} />
+          <Route
+            path="/reader/:seriesId/:bookId/:pageNumber"
+            element={<ReaderPage />}
+          />
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </div>
