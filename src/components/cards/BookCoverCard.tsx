@@ -13,7 +13,7 @@ export function BookCoverCard({
     <button className="tile" onClick={onSelect}>
       <div className="tile-image">
         <img
-          src={`${imageBasePath}.png`}
+          src={`${imageBasePath}.webp`}
           alt=""
           loading="lazy"
           decoding="async"

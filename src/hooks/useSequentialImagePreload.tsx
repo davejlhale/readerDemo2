@@ -22,7 +22,7 @@ export function useSequentialImagePreload(
 
     async function preload() {
       const total = safePages.length;
-      const fileType = ".png";
+      const fileType = ".webp";
 
       for (let i = 0; i < total; i++) {
         const url = safePages[i].imageBaseURL + fileType;
