@@ -6,7 +6,7 @@
   --color-bg-soft: #ccc;
   --color-bg-white: #a7aaa7;
   --color-border-dark: #1b1b1b;
-  --color-border-light: rgb(171, 169, 169);
+  --color-border-light: rgb(94, 92, 92);
 }
 
 /* Base Layout (mobile first) */
@@ -43,6 +43,7 @@
   background-color: var(--color-bg-white);
   scroll-behavior: smooth;
   padding: 0px;
+  margin: 0 2rem;
 }
 
 .series-row > * {
@@ -91,7 +92,7 @@
   .series-row {
     flex-direction: column;
     padding: 1rem;
-    border: 3px inset var(--color-border-light);
+    border: 3px solid var(--color-border-light);
     align-items: stretch;
     overflow-x: hidden;
     overflow-y: auto;
@@ -225,10 +226,6 @@
   }
 }
 
-@media {
-  .series-row {
-  }
-}
 /* Variable-driven sizing */
 .series-card {
   min-width: var(--card-size);

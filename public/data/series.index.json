@@ -1,10 +1,10 @@
 {
   "series": [
     {
-      "id": "backstreet-bikers",
-      "title": "Backstreet Bikers",
-      "cardImage": "/images/series/backstreet-bikers/book-series-card",
-      "shortDescription": "High-energy stories about bikes, movement, and teamwork."
+      "id": "hugo-and-pip",
+      "title": "Hugo & Pip",
+      "cardImage": "/images/series/hugo-and-pip/book-series-card",
+      "shortDescription": "Guided-discovery reading adventures with Hugo and Pip."
     },
     {
       "id": "big-dog-little-dog",
@@ -13,10 +13,10 @@
       "shortDescription": "Gentle stories exploring contrast, friendship, and perspective."
     },
     {
-      "id": "hugo-and-pip",
-      "title": "Hugo & Pip",
-      "cardImage": "/images/series/hugo-and-pip/book-series-card",
-      "shortDescription": "Guided-discovery reading adventures with Hugo and Pip."
+      "id": "backstreet-bikers",
+      "title": "Backstreet Bikers",
+      "cardImage": "/images/series/backstreet-bikers/book-series-card",
+      "shortDescription": "High-energy stories about bikes, movement, and teamwork."
     }
   ]
 }
