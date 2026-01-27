@@ -20,6 +20,8 @@ export default function App() {
             element={<ReaderPage />}
           />
           <Route path="/error" element={<ErrorPage />} />
+          {/* 👇 Catch all unmatched routes */}
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </BrowserRouter>

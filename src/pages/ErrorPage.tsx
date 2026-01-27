@@ -13,27 +13,38 @@ export function ErrorPage() {
 
   const state = location.state as ErrorState | null;
 
+  const is404 = !state?.message;
+
   const seriesId = state?.seriesId;
-  const message = state?.message ?? "Unknown error.";
-  const source = state?.source ?? "Unknown source.";
+  const message = state?.message;
+  const source = state?.source;
 
   // Developer log
-  console.error("error page data:", {
-    seriesId,
-    message,
-    source,
+  console.error("ErrorPage invoked:", {
+    pathname: location.pathname,
+    state,
+    is404,
   });
 
   return (
     <main style={{ padding: "2rem" }}>
-      <h1>Something went wrong</h1>
-
-      <p>
-        <strong>Where:</strong> {source}
-      </p>
-      <p>
-        <strong>Message:</strong> {message}
-      </p>
+      {is404 ? (
+        <>
+          <h1>404 — Page Not Found</h1>
+          <p>The route below does not exist:</p>
+          <code>{location.pathname}</code>
+        </>
+      ) : (
+        <>
+          <h1>Something went wrong</h1>
+          <p>
+            <strong>Where:</strong> {source}
+          </p>
+          <p>
+            <strong>Message:</strong> {message}
+          </p>
+        </>
+      )}
 
       <div style={{ marginTop: "2rem" }}>
         <button onClick={() => navigate("/series")}>
