@@ -9,7 +9,7 @@ export function SeriesImageCard({ title, imageBasePath, onSelect }: Props) {
   return (
     <button className="series-card" onClick={onSelect}>
       <img
-        src={`${imageBasePath}.webp`}
+        src={`${imageBasePath}`}
         alt={title}
         loading="lazy"
         draggable={false}

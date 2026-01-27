@@ -38,10 +38,36 @@
  * all staging responsibilities and BookReadyPage can be removed.
  */
 
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
+import { useBookJson } from "../hooks/useBookJson";
+
 export function ReaderPage() {
+  const { seriesId, bookId, pageNumber } = useParams();
+  const startPage = Number(pageNumber);
+
+  const { data: book, error } = useBookJson(seriesId, bookId);
+  const [currentPage, setCurrentPage] = useState(startPage);
+
+  // Only now is it safe to build safePages
+  const safePages = book?.pages.map((p) => ({
+    page: Number(p.pageNumber),
+    imageBaseURL: p.imageBaseURL,
+  }));
+
+  // Only now is it safe to call the preloader hook
+  const { loadedPages } = usePriorityPreloader(currentPage, safePages);
+  if (error) return <p>Error: {error}</p>;
+  if (!book) return <p>Loading…</p>;
   return (
     <>
-      <h1>readerpage</h1>
+      <h1>{book.title}</h1>
+      <p>Current page: {currentPage}</p>
+      <p>Loaded pages: {Array.from(loadedPages).join(", ")}</p>
+
+      <button onClick={() => setCurrentPage((p) => p - 1)}>Prev</button>
+      <button onClick={() => setCurrentPage((p) => p + 1)}>Next</button>
     </>
   );
 }

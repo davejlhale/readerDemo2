@@ -2,12 +2,11 @@
   "id": "pip-and-hugo-go-to-the-zoo",
   "seriesId": "hugo-andpip",
   "title": "Pip and Hugo Go to the Zoo",
-  "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/cover.png",
-  "coverImageLandscape": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/coverL.png",
+  "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/cover.webp",
   "pages": [
     {
       "pageNumber": 1,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-01",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-01.webp",
       "lines": [
         "Pip looks at Hugo and says, \"Can we go to the zoo?\"",
         "Hugo smiles at Pip and nods."
@@ -16,7 +15,7 @@
     },
     {
       "pageNumber": 2,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-02",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-02.webp",
       "lines": [
         "Pip and Hugo walk on the path.",
         "They go to the big zoo gate."
@@ -25,7 +24,7 @@
     },
     {
       "pageNumber": 3,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-03",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-03.webp",
       "lines": [
         "They see a small booth and a line.",
         "Pip says, \"What are they doing?\""
@@ -34,7 +33,7 @@
     },
     {
       "pageNumber": 4,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-04",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-04.webp",
       "lines": [
         "Hugo says, \"They wait and pay to go in.\"",
         "Pip nods and waits with Hugo."
@@ -43,7 +42,7 @@
     },
     {
       "pageNumber": 5,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-05",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-05.webp",
       "lines": [
         "Inside, Pip sees a big sign.",
         "It shows paths and places to go."
@@ -52,7 +51,7 @@
     },
     {
       "pageNumber": 6,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-06",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-06.webp",
       "lines": [
         "Pip stops near a pen where a big cat sits in the sun.",
         "\"It is a lion\", says Hugo."
@@ -61,13 +60,13 @@
     },
     {
       "pageNumber": 7,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-07",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-07.webp",
       "lines": ["A keeper has meat in a tub.", "He tips it into the pen."],
       "meta": { "wordCount": 13 }
     },
     {
       "pageNumber": 8,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-08",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-08.webp",
       "lines": [
         "Pip says, \"What is that man doing?\"",
         "Hugo says, \"The keeper is feeding the lion.\""
@@ -76,7 +75,7 @@
     },
     {
       "pageNumber": 9,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-09",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-09.webp",
       "lines": [
         "They walk on and see a huge elephant.",
         "It sprays water high in the air."
@@ -85,7 +84,7 @@
     },
     {
       "pageNumber": 10,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-10",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-10.webp",
       "lines": [
         "A keeper pours water in a pool.",
         "The water splashes and shines."
@@ -94,7 +93,7 @@
     },
     {
       "pageNumber": 11,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-11",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-11.webp",
       "lines": [
         "Pip says, \"What is the water for?\"",
         "Hugo says, \"The elephant drinks it and it helps him wash.\""
@@ -103,7 +102,7 @@
     },
     {
       "pageNumber": 12,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-12",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-12.webp",
       "lines": [
         "Pip can hear noises and see small monkeys.",
         "They run and jump and play with a tyre."
@@ -112,7 +111,7 @@
     },
     {
       "pageNumber": 13,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-13",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-13.webp",
       "lines": [
         "A keeper fixes the tyre swings.",
         "The animals can swing again."
@@ -121,7 +120,7 @@
     },
     {
       "pageNumber": 14,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-14",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-14.webp",
       "lines": [
         "Pip says, \"The keeper helps them, like at the other pens?\"",
         "Hugo says, \"Yes.\""
@@ -130,7 +129,7 @@
     },
     {
       "pageNumber": 15,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-15",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-15.webp",
       "lines": [
         "Pip walks slowly and holds Hugo’s hand.",
         "It is time to go home."
@@ -139,7 +138,7 @@
     },
     {
       "pageNumber": 16,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-16",
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-16.webp",
       "lines": [
         "Pip says, \"The animals are safe at the zoo.\"",
         "Pip says, \"The keepers feed and help them.\""
