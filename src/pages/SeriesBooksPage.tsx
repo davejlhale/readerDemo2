@@ -37,13 +37,15 @@
  */
 import { useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
-import { SeriesImageCard } from "../components/cards/SeriesImageCard";
+import { BookCard } from "../components/cards/BookCard";
 import { useEffect } from "react";
-
+import { useBookPreloader } from "../hooks/useBookPreloader";
+import "../styles/series-index.css"; //needs a series-books.css fully done one day
+import "../styles/series-books.css";
 export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
   const navigate = useNavigate();
-
+  const { preloadBook, progress } = useBookPreloader();
   const { data, loading, error } = useBookList(seriesId);
 
   useEffect(() => {
@@ -80,15 +82,17 @@ export function SeriesBooksPage() {
 
         <div className="series-row">
           {data.map((book) => (
-            <SeriesImageCard
+            <BookCard
               key={book.id}
-              seriesId={seriesId!}
               title={book.title}
+              seriesId={seriesId!}
               imageBasePath={book.coverImage}
               onSelect={() => navigate(`/reader/${seriesId}/${book.id}/1`)}
+              onPreload={() => preloadBook(seriesId!, book.id)}
+              preloadState={progress[book.id] ?? "idle"}
             >
-              <img alt="preloadicon"></img>
-            </SeriesImageCard>
+              {/* <img alt="preloadicon"></img> */}
+            </BookCard>
           ))}
         </div>
       </section>

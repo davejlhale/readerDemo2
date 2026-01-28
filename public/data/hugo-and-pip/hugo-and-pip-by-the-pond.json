@@ -1,0 +1,140 @@
+{
+  "id": "hugo-and-pip-by-the-pond",
+  "seriesId": "hugo-and-pip",
+  "title": "Pip and Hugo by the Pond",
+  "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/cover.webp",
+  "pages": [
+    {
+      "pageNumber": 1,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-01.webp",
+      "lines": ["Pip and Hugo are by a pond."],
+      "meta": { "wordCount": 7 }
+    },
+    {
+      "pageNumber": 2,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-02.webp",
+      "lines": ["The water shines."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 3,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-03.webp",
+      "lines": ["A fish swims by."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 4,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-04.webp",
+      "lines": ["Another fish swims by."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 5,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-05.webp",
+      "lines": ["Ripples spread."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 6,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-06.webp",
+      "lines": ["A frog sits."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 7,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-07.webp",
+      "lines": ["The frog jumps."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 8,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-08.webp",
+      "lines": ["Plop! More ripples spread."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 9,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-09.webp",
+      "lines": ["Some ducks swim."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 10,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-10.webp",
+      "lines": ["Some ducks eat."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 11,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-11.webp",
+      "lines": ["Some ducks drink."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 12,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-12.webp",
+      "lines": ["Big bugs buzz."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 13,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-13.webp",
+      "lines": ["There are lily pads."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 14,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-14.webp",
+      "lines": ["The fish swim near the lily pads."],
+      "meta": { "wordCount": 8 }
+    },
+    {
+      "pageNumber": 15,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-15.webp",
+      "lines": ["Splash! Pip falls in."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 16,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-16.webp",
+      "lines": ["The ducks fly off."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 17,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-17.webp",
+      "lines": ["The frog jumps away."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 18,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-18.webp",
+      "lines": ["The fish swim away and hide."],
+      "meta": { "wordCount": 7 }
+    },
+    {
+      "pageNumber": 19,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-19.webp",
+      "lines": ["The pond looks still now."],
+      "meta": { "wordCount": 5 }
+    },
+    {
+      "pageNumber": 20,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-20.webp",
+      "lines": ["Pip laughs."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 21,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-21.webp",
+      "lines": ["Hugo laughs too."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 22,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/pages/page-22.webp",
+      "lines": ["Time to go."],
+      "meta": { "wordCount": 3 }
+    }
+  ]
+}

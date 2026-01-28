@@ -38,7 +38,7 @@
  * all staging responsibilities and BookReadyPage can be removed.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
@@ -50,24 +50,87 @@ export function ReaderPage() {
   const { data: book, error } = useBookData(seriesId, bookId);
   const [currentPage, setCurrentPage] = useState(startPage);
 
-  // Only now is it safe to build safePages
-  const safePages = book?.pages.map((p) => ({
-    page: Number(p.pageNumber),
-    imageBaseURL: p.imageBaseURL,
-  }));
+  // Always compute these, even before book loads
+  const totalPages = book?.pages.length ?? 0;
+  const maxPage = totalPages + 1;
 
-  // Only now is it safe to call the preloader hook
+  // Fix invalid URL page param AFTER book loads
+  useEffect(() => {
+    if (!book) return;
+
+    const start = Number(pageNumber);
+    if (start < 1 || start > maxPage) {
+      setCurrentPage(1);
+    }
+  }, [book, pageNumber, maxPage]);
+
+  // Preloader (must always run in same order)
+  const safePages = book
+    ? book.pages.map((p) => ({
+        page: Number(p.pageNumber),
+        imageBaseURL: p.imageBaseURL,
+      }))
+    : [];
+
   const { loadedPages } = usePriorityPreloader(currentPage, safePages);
-  if (error) return <p>Error: {error}</p>;
-  if (!book) return <p>Loading…</p>;
+
+  // Now we can safely render
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!book) {
+    return <p>Loading…</p>;
+  }
+
+  const page = book.pages[currentPage - 1];
+
   return (
     <>
       <h1>{book.title}</h1>
       <p>Current page: {currentPage}</p>
       <p>Loaded pages: {Array.from(loadedPages).join(", ")}</p>
 
-      <button onClick={() => setCurrentPage((p) => p - 1)}>Prev</button>
-      <button onClick={() => setCurrentPage((p) => p + 1)}>Next</button>
+      {/* TEXT BLOCK */}
+      {currentPage <= totalPages && (
+        <div style={{ margin: "1rem 0" }}>
+          {page.lines.map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
+        </div>
+      )}
+
+      {/* IMAGE BLOCK */}
+      {currentPage <= totalPages && (
+        <img
+          src={page.imageBaseURL}
+          alt={`Page ${currentPage}`}
+          onError={(e) => {
+            e.currentTarget.src =
+              "/images/generic/books/no-page-image-placeholder.webp";
+          }}
+        />
+      )}
+
+      {/* END PAGE */}
+      {currentPage === maxPage && (
+        <img src="/images/generic/books/the-end.webp" alt="The End" />
+      )}
+
+      {/* NAVIGATION */}
+      <button
+        onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+        disabled={currentPage <= 1}
+      >
+        Prev
+      </button>
+
+      <button
+        onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
+        disabled={currentPage >= maxPage}
+      >
+        Next
+      </button>
     </>
   );
 }

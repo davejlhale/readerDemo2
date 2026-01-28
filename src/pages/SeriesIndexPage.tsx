@@ -38,30 +38,7 @@ export function SeriesIndexPage() {
           {data.map((series) => (
             <SeriesImageCard
               key={series.id}
-              title={series.title}
-              imageBasePath={series.cardImage}
-              onSelect={() => navigate(`/series/${series.id}`)}
-            />
-          ))}{" "}
-          {data.map((series) => (
-            <SeriesImageCard
-              key={series.id}
-              title={series.title}
-              imageBasePath={series.cardImage}
-              onSelect={() => navigate(`/series/${series.id}`)}
-            />
-          ))}{" "}
-          {data.map((series) => (
-            <SeriesImageCard
-              key={series.id}
-              title={series.title}
-              imageBasePath={series.cardImage}
-              onSelect={() => navigate(`/series/${series.id}`)}
-            />
-          ))}{" "}
-          {data.map((series) => (
-            <SeriesImageCard
-              key={series.id}
+              seriesId={series.id}
               title={series.title}
               imageBasePath={series.cardImage}
               onSelect={() => navigate(`/series/${series.id}`)}

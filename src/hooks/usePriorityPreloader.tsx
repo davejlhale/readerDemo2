@@ -41,13 +41,20 @@ function buildInitialLoadOrder(start: number, total: number): number[] {
 // -----------------------------------------------------
 // Minimal loader (replace with storage-aware loader later)
 // -----------------------------------------------------
-function loadPageImage(page: { page: number; imageBaseURL: string }) {
-  return new Promise<void>((resolve, reject) => {
+function loadPageImage(page: {
+  page: number;
+  imageBaseURL: string;
+}): Promise<string> {
+  return new Promise((resolve) => {
     const img = new Image();
     img.src = page.imageBaseURL;
-    img.onload = () => resolve();
-    img.onerror = () =>
-      reject(new Error(`Failed to load image: ${page.imageBaseURL}`));
+
+    img.onload = () => resolve(page.imageBaseURL);
+
+    img.onerror = () => {
+      console.warn(`Failed to load image: ${page.imageBaseURL}`);
+      resolve("/images/generic/books/no-page-image-placeholder.webp");
+    };
   });
 }
 

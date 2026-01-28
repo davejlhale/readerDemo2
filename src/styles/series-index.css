@@ -52,6 +52,7 @@
 
 /* Card */
 .series-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: var(--card-height);
