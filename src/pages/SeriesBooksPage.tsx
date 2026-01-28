@@ -79,7 +79,6 @@ export function SeriesBooksPage() {
     <main className="series-index-page">
       <section className="series-list">
         <h1>Book Series</h1>
-
         <div className="series-row">
           {data.map((book) => (
             <BookCard
@@ -90,9 +89,7 @@ export function SeriesBooksPage() {
               onSelect={() => navigate(`/reader/${seriesId}/${book.id}/1`)}
               onPreload={() => preloadBook(seriesId!, book.id)}
               preloadState={progress[book.id] ?? "idle"}
-            >
-              {/* <img alt="preloadicon"></img> */}
-            </BookCard>
+            ></BookCard>
           ))}
         </div>
       </section>

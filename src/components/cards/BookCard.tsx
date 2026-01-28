@@ -21,16 +21,22 @@ export function BookCard({
       <img src={imageBasePath} alt={title} loading="lazy" decoding="async" />
 
       {onPreload && (
-        <div
-          className="preload-icon-overlay"
-          onClick={(e) => {
-            e.stopPropagation();
-            onPreload();
-          }}
-        >
-          {preloadState === "idle" && <span>⬇️</span>}
-          {preloadState === "loading" && <span>⏳</span>}
-          {preloadState === "done" && <span>✔️</span>}
+        <div className="action-bar">
+          <span className="read-pill">Read</span>
+
+          <span
+            className="icon-pill"
+            onClick={(e) => {
+              e.stopPropagation();
+              onPreload();
+            }}
+          >
+            <span>
+              {preloadState === "idle" && "⬇️"}
+              {preloadState === "loading" && "⏳"}
+              {preloadState === "done" && "✔️"}
+            </span>
+          </span>
         </div>
       )}
     </button>

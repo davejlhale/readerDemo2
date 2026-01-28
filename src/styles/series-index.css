@@ -52,11 +52,13 @@
 
 /* Card */
 .series-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   min-width: var(--card-height);
+  background-color: #1b1b1b;
+  cursor: pointer;
   padding: 0;
+  color: var(--color-bg-soft);
 }
 
 .series-card img {
@@ -154,7 +156,7 @@
 @media (min-width: 450px) and (orientation: portrait) {
   :root {
     --series-list-height: 100svh;
-    --card-size: 50svh;
+    --card-size: 45svh;
   }
 
   .series-row {
@@ -165,6 +167,8 @@
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 90svh;
+
+    gap: 4rem;
   }
 
   .series-list {
@@ -179,7 +183,7 @@
 @media (min-width: 450px) and (orientation: landscape) {
   :root {
     --series-list-height: 100svh;
-    --card-size: 50svh;
+    --card-size: 40svh;
   }
 }
 
@@ -189,7 +193,7 @@
 
 @media (min-width: 1000px) {
   :root {
-    --card-size: 58svh;
+    --card-size: 53svh;
     --series-list-height: 100svh;
   }
 }
@@ -206,10 +210,6 @@
 
   .series-list {
     max-width: var(--series-list-height);
-  }
-
-  .series-row {
-    width: 100%;
   }
 
   .series-card {
@@ -234,4 +234,14 @@
 
 .series-list {
   min-height: var(--series-list-height);
+}
+@media (orientation: landscape) {
+  .series-list {
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* justify-self: center; */
+    /* justify-items: center; */
+    /* align-self: center; */
+    /* align-content: center; */
+  }
 }
