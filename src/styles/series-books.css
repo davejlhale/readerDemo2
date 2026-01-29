@@ -2,10 +2,9 @@
   display: flex;
   width: 100svw;
   height: 100svh;
-  background: #e8dfd0; /* soft desk/table colour */
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0.3rem;
 }
 .page-top {
   flex: 1 1 auto;
@@ -17,6 +16,8 @@
   flex: 1 1 auto;
   display: flex;
   min-height: 0;
+  border: 1px solid rebeccapurple;
+  padding: 0.8rem;
 }
 
 .book-wrapper {
@@ -78,7 +79,7 @@
 
 @media (orientation: portrait) {
   .page-top {
-    flex-direction: row;
+    flex-direction: column;
   }
   .book-wrapper {
     /* background-image: url("/images/generic/books/blank-book-portrait.webp"); */
@@ -87,6 +88,42 @@
     background-position: center;
     position: relative;
     overflow: hidden; /* ensures the pseudo-element stays inside */
+  }
+  .page-content {
+    /* padding: 1rem 1rem; */
+    padding-right: 0.4rem;
+    padding-left: 1.3rem;
+    padding-top: 0.8rem;
+  }
+  .stretch {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    justify-content: space-around;
+  }
+
+  .book-image {
+    /* height: 50%; */
+    max-height: 70%;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  .book-image img {
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    object-fit: fill;
+    display: block;
+  }
+
+  .book-text {
+    flex: 1 1 auto;
+    padding: 1rem;
+    overflow-y: auto;
   }
 
   /* Odd pages: normal orientation */

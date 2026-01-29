@@ -37,7 +37,7 @@
  */
 import { useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
-import { BookCard } from "../components/cards/BookCard";
+import { BookCoverCard } from "../components/cards/BookCoverCard";
 import { useEffect } from "react";
 import { useBookPreloader } from "../hooks/useBookPreloader";
 import "../styles/series-index.css"; //needs a series-books.css fully done one day
@@ -81,7 +81,7 @@ export function SeriesBooksPage() {
         <h1>Book Series</h1>
         <div className="series-row">
           {data.map((book) => (
-            <BookCard
+            <BookCoverCard
               key={book.id}
               title={book.title}
               seriesId={seriesId!}
@@ -89,7 +89,7 @@ export function SeriesBooksPage() {
               onSelect={() => navigate(`/reader/${seriesId}/${book.id}/1`)}
               onPreload={() => preloadBook(seriesId!, book.id)}
               preloadState={progress[book.id] ?? "idle"}
-            ></BookCard>
+            ></BookCoverCard>
           ))}
         </div>
       </section>

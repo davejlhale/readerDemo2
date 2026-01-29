@@ -9,7 +9,7 @@ type BookCardProps = {
   preloadState?: "idle" | "loading" | "done";
 };
 
-export function BookCard({
+export function BookCoverCard({
   title,
   seriesId,
   imageBasePath,
@@ -29,8 +29,7 @@ export function BookCard({
       decoding="async"
       onError={(e) => {
         setHasImage(false);
-        e.currentTarget.src =
-          "/images/generic/books/no-page-image-placeholder.webp";
+        e.currentTarget.src = "/images/generic/books/coming-soon.webp";
       }}
     />
   );
