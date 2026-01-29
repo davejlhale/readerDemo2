@@ -29,7 +29,8 @@ export function BookCard({
       decoding="async"
       onError={(e) => {
         setHasImage(false);
-        e.currentTarget.src = "/images/generic/books/coming-soon.webp";
+        e.currentTarget.src =
+          "/images/generic/books/no-page-image-placeholder.webp";
       }}
     />
   );

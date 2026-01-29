@@ -37,12 +37,11 @@
  * When the reader engine is mature, ReaderPage will absorb
  * all staging responsibilities and BookReadyPage can be removed.
  */
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
-
+import "../styles/series-books.css";
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const startPage = Number(pageNumber);
@@ -50,11 +49,9 @@ export function ReaderPage() {
   const { data: book, error } = useBookData(seriesId, bookId);
   const [currentPage, setCurrentPage] = useState(startPage);
 
-  // Always compute these, even before book loads
   const totalPages = book?.pages.length ?? 0;
   const maxPage = totalPages + 1;
 
-  // Fix invalid URL page param AFTER book loads
   useEffect(() => {
     if (!book) return;
 
@@ -64,7 +61,6 @@ export function ReaderPage() {
     }
   }, [book, pageNumber, maxPage]);
 
-  // Preloader (must always run in same order)
   const safePages = book
     ? book.pages.map((p) => ({
         page: Number(p.pageNumber),
@@ -74,7 +70,6 @@ export function ReaderPage() {
 
   const { loadedPages } = usePriorityPreloader(currentPage, safePages);
 
-  // Now we can safely render
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -85,71 +80,97 @@ export function ReaderPage() {
 
   const page = book.pages[currentPage - 1];
   const isLoaded = loadedPages.has(currentPage);
+
   return (
     <>
-      <h1>{book.title}</h1>
-      <p>Current page: {currentPage}</p>
-      <p>Loaded pages: {Array.from(loadedPages).join(", ")}</p>
+      {/* =========================
+          READER CONTENT
+         ========================= */}
+      <div className="book-page">
+        <div
+          className={`book-wrapper ${currentPage % 2 === 0 ? "even-page" : "odd-page"}`}
+        >
+          <div className="page-top">
+            <div className="page-content">
+              <div className="stretch">
+                {/* IMAGE */}
+                {currentPage <= totalPages && (
+                  <div className="book-image" style={{ position: "relative" }}>
+                    <img
+                      // style={{ maxHeight: "200px", display: "block" }}
+                      src={page.imageBaseURL}
+                      alt={`Page ${currentPage}`}
+                      onError={(e) => {
+                        e.currentTarget.src =
+                          "/images/generic/books/no-page-image-placeholder.webp";
+                      }}
+                    />
 
-      {/* TEXT BLOCK */}
-      {currentPage <= totalPages && (
-        <div style={{ margin: "1rem 0" }}>
-          {page.lines.map((line, i) => (
-            <p key={i}>{line}</p>
-          ))}
-        </div>
-      )}
+                    {!isLoaded && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "8px",
+                          right: "8px",
+                          background: "rgba(0,0,0,0.4)",
+                          color: "white",
+                          padding: "4px 6px",
+                          borderRadius: "4px",
+                          fontSize: "0.75rem",
+                        }}
+                      >
+                        Loading…
+                      </div>
+                    )}
+                  </div>
+                )}
 
-      {/* IMAGE BLOCK */}
-      {currentPage <= totalPages && (
-        <div style={{ position: "relative", display: "inline-block" }}>
-          <img
-            style={{ maxHeight: "200px", display: "block" }}
-            src={page.imageBaseURL}
-            alt={`Page ${currentPage}`}
-            onError={(e) => {
-              e.currentTarget.src = "/images/generic/books/coming-soon.webp";
-            }}
-          />
+                {/* TEXT */}
+                {currentPage <= totalPages && (
+                  <div className="book-text">
+                    {page.lines.map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
+                )}
 
-          {!isLoaded && (
-            <div
-              style={{
-                position: "absolute",
-                top: "8px",
-                right: "8px",
-                background: "rgba(0,0,0,0.4)",
-                color: "white",
-                padding: "4px 6px",
-                borderRadius: "4px",
-                fontSize: "0.75rem",
-              }}
-            >
-              Loading…
+                {/* END PAGE */}
+                {currentPage === maxPage && (
+                  <img
+                    src="/images/generic/books/end-page--floral.webp"
+                    alt="The End"
+                  />
+                )}
+              </div>
             </div>
-          )}
+            {/* NAVIGATION stays OUTSIDE the page */}
+            <div className="book-navigation">
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage <= 1}
+              >
+                Prev
+              </button>
+
+              <button
+                onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
+                disabled={currentPage >= maxPage}
+              >
+                Next
+              </button>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
 
-      {/* END PAGE */}
-      {currentPage === maxPage && (
-        <img src="/images/generic/books/the-end.webp" alt="The End" />
-      )}
-
-      {/* NAVIGATION */}
-      <button
-        onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-        disabled={currentPage <= 1}
-      >
-        Prev
-      </button>
-
-      <button
-        onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
-        disabled={currentPage >= maxPage}
-      >
-        Next
-      </button>
+      {/* =========================
+          DEBUG / DEV OUTPUT
+         ========================= */}
+      {/* <div className="debug">
+        <h1>{book.title}</h1>
+        <p>Current page: {currentPage}</p>
+        <p>Loaded pages: {Array.from(loadedPages).join(", ")}</p>
+      </div> */}
     </>
   );
 }
