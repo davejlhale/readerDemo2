@@ -1,7 +1,9 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const MAX_CONCURRENT = 2;
 
 // -----------------------------------------------------
-// Build alternating priority order: X, X+1, X-1, X+2, X-2...
+// Build alternating priority order
 // -----------------------------------------------------
 function buildInitialLoadOrder(start: number, total: number): number[] {
   const order: number[] = [start];
@@ -9,26 +11,22 @@ function buildInitialLoadOrder(start: number, total: number): number[] {
   let forward = start + 1;
   let backward = start - 1;
 
-  // forwardWeight = how many forward pages to load before one backward
   const forwardWeight = 4;
   let forwardCount = 0;
 
   while (forward <= total || backward >= 1) {
-    // Load forward pages first, up to the weight
     if (forward <= total && forwardCount < forwardWeight) {
       order.push(forward++);
       forwardCount++;
       continue;
     }
 
-    // Then load one backward page
     if (backward >= 1) {
       order.push(backward--);
-      forwardCount = 0; // reset forward streak
+      forwardCount = 0;
       continue;
     }
 
-    // If backward is exhausted, keep pushing forward
     if (forward <= total) {
       order.push(forward++);
       forwardCount++;
@@ -39,70 +37,71 @@ function buildInitialLoadOrder(start: number, total: number): number[] {
 }
 
 // -----------------------------------------------------
-// Minimal loader (replace with storage-aware loader later)
+// Load a single image
 // -----------------------------------------------------
-function loadPageImage(page: {
-  page: number;
-  imageBaseURL: string;
-}): Promise<string> {
+function loadPageImage(url: string): Promise<void> {
   return new Promise((resolve) => {
     const img = new Image();
-    img.src = page.imageBaseURL;
+    img.src = url;
 
-    img.onload = () => resolve(page.imageBaseURL);
-
-    img.onerror = () => {
-      console.warn(`Failed to load image: ${page.imageBaseURL}`);
-      resolve("/images/generic/books/no-page-image-placeholder.webp");
-    };
+    img.onload = () => resolve();
+    img.onerror = () => resolve();
   });
 }
 
 // -----------------------------------------------------
-// The Hook
+// Kindle-style concurrency-limited preloader
 // -----------------------------------------------------
 export function usePriorityPreloader(
   currentPage: number,
   safePages: { page: number; imageBaseURL: string }[] | undefined,
 ) {
-  // 1. Always create state
   const [loadedPages, setLoadedPages] = useState<Set<number>>(new Set());
 
-  // 2. Always create callback
-  const preloadInOrder = useCallback(
-    async (order: number[]) => {
-      if (!safePages || safePages.length === 0) return;
+  const loadedRef = useRef<Set<number>>(new Set());
+  const queueRef = useRef<number[]>([]);
+  const workersRef = useRef<number>(0);
 
-      for (const pageNum of order) {
-        if (loadedPages.has(pageNum)) continue;
+  const markLoaded = (pageNum: number) => {
+    loadedRef.current.add(pageNum);
+    setLoadedPages(new Set(loadedRef.current));
+  };
 
-        const page = safePages.find((p) => p.page === pageNum);
-        if (!page) continue;
+  // Worker loop
+  const runWorker = async () => {
+    workersRef.current++;
 
-        await loadPageImage(page);
+    while (true) {
+      const next = queueRef.current.shift();
+      if (next === undefined) break;
 
-        setLoadedPages((prev) => {
-          const next = new Set(prev);
-          next.add(pageNum);
-          return next;
-        });
+      if (loadedRef.current.has(next)) continue;
 
-        await new Promise((resolve) => setTimeout(resolve, 0));
-      }
-    },
-    [loadedPages, safePages],
-  );
+      const page = safePages?.find((p) => p.page === next);
+      if (!page) continue;
 
-  // 3. Always create effect
+      await loadPageImage(page.imageBaseURL);
+      markLoaded(next);
+    }
+
+    workersRef.current--;
+  };
+
+  // Rebuild queue whenever currentPage changes
   useEffect(() => {
     if (!safePages || safePages.length === 0) return;
 
-    const totalPages = safePages.length;
-    const order = buildInitialLoadOrder(currentPage, totalPages);
+    const total = safePages.length;
+    const order = buildInitialLoadOrder(currentPage, total);
 
-    preloadInOrder(order);
-  }, [currentPage, safePages, preloadInOrder]);
+    // Reset queue
+    queueRef.current = order.filter((p) => !loadedRef.current.has(p));
 
-  // 4. Always return the same shape
+    // Start workers if needed
+    while (workersRef.current < MAX_CONCURRENT && queueRef.current.length > 0) {
+      runWorker();
+    }
+  }, [currentPage, safePages]);
+
   return { loadedPages };
 }

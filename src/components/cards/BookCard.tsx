@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type BookCardProps = {
   title: string;
   seriesId: string;
@@ -15,30 +17,59 @@ export function BookCard({
   onPreload,
   preloadState = "idle",
 }: BookCardProps) {
+  const [hasImage, setHasImage] = useState(true);
+
   console.log(`book card for ${seriesId} and book ${title}`);
-  return (
-    <button className="series-card" onClick={onSelect}>
-      <img src={imageBasePath} alt={title} loading="lazy" decoding="async" />
 
-      {onPreload && (
-        <div className="action-bar">
-          <span className="read-pill">Read</span>
+  const imageElement = (
+    <img
+      src={imageBasePath}
+      alt={title}
+      loading="lazy"
+      decoding="async"
+      onError={(e) => {
+        setHasImage(false);
+        e.currentTarget.src = "/images/generic/books/coming-soon.webp";
+      }}
+    />
+  );
 
-          <span
-            className="icon-pill"
-            onClick={(e) => {
-              e.stopPropagation();
-              onPreload();
-            }}
-          >
-            <span>
-              {preloadState === "idle" && "⬇️"}
-              {preloadState === "loading" && "⏳"}
-              {preloadState === "done" && "✔️"}
+  // 🟢 IMAGE EXISTS → BUTTON
+  if (hasImage) {
+    return (
+      <button className="series-card" onClick={onSelect}>
+        {imageElement}
+
+        {onPreload && (
+          <div className="action-bar">
+            <span className="read-pill">Read</span>
+
+            <span
+              className="icon-pill"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPreload();
+              }}
+            >
+              <span>
+                {preloadState === "idle" && "⬇️"}
+                {preloadState === "loading" && "⏳"}
+                {preloadState === "done" && "✔️"}
+              </span>
             </span>
-          </span>
-        </div>
-      )}
-    </button>
+          </div>
+        )}
+      </button>
+    );
+  }
+
+  // 🔵 NO IMAGE → PLAIN DIV WITH TITLE
+  return (
+    <div className="series-card book-card-no-image">
+      {imageElement}
+      <div className="no-image-inner">
+        <div className="banner-text">{title}</div>
+      </div>
+    </div>
   );
 }

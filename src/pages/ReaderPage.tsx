@@ -84,7 +84,7 @@ export function ReaderPage() {
   }
 
   const page = book.pages[currentPage - 1];
-
+  const isLoaded = loadedPages.has(currentPage);
   return (
     <>
       <h1>{book.title}</h1>
@@ -102,14 +102,33 @@ export function ReaderPage() {
 
       {/* IMAGE BLOCK */}
       {currentPage <= totalPages && (
-        <img
-          src={page.imageBaseURL}
-          alt={`Page ${currentPage}`}
-          onError={(e) => {
-            e.currentTarget.src =
-              "/images/generic/books/no-page-image-placeholder.webp";
-          }}
-        />
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <img
+            style={{ maxHeight: "200px", display: "block" }}
+            src={page.imageBaseURL}
+            alt={`Page ${currentPage}`}
+            onError={(e) => {
+              e.currentTarget.src = "/images/generic/books/coming-soon.webp";
+            }}
+          />
+
+          {!isLoaded && (
+            <div
+              style={{
+                position: "absolute",
+                top: "8px",
+                right: "8px",
+                background: "rgba(0,0,0,0.4)",
+                color: "white",
+                padding: "4px 6px",
+                borderRadius: "4px",
+                fontSize: "0.75rem",
+              }}
+            >
+              Loading…
+            </div>
+          )}
+        </div>
       )}
 
       {/* END PAGE */}

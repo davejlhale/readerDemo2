@@ -48,6 +48,23 @@
 
   line-height: 0; /* critical fix */
 }
-.icon-pill span {
-  transform: translateX(0px) translateY(-4px);
+
+.book-card-no-image {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+}
+
+.no-image-inner {
+  flex: 1; /* take remaining space under image */
+  display: flex;
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
+  text-align: center;
+  border-radius: 0 0 0.75rem 0.75rem; /* round bottom only if needed */
+}
+
+.banner-text {
+  font-weight: 600;
+
+  padding: 0.5rem;
 }

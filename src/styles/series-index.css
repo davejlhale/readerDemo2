@@ -1,5 +1,5 @@
 :root {
-  --card-height: 190px;
+  --card-height: auto;
   --series-list-height: auto;
 
   /* ===== Colours ===== */
@@ -54,11 +54,10 @@
 .series-card {
   display: flex;
   flex-direction: column;
-  min-width: var(--card-height);
   background-color: #1b1b1b;
   cursor: pointer;
   padding: 0;
-  color: var(--color-bg-soft);
+  color: white;
 }
 
 .series-card img {
@@ -68,7 +67,7 @@
 }
 
 .series-card span {
-  padding: 0.75rem 0.75rem 0.5rem;
+  /* padding: 0.75rem 0.75rem 0.5rem; */
   font-weight: 600;
   line-height: 1.2;
 }
@@ -79,7 +78,7 @@
 
 @media (max-width: 450px) {
   :root {
-    --card-size: 25vw;
+    --card-size: 30svw;
     --series-list-height: 100svh;
   }
 
@@ -234,14 +233,4 @@
 
 .series-list {
   min-height: var(--series-list-height);
-}
-@media (orientation: landscape) {
-  .series-list {
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* justify-self: center; */
-    /* justify-items: center; */
-    /* align-self: center; */
-    /* align-content: center; */
-  }
 }
