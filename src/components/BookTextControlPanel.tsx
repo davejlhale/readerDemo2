@@ -58,8 +58,20 @@ export function BookTextControlPanel() {
 
   return (
     <div className="text-panel-controls">
-      <FontSizeControls setFontSize={setFontSize} />
-      <WordSpacingControls setWordSpacing={setWordSpacing} />
+      <div>
+        <div className="font-size-controls">
+          <button>-lh</button>
+          <button>lh</button>
+        </div>
+        <div className="font-size-controls">
+          <button>-ls</button>
+          <button>ls</button>
+        </div>
+      </div>
+      <div>
+        <FontSizeControls setFontSize={setFontSize} />
+        <WordSpacingControls setWordSpacing={setWordSpacing} />
+      </div>
     </div>
   );
 }

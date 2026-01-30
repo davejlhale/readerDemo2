@@ -96,7 +96,7 @@ export function ReaderPage() {
               <div className="stretch">
                 {/* IMAGE */}
                 {currentPage <= totalPages && (
-                  <div className="book-image" style={{ position: "relative" }}>
+                  <div className="book-image">
                     <img
                       // style={{ maxHeight: "200px", display: "block" }}
                       src={page.imageBaseURL}

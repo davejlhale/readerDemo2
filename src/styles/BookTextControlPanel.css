@@ -2,22 +2,31 @@
    Text panel controls
 ======================================== */
 
-/* Optional:  in landscape */
-@media (min-aspect-ratio: 16/10) {
-  .text-panel-controls {
-    gap: 2rem;
-  }
-}
-.text-panel-controls div {
+.text-panel-controls {
   display: flex;
-  align-items: center;
-  gap: 0.2rem;
+  gap: 1rem;
+  justify-content: flex-end;
+  background-color: rgb(50, 54, 53);
+  flex-shrink: 0; /* Prevent collapse */
+  border-radius: 999px;
+  padding: 1%;
+}
+/* break lines */
+.text-panel-controls > div {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 .text-panel-controls button {
-  padding: 0.3rem 0.6rem;
+  /* padding: 0.3rem 0.6rem; */
   min-width: 48px;
   border: none;
   border-radius: 6px;
-
   cursor: pointer;
+  margin: 2px;
+}
+@media (orientation: portrait) {
+  .text-panel-controls {
+    border-radius: 0px;
+  }
 }
