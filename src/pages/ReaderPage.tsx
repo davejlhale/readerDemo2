@@ -43,6 +43,7 @@ import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
 import "../styles/series-books.css";
 import { BookTextControlPanel } from "../components/BookTextControlPanel";
+import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const startPage = Number(pageNumber);
@@ -155,7 +156,7 @@ export function ReaderPage() {
               >
                 Prev
               </button>
-
+              <NavigateBackButton fallbackRoute={`/series/${seriesId}`} />
               <button
                 onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
                 disabled={currentPage >= maxPage}

@@ -35,19 +35,21 @@
  * - Reading logic
  * - Series pedagogy explanations (belongs in SeriesDetailPage)
  */
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
 import { BookCoverCard } from "../components/cards/BookCoverCard";
 import { useEffect } from "react";
 import { useBookPreloader } from "../hooks/useBookPreloader";
 import "../styles/series-index.css"; //needs a series-books.css fully done one day
 import "../styles/BookCardControlPanel.css";
+import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 
 export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
   const navigate = useNavigate();
   const { preloadBook, progress } = useBookPreloader();
   const { data, loading, error } = useBookList(seriesId);
+  const location = useLocation();
 
   useEffect(() => {
     if (!seriesId) {
@@ -79,7 +81,12 @@ export function SeriesBooksPage() {
   return (
     <main className="series-index-wrapper">
       <section className="series-list">
-        <h1>Book Series</h1>
+        <div className="series-list-header">
+          <h1>Book Series</h1>
+
+          <NavigateBackButton fallbackRoute="/series" />
+        </div>
+
         <div className="series-row-wrapper">
           <div className="series-row">
             {data.map((book) => (
@@ -88,10 +95,14 @@ export function SeriesBooksPage() {
                 title={book.title}
                 seriesId={seriesId!}
                 imageBasePath={book.coverImage}
-                onSelect={() => navigate(`/reader/${seriesId}/${book.id}/1`)}
+                onSelect={() =>
+                  navigate(`/reader/${seriesId}/${book.id}/1`, {
+                    state: { from: location.pathname },
+                  })
+                }
                 onPreload={() => preloadBook(seriesId!, book.id)}
                 preloadState={progress[book.id] ?? "idle"}
-              ></BookCoverCard>
+              />
             ))}
           </div>
         </div>

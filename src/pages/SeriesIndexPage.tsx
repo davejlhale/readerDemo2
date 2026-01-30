@@ -17,7 +17,7 @@
  * - Reading logic
  * - Series pedagogy explanations (belongs in SeriesDetailPage)
  */
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSeriesIndex } from "../hooks/useSeriesIndex";
 import { SeriesImageCard } from "../components/cards/SeriesImageCard";
 import "../styles/series-index.css";
@@ -25,6 +25,7 @@ import "../styles/series-index.css";
 export function SeriesIndexPage() {
   const navigate = useNavigate();
   const { data, loading, error } = useSeriesIndex();
+  const location = useLocation();
 
   if (loading) return <p>Loading…</p>;
   if (error || !data) return <p>Failed to load series.</p>;
@@ -41,7 +42,11 @@ export function SeriesIndexPage() {
                 seriesId={series.id}
                 title={series.title}
                 imageBasePath={series.cardImage}
-                onSelect={() => navigate(`/series/${series.id}`)}
+                onSelect={() =>
+                  navigate(`/series/${series.id}`, {
+                    state: { from: location.pathname },
+                  })
+                }
               />
             ))}
           </div>
