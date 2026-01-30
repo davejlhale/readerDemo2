@@ -82,7 +82,7 @@ export function SeriesBooksPage() {
     <main className="series-index-wrapper">
       <section className="series-list">
         <div className="series-list-header">
-          <h1>Book Series</h1>
+          <h1>Series Book List</h1>
 
           <NavigateBackButton fallbackRoute="/series" />
         </div>

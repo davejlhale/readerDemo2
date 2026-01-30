@@ -44,15 +44,22 @@ import { useBookData } from "../hooks/useBookData";
 import "../styles/series-books.css";
 import { BookTextControlPanel } from "../components/BookTextControlPanel";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
+
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const startPage = Number(pageNumber);
-
   const { data: book, error } = useBookData(seriesId, bookId);
   const [currentPage, setCurrentPage] = useState(startPage);
-
   const totalPages = book?.pages.length ?? 0;
   const maxPage = totalPages + 1;
+
+  const safePages = book
+    ? book.pages.map((p) => ({
+        page: Number(p.pageNumber),
+        imageBaseURL: p.imageBaseURL,
+      }))
+    : [];
+  const { loadedPages } = usePriorityPreloader(currentPage, safePages);
 
   useEffect(() => {
     if (!book) return;
@@ -62,15 +69,6 @@ export function ReaderPage() {
       setCurrentPage(1);
     }
   }, [book, pageNumber, maxPage]);
-
-  const safePages = book
-    ? book.pages.map((p) => ({
-        page: Number(p.pageNumber),
-        imageBaseURL: p.imageBaseURL,
-      }))
-    : [];
-
-  const { loadedPages } = usePriorityPreloader(currentPage, safePages);
 
   if (error) {
     return <p>Error: {error}</p>;

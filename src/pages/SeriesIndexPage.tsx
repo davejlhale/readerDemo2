@@ -21,6 +21,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSeriesIndex } from "../hooks/useSeriesIndex";
 import { SeriesImageCard } from "../components/cards/SeriesImageCard";
 import "../styles/series-index.css";
+import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 
 export function SeriesIndexPage() {
   const navigate = useNavigate();
@@ -33,7 +34,9 @@ export function SeriesIndexPage() {
   return (
     <main className="series-index-wrapper">
       <section className="series-list">
-        <h1>Book Series</h1>
+        <div className="series-list-header">
+          <h1>Book Series</h1> <NavigateBackButton fallbackRoute="/" />
+        </div>
         <div className="series-row-wrapper">
           <div className="series-row">
             {data.map((series) => (
