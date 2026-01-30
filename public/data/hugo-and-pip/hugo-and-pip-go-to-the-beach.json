@@ -1,0 +1,167 @@
+{
+  "id": "hugo-and-pip-go-to-the-beach",
+  "seriesId": "hugo-and-pip",
+  "title": "Hugo and Pip Go to the Beach",
+  "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/cover.webp",
+  "pages": [
+    {
+      "pageNumber": 1,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-01.webp",
+      "lines": [
+        "Pip hops and claps his hands.",
+        "“We’re going to the beach!” he says."
+      ],
+      "meta": { "wordCount": 12 }
+    },
+    {
+      "pageNumber": 2,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-02.webp",
+      "lines": [
+        "Hugo smiles and picks up the bag.",
+        "“It will be a fun day,” he says."
+      ],
+      "meta": { "wordCount": 15 }
+    },
+    {
+      "pageNumber": 3,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-03.webp",
+      "lines": ["They walk on the sand.", "The sea is very close to the road."],
+      "meta": { "wordCount": 12 }
+    },
+    {
+      "pageNumber": 4,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-04.webp",
+      "lines": ["Pip points at the water.", "“Why is the sea so near?”"],
+      "meta": { "wordCount": 10 }
+    },
+    {
+      "pageNumber": 5,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-05.webp",
+      "lines": [
+        "“It moves in and out each day,” says Hugo.",
+        "“That is called the tide.”"
+      ],
+      "meta": { "wordCount": 15 }
+    },
+    {
+      "pageNumber": 6,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-06.webp",
+      "lines": [
+        "Pip sees something green on the sand.",
+        "It moves in the wind."
+      ],
+      "meta": { "wordCount": 12 }
+    },
+    {
+      "pageNumber": 7,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-07.webp",
+      "lines": ["Pip steps back.", "“What is that?”"],
+      "meta": { "wordCount": 5 }
+    },
+    {
+      "pageNumber": 8,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-08.webp",
+      "lines": [
+        "“It won’t hurt you,” says Hugo.",
+        "“It is seaweed. It is a plant.”"
+      ],
+      "meta": { "wordCount": 13 }
+    },
+    {
+      "pageNumber": 9,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-09.webp",
+      "lines": ["Hugo holds up a bottle.", "“We need to put sun cream on.”"],
+      "meta": { "wordCount": 11 }
+    },
+    {
+      "pageNumber": 10,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-10.webp",
+      "lines": ["“Why?” asks Pip."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 11,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-11.webp",
+      "lines": [
+        "“The sun is too strong now,” says Hugo.",
+        "“It keeps our skin safe.”"
+      ],
+      "meta": { "wordCount": 14 }
+    },
+    {
+      "pageNumber": 12,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-12.webp",
+      "lines": ["Pip looks at the wet sand.", "“The sea was here before.”"],
+      "meta": { "wordCount": 11 }
+    },
+    {
+      "pageNumber": 13,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-13.webp",
+      "lines": [
+        "“Yes,” says Hugo.",
+        "“When the tide comes in, the sea will come back.”"
+      ],
+      "meta": { "wordCount": 13 }
+    },
+    {
+      "pageNumber": 14,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-14.webp",
+      "lines": [
+        "They walk by some rocks.",
+        "The sea is even further away now."
+      ],
+      "meta": { "wordCount": 11 }
+    },
+    {
+      "pageNumber": 15,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-15.webp",
+      "lines": ["Pip looks down.", "“There is water in the rocks!”"],
+      "meta": { "wordCount": 8 }
+    },
+    {
+      "pageNumber": 16,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-16.webp",
+      "lines": ["Something moves in the pool.", "Click, click."],
+      "meta": { "wordCount": 6 }
+    },
+    {
+      "pageNumber": 17,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-17.webp",
+      "lines": ["A small crab waves its claws.", "Pip jumps and laughs."],
+      "meta": { "wordCount": 10 }
+    },
+    {
+      "pageNumber": 18,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-18.webp",
+      "lines": [
+        "“It looks cross,” says Pip.",
+        "“We will leave it alone,” says Hugo."
+      ],
+      "meta": { "wordCount": 12 }
+    },
+    {
+      "pageNumber": 19,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-19.webp",
+      "lines": ["The crab scuttles away.", "Pip watches it go."],
+      "meta": { "wordCount": 7 }
+    },
+    {
+      "pageNumber": 20,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-20.webp",
+      "lines": ["Pip and Hugo sit on the sand.", "They eat and rest."],
+      "meta": { "wordCount": 11 }
+    },
+    {
+      "pageNumber": 21,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-21.webp",
+      "lines": ["Pip yawns and leans close.", "“That was a fun day,” he says."],
+      "meta": { "wordCount": 12 }
+    },
+    {
+      "pageNumber": 22,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/pages/page-22.webp",
+      "lines": ["Hugo nods.", "“It is time to go home.”"],
+      "meta": { "wordCount": 8 }
+    }
+  ]
+}

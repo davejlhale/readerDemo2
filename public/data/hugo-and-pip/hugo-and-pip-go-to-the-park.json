@@ -1,0 +1,128 @@
+{
+  "id": "hugo-and-pip-go-to-the-park",
+  "seriesId": "hugo-and-pip",
+  "title": "Hugo and Pip Go to the Park",
+  "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/cover.webp",
+  "pages": [
+    {
+      "pageNumber": 1,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-01.webp",
+      "lines": ["Pip runs."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 2,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-02.webp",
+      "lines": ["Hugo runs too."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 3,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-03.webp",
+      "lines": ["They are at the park."],
+      "meta": { "wordCount": 5 }
+    },
+    {
+      "pageNumber": 4,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-04.webp",
+      "lines": ["There is grass."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 5,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-05.webp",
+      "lines": ["Pip runs on the grass."],
+      "meta": { "wordCount": 5 }
+    },
+    {
+      "pageNumber": 6,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-06.webp",
+      "lines": ["Hugo laughs."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 7,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-07.webp",
+      "lines": ["There is a slide."],
+      "meta": { "wordCount": 4 }
+    },
+    {
+      "pageNumber": 8,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-08.webp",
+      "lines": ["Pip goes up."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 9,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-09.webp",
+      "lines": ["Pip goes down."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 10,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-10.webp",
+      "lines": ["Hugo claps."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 11,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-11.webp",
+      "lines": ["There are swings."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 12,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-12.webp",
+      "lines": ["Pip swings."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 13,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-13.webp",
+      "lines": ["Hugo swings too."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 14,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-14.webp",
+      "lines": ["They stop."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 15,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-15.webp",
+      "lines": ["They sit."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 16,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-16.webp",
+      "lines": ["They eat."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 17,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-17.webp",
+      "lines": ["Pip smiles."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 18,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-18.webp",
+      "lines": ["Hugo smiles."],
+      "meta": { "wordCount": 2 }
+    },
+    {
+      "pageNumber": 19,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-19.webp",
+      "lines": ["Pip is tired."],
+      "meta": { "wordCount": 3 }
+    },
+    {
+      "pageNumber": 20,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/pages/page-20.webp",
+      "lines": ["Time to go."],
+      "meta": { "wordCount": 3 }
+    }
+  ]
+}
