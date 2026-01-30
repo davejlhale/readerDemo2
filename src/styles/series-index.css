@@ -1,8 +1,8 @@
 :root {
-  --card-height: auto;
-  --series-list-height: auto;
+  --card-height: 190px;
+  --series-list-height: 0;
 
-  /* ===== Colours ===== */
+  /* Colours */
   --color-bg-soft: #ccc;
   --color-bg-white: #a7aaa7;
   --color-border-dark: #1b1b1b;
@@ -10,40 +10,51 @@
 }
 
 /* Base Layout (mobile first) */
-.series-index-page {
+.series-index-wrapper {
   display: flex;
   min-height: 100svh;
-}
-.series-list * {
-  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  background-color: bisque;
 }
 
 .series-list {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-soft);
   border: 5px solid var(--color-border-dark);
-  min-height: var(--series-list-height);
+  flex: 1 1 auto;
+  min-height: 0; /* critical */
   min-width: 0;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
+}
+.series-row-wrapper {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  margin: 0.5rem;
+  border: 1px solid #3b3b3b;
+  background-color: white;
+}
+.series-list * {
+  border-radius: 12px;
 }
 
 .series-list h1 {
   padding-left: 1rem;
 }
 
-/* Card Row */
 .series-row {
   display: flex;
   flex-wrap: nowrap;
-  gap: 1.5rem;
-  background-color: var(--color-bg-white);
+  gap: 1.6rem;
   scroll-behavior: smooth;
-  padding: 0px;
-  margin: 0 2rem;
+  margin: 1rem;
+  flex: 1 1 auto;
+  margin-bottom: 1rem;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
 }
 
 .series-row > * {
@@ -55,182 +66,63 @@
   display: flex;
   flex-direction: column;
   background-color: #1b1b1b;
+  min-height: 50svh;
   cursor: pointer;
-  padding: 0;
   color: white;
+
+  /* min-width: 300px;
+  max-width: 700px; */
+
+  padding: 0;
+
+  flex: 0 0 auto; /* ← critical */
+  margin: 0; /* ← remove auto centering */
 }
 
+/* @media (min-width: 900px) and (orientation: portrait) {
+  .series-row-wrapper {
+    max-width: 800px;
+    margin: auto;
+  }
+} */
 .series-card img {
-  width: 100%;
-  height: 100%;
+  flex: 1 1 auto;
+  padding: 4px;
+  min-height: 0;
   object-fit: fill;
 }
-
 .series-card span {
-  /* padding: 0.75rem 0.75rem 0.5rem; */
   font-weight: 600;
   line-height: 1.2;
 }
 
-/* --------------------------------------------- */
-/* SMALL SCREENS (≤450px) */
-/* --------------------------------------------- */
-
-@media (max-width: 450px) {
-  :root {
-    --card-size: 30svw;
-    --series-list-height: 100svh;
-  }
-
-  .series-row::after,
-  .series-row::before {
-    content: "";
-    position: sticky;
-    inset: -20px;
-    border: 7px solid var(--color-bg-white);
-    pointer-events: none;
-  }
-
+@media (orientation: portrait) {
   .series-row {
     flex-direction: column;
-    padding: 1rem;
-    border: 3px solid var(--color-border-light);
-    align-items: stretch;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 90svh;
   }
-
-  .series-list h1 {
-    text-align: center;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* SMALL LANDSCAPE PHONES (landscape ≤900px) */
-/* ------------------------------------------------------ */
-
-@media (orientation: landscape) and (max-width: 900px) {
-  :root {
-    --card-size: 25vw;
-    --series-list-height: 100svh;
-  }
-
-  .series-row {
-    flex-direction: row;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* DESKTOP BLOCK (≥450px) */
-/* ------------------------------------------------------ */
-
-@media (min-width: 450px) {
-  .series-index-page {
-    align-items: center;
-  }
-
-  .series-row::after,
-  .series-row::before {
-    content: "";
-    position: sticky;
-    inset: -8px;
-    border: 5px solid var(--color-bg-white);
-    pointer-events: none;
-  }
-
-  .series-row {
-    padding: 0.4rem;
-    margin: 0.4rem;
-    border: 3px inset var(--color-border-light);
-    align-items: stretch;
-    overflow-x: auto;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* DESKTOP PORTRAIT (≥450px & portrait) */
-/* ------------------------------------------------------ */
-
-@media (min-width: 450px) and (orientation: portrait) {
-  :root {
-    --series-list-height: 100svh;
-    --card-size: 45svh;
-  }
-
-  .series-row {
-    flex-direction: column;
-    width: 90%;
-    padding: 1rem;
-    align-items: stretch;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 90svh;
-
-    gap: 4rem;
-  }
-
-  .series-list {
-    align-items: center;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* DESKTOP LANDSCAPE (≥450px & landscape) */
-/* ------------------------------------------------------ */
-
-@media (min-width: 450px) and (orientation: landscape) {
-  :root {
-    --series-list-height: 100svh;
-    --card-size: 40svh;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* LARGE LANDSCAPE (≥1000px) */
-/* ------------------------------------------------------ */
-
-@media (min-width: 1000px) {
-  :root {
-    --card-size: 53svh;
-    --series-list-height: 100svh;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* LARGE + TALL (≥768px & ≥600px height & portrait) */
-/* ------------------------------------------------------ */
-
-@media (min-width: 768px) and (min-height: 600px) and (orientation: portrait) {
-  :root {
-    --card-size: 50svw;
-    --series-list-height: 60svh;
-  }
-
-  .series-list {
-    max-width: var(--series-list-height);
-  }
-
   .series-card {
-    height: var(--series-list-height);
-    min-height: var(--series-list-height);
-  }
-
-  .series-row::after,
-  .series-row::before {
-    content: "";
-    position: sticky;
-    inset: -20px;
-    border: 9px solid var(--color-bg-white);
-    pointer-events: none;
+    width: 100%; /* your vertical control */
+    aspect-ratio: 3/2; /* width derives from height */
+    flex: 0 0 auto; /* prevent stretching */
+    margin: 0;
   }
 }
-
-/* Variable-driven sizing */
-.series-card {
-  min-width: var(--card-size);
+@media (orientation: landscape) {
+  .series-card {
+    height: 100%; /* your vertical control */
+    aspect-ratio: 2 / 3; /* width derives from height */
+    flex: 0 0 auto; /* prevent stretching */
+    margin: 0;
+  }
 }
-
-.series-list {
-  min-height: var(--series-list-height);
+@media (orientation: portrait) and (min-width: 950px) {
+  .series-row-wrapper {
+    width: 900px;
+    margin: auto;
+  }
+}
+@media (orientation: portrait) and (min-width: 650px) {
+  .series-row {
+    margin-inline: 2rem;
+  }
 }

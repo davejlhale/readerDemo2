@@ -10,3 +10,9 @@ body,
   display: flex;
   flex-direction: column;
 }
+
+:root {
+  --reader-font-size: 1.4em;
+  --reader-word-spacing: 0.1em;
+  --reader-line-spacing: 1.4;
+}

@@ -21,7 +21,7 @@ export function SeriesImageCard({
         loading="lazy"
         draggable={false}
       />
-      {/* <span>{title}</span> */}
+      <span>{title}</span>
     </button>
   );
 }

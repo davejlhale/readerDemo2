@@ -30,20 +30,21 @@ export function SeriesIndexPage() {
   if (error || !data) return <p>Failed to load series.</p>;
 
   return (
-    <main className="series-index-page">
+    <main className="series-index-wrapper">
       <section className="series-list">
         <h1>Book Series</h1>
-
-        <div className="series-row">
-          {data.map((series) => (
-            <SeriesImageCard
-              key={series.id}
-              seriesId={series.id}
-              title={series.title}
-              imageBasePath={series.cardImage}
-              onSelect={() => navigate(`/series/${series.id}`)}
-            />
-          ))}
+        <div className="series-row-wrapper">
+          <div className="series-row">
+            {data.map((series) => (
+              <SeriesImageCard
+                key={series.id}
+                seriesId={series.id}
+                title={series.title}
+                imageBasePath={series.cardImage}
+                onSelect={() => navigate(`/series/${series.id}`)}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </main>

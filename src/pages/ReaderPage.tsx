@@ -42,6 +42,7 @@ import { useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
 import "../styles/series-books.css";
+import { BookTextControlPanel } from "../components/BookTextControlPanel";
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const startPage = Number(pageNumber);
@@ -127,10 +128,13 @@ export function ReaderPage() {
 
                 {/* TEXT */}
                 {currentPage <= totalPages && (
-                  <div className="book-text">
-                    {page.lines.map((line, i) => (
-                      <p key={i}>{line}</p>
-                    ))}
+                  <div className="book-text-wrapper">
+                    <BookTextControlPanel />
+                    <div className="book-text">
+                      {page.lines.map((line, i) => (
+                        <p key={i}>{line}</p>
+                      ))}
+                    </div>
                   </div>
                 )}
 

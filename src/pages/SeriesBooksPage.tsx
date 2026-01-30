@@ -41,7 +41,8 @@ import { BookCoverCard } from "../components/cards/BookCoverCard";
 import { useEffect } from "react";
 import { useBookPreloader } from "../hooks/useBookPreloader";
 import "../styles/series-index.css"; //needs a series-books.css fully done one day
-import "../styles/series-books.css";
+import "../styles/BookCardControlPanel.css";
+
 export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
   const navigate = useNavigate();
@@ -76,21 +77,23 @@ export function SeriesBooksPage() {
   if (!data) return null; // navigation will handle
 
   return (
-    <main className="series-index-page">
+    <main className="series-index-wrapper">
       <section className="series-list">
         <h1>Book Series</h1>
-        <div className="series-row">
-          {data.map((book) => (
-            <BookCoverCard
-              key={book.id}
-              title={book.title}
-              seriesId={seriesId!}
-              imageBasePath={book.coverImage}
-              onSelect={() => navigate(`/reader/${seriesId}/${book.id}/1`)}
-              onPreload={() => preloadBook(seriesId!, book.id)}
-              preloadState={progress[book.id] ?? "idle"}
-            ></BookCoverCard>
-          ))}
+        <div className="series-row-wrapper">
+          <div className="series-row">
+            {data.map((book) => (
+              <BookCoverCard
+                key={book.id}
+                title={book.title}
+                seriesId={seriesId!}
+                imageBasePath={book.coverImage}
+                onSelect={() => navigate(`/reader/${seriesId}/${book.id}/1`)}
+                onPreload={() => preloadBook(seriesId!, book.id)}
+                preloadState={progress[book.id] ?? "idle"}
+              ></BookCoverCard>
+            ))}
+          </div>
         </div>
       </section>
     </main>
