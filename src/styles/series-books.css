@@ -129,9 +129,10 @@
   }
 
   .page-content {
-    padding-right: 0.4rem;
-    padding-left: 0.8rem;
-    padding-top: 0.8rem;
+    padding-right: 1.5%;
+    padding-left: 6.5%;
+    padding-top: 3%;
+    border: 1px solid red;
   }
 
   .stretch {
@@ -147,9 +148,6 @@
     flex: 1 1 auto;
     align-items: center;
     justify-content: center;
-    padding-left: 0.8rem;
-    padding-right: 0.3rem;
-    padding-top: 0;
     overflow-y: auto;
   }
 
@@ -160,10 +158,7 @@
     object-fit: fill;
     display: block;
   }
-  .book-text-wrapper {
-    padding-left: 0rem;
-    padding-right: 1rem;
-  }
+
   /* Background layer */
   .book-wrapper::before {
     content: "";
@@ -181,10 +176,6 @@
     position: relative;
     z-index: 1;
   }
-  .book-text-wrapper {
-    padding-left: 0.8rem;
-    padding-right: 0.3rem;
-  }
 
   .book-wrapper.even-page::before {
     transform: scaleX(-1);
@@ -192,5 +183,10 @@
 
   .book-image {
     max-height: 50svh;
+  }
+}
+@media (orientation: portrait) and (min-height: 1024px) {
+  .page-content {
+    padding-bottom: 3%;
   }
 }

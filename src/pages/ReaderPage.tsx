@@ -151,6 +151,7 @@ export function ReaderPage() {
             {/* NAVIGATION stays OUTSIDE the page */}
             <div className="book-navigation">
               <button
+                className="scaler-cap"
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage <= 1}
               >
@@ -158,6 +159,7 @@ export function ReaderPage() {
               </button>
               <NavigateBackButton fallbackRoute={`/series/${seriesId}`} />
               <button
+                className="scaler-cap"
                 onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
                 disabled={currentPage >= maxPage}
               >

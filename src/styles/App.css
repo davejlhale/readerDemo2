@@ -15,4 +15,9 @@ body,
   --reader-font-size: 1.4em;
   --reader-word-spacing: 0.1em;
   --reader-line-spacing: 1.4;
+  --scaler-cap: 3rem;
+}
+
+.scaler-cap {
+  font-size: min(var(--reader-font-size), var(--scaler-cap));
 }

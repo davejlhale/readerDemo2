@@ -57,7 +57,7 @@ export function BookTextControlPanel() {
   }, [wordSpacing]);
 
   return (
-    <div className="text-panel-controls">
+    <div className="text-panel-controls scaler-cap">
       <div>
         <div className="font-size-controls">
           <button>-lh</button>

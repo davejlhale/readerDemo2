@@ -20,7 +20,7 @@ export function NavigateBackButton({
     }
   };
   return (
-    <button className="navigate-back-button" onClick={handleBack}>
+    <button className="navigate-back-button scaler-cap" onClick={handleBack}>
       {label}
     </button>
   );
