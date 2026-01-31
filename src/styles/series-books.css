@@ -47,8 +47,10 @@
 }
 
 .book-text p {
-  font-size: var(--reader-font-size);
-  word-spacing: var(--reader-word-spacing);
+  font-size: var(--font-size);
+  word-spacing: var(--word-spacing);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height);
 }
 
 /* =========================

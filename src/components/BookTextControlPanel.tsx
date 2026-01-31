@@ -1,76 +1,64 @@
 import { useEffect, useState } from "react";
 import "../styles/BookTextControlPanel.css";
-
-interface FontSizeControlsProps {
-  setFontSize: React.Dispatch<React.SetStateAction<number>>;
-}
-interface WordSpacingControlsProps {
-  setWordSpacing: React.Dispatch<React.SetStateAction<number>>;
-}
-
-export function WordSpacingControls({
-  setWordSpacing,
-}: WordSpacingControlsProps) {
-  const decrease = () => setWordSpacing((w) => Math.max(0, w - 0.05));
-  const increase = () => setWordSpacing((w) => Math.min(5, w + 0.05));
-
-  return (
-    <div className="word-spacing-controls">
-      <button onClick={decrease}>WS−</button>
-      <button onClick={increase}>WS+</button>
-    </div>
-  );
-}
-
-export function FontSizeControls({ setFontSize }: FontSizeControlsProps) {
-  const decrease = () => setFontSize((f) => Math.max(0.8, f - 0.1));
-  const increase = () => setFontSize((f) => Math.min(6, f + 0.1));
-
-  return (
-    <div className="font-size-controls">
-      <button onClick={decrease}>A−</button>
-      <button onClick={increase}>A+</button>
-    </div>
-  );
-}
+import { ScalerControls } from "./ScalerControls";
 
 export function BookTextControlPanel() {
   const [fontSize, setFontSize] = useState(1.4);
   const [wordSpacing, setWordSpacing] = useState(0.1);
-
-  /* -----------------------------------------
-     CSS variable side effects (OWNED HERE)
-  ----------------------------------------- */
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--reader-font-size",
-      `${fontSize}rem`,
-    );
-    console.log("trigger", fontSize);
-  }, [fontSize]);
+  const [lineHeight, setLineHeight] = useState(1.4);
+  const [letterSpacing, setLetterSpacing] = useState(0);
 
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--reader-word-spacing",
-      `${wordSpacing}em`,
-    );
-  }, [wordSpacing]);
+    const root = document.documentElement;
+
+    root.style.setProperty("--font-size", `${fontSize}rem`);
+    root.style.setProperty("--letter-spacing", `${letterSpacing}em`);
+    root.style.setProperty("--line-height", `${lineHeight}`);
+    root.style.setProperty("--word-spacing", `${wordSpacing}em`);
+  }, [fontSize, letterSpacing, lineHeight, wordSpacing]);
 
   return (
     <div className="text-panel-controls scaler-cap">
       <div>
-        <div className="font-size-controls">
-          <button>-lh</button>
-          <button>lh</button>
-        </div>
-        <div className="font-size-controls">
-          <button>-ls</button>
-          <button>ls</button>
-        </div>
+        <ScalerControls
+          labelMinus="LH−"
+          labelPlus="LH+"
+          setter={setLineHeight}
+          min={1}
+          max={3}
+          step={0.1}
+          className="font-size-controls"
+        />
+        <ScalerControls
+          labelMinus="LS−"
+          labelPlus="LS+"
+          setter={setLetterSpacing}
+          min={0}
+          max={0.5}
+          step={0.02}
+          className="font-size-controls"
+        />
       </div>
       <div>
-        <FontSizeControls setFontSize={setFontSize} />
-        <WordSpacingControls setWordSpacing={setWordSpacing} />
+        <ScalerControls
+          labelMinus="A−"
+          labelPlus="A+"
+          setter={setFontSize}
+          min={0.8}
+          max={6}
+          step={0.1}
+          className="font-size-controls"
+        />
+
+        <ScalerControls
+          labelMinus="WS−"
+          labelPlus="WS+"
+          setter={setWordSpacing}
+          min={0}
+          max={5}
+          step={0.05}
+          className="word-spacing-controls"
+        />
       </div>
     </div>
   );

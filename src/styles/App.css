@@ -12,9 +12,10 @@ body,
 }
 
 :root {
-  --reader-font-size: 1.4em;
-  --reader-word-spacing: 0.1em;
-  --reader-line-spacing: 1.4;
+  --font-size: 1.4rem;
+  --word-spacing: 0.1em;
+  --letter-spacing: 1.4em;
+  --line-height: 1;
   --scaler-cap: 3rem;
 }
 

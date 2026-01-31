@@ -53,7 +53,8 @@
       "pageNumber": 6,
       "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-06.webp",
       "lines": [
-        "Pip stops near a pen where a big cat sits in the sun.",
+        "Pip stops near a pen.",
+        "A big cat sits in the sun.",
         "\"It is a lion\", says Hugo."
       ],
       "meta": { "wordCount": 19 }
@@ -96,7 +97,7 @@
       "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-11.webp",
       "lines": [
         "Pip says, \"What is the water for?\"",
-        "Hugo says, \"The elephant drinks it and it helps him wash.\""
+        "Hugo says, \"The elephant can drink the water. The water helps him wash.\""
       ],
       "meta": { "wordCount": 18 }
     },
@@ -122,7 +123,7 @@
       "pageNumber": 14,
       "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/pages/page-14.webp",
       "lines": [
-        "Pip says, \"The keeper helps them, like at the other pens?\"",
+        "Pip says, \"The keeper helps them, he helps at every pen?\"",
         "Hugo says, \"Yes.\""
       ],
       "meta": { "wordCount": 14 }
