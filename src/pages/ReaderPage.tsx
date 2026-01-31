@@ -85,19 +85,20 @@ export function ReaderPage() {
 
   return (
     <>
-      {/* =========================
+      <div className="book-page">
+        {/* =========================
           READER CONTENT
          ========================= */}
-      <div className="book-page">
         <div
           className={`book-wrapper ${currentPage % 2 === 0 ? "even-page" : "odd-page"}`}
         >
           <div className="page-top">
             <div className="page-content">
               <div className="stretch">
-                {/* IMAGE */}
+                {/* PAGE IMAGE */}
                 {currentPage <= totalPages && (
                   <div className="book-image">
+                    {/* SHOW TEXT CONTROLS OR IMAGE */}
                     {showTextControls ? (
                       <TextControlsPanel />
                     ) : (
@@ -111,6 +112,8 @@ export function ReaderPage() {
                         }}
                       />
                     )}
+
+                    {/* loading spinner for priorityloader*/}
                     {!isLoaded && (
                       <div
                         style={{
@@ -130,7 +133,7 @@ export function ReaderPage() {
                   </div>
                 )}
 
-                {/* TEXT */}
+                {/* PAGE TEXT */}
                 {currentPage <= totalPages && (
                   <div className="book-text-wrapper">
                     <div className="book-text">
@@ -143,39 +146,47 @@ export function ReaderPage() {
 
                 {/* END PAGE */}
                 {currentPage === maxPage && (
-                  <img
-                    src="/images/generic/books/end-page--floral.webp"
-                    alt="The End"
-                  />
+                  <>
+                    <div className="book-image end-book-page">
+                      <img
+                        src="/images/generic/books/end-page--floral.webp"
+                        alt="The End"
+                      />
+                    </div>
+                    <div className="book-text-wrapper">
+                      <div className="book-text"></div>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
-
-            {/* NAVIGATION stays OUTSIDE the page */}
-            <div className="book-navigation">
-              <button
-                className="book-page-nav-button prev scaler-cap "
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                disabled={currentPage <= 1}
-                aria-label="Previous page"
-              ></button>
-              {/* todo: accessibility toggle button same style as navback that simply opens closed a  <TextPanelControls />  */}
-
-              <div className="book-nav-control-block">
-                <TextControlsToggle
-                  isOpen={showTextControls}
-                  onToggle={() => setShowTextControls((s) => !s)}
-                />
-                <NavigateBackButton fallbackRoute={`/series/${seriesId}`} />
-              </div>
-              <button
-                className="book-page-nav-button next scaler-cap"
-                onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
-                disabled={currentPage >= maxPage}
-                aria-label="Next page"
-              ></button>
-            </div>
           </div>
+        </div>
+
+        {/* =========================
+          NAV / CONTROL BAR
+         ========================= */}
+
+        <div className="book-navigation">
+          <button
+            className="book-page-nav-button prev scaler-cap "
+            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage <= 1}
+            aria-label="Previous page"
+          ></button>
+          <div className="book-nav-control-block">
+            <TextControlsToggle
+              isOpen={showTextControls}
+              onToggle={() => setShowTextControls((s) => !s)}
+            />
+            <NavigateBackButton fallbackRoute={`/series/${seriesId}`} />
+          </div>
+          <button
+            className="book-page-nav-button next scaler-cap"
+            onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
+            disabled={currentPage >= maxPage}
+            aria-label="Next page"
+          ></button>
         </div>
       </div>
 

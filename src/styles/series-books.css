@@ -1,9 +1,16 @@
+:root {
+  --bkcol: #363636;
+}
+
 .book-page {
   display: flex;
   width: 100svw;
   height: 100svh;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background-color: var(--bkcol);
+  padding: 0.4rem 0.6rem 0 0.6rem;
 }
 
 .page-top {
@@ -22,6 +29,7 @@
 .book-wrapper {
   flex: 1 1 auto;
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   box-shadow:
@@ -53,10 +61,6 @@
   line-height: var(--line-height);
 }
 
-.book-image {
-  height: 100%;
-}
-
 /* =========================
    NAVIGATION
 ========================= */
@@ -66,7 +70,16 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 1rem;
+  padding: 0.2rem 1.5rem;
+  flex: 1;
+  width: 100%;
+  background-color: var(--bkcol);
+}
+.book-nav-control-block {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  border-radius: 999px;
 }
 .book-page-nav-button {
   position: relative;
@@ -163,8 +176,12 @@
     padding-right: 2.3%;
     padding-top: 4%;
     padding-bottom: 5%;
+    padding-bottom: 8%;
   }
-
+  /* no margi on 1st p */
+  .book-text p + p {
+    margin-top: 1.4rem;
+  }
   .book-wrapper {
     background-image: url("/images/generic/books/blank-book-landscape.webp");
     background-size: 100% 100%;
@@ -181,10 +198,10 @@
 
 @media (orientation: portrait) {
   .page-top {
-    flex-direction: column;
+    /* flex-direction: column; */
   }
   .page-content {
-    padding-left: 0rem;
+    /* padding-left: 0rem; */
   }
   .book-wrapper {
     background-size: 100% 100%;
@@ -223,7 +240,10 @@
     object-fit: fill;
     display: block;
   }
-
+  /* no margi on 1st p */
+  .book-text p {
+    margin-top: 1.4rem;
+  }
   /* Background layer */
   .book-wrapper::before {
     content: "";
@@ -262,8 +282,10 @@
     padding-bottom: 3%;
   }
 }
-
-.book-nav-control-block {
-  display: flex;
-  flex-direction: row;
+.end-book-page {
+  min-height: 100%;
+}
+.end-book-page img {
+  height: 100%;
+  padding-bottom: 10%;
 }
