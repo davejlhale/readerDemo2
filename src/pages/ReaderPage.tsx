@@ -81,7 +81,6 @@ export function ReaderPage() {
   if (!book) {
     return <p>Loading…</p>;
   }
-
   const page = book.pages[currentPage - 1];
   const isLoaded = loadedPages.has(currentPage);
 

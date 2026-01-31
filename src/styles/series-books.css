@@ -52,6 +52,8 @@
   flex: 1 1 auto;
   min-height: 0; /* CRITICAL */
   overflow-y: auto;
+  background-color: var(--reader-bg);
+  color: var(--reader-text);
 }
 
 .book-text p {
@@ -175,8 +177,11 @@
     padding-left: 11.7%;
     padding-right: 2.3%;
     padding-top: 4%;
-    padding-bottom: 5%;
     padding-bottom: 8%;
+  }
+  .book-text {
+    margin-bottom: 8%;
+    padding: 0.2rem 0.5rem;
   }
   /* no margi on 1st p */
   .book-text p + p {
@@ -197,18 +202,14 @@
 ========================= */
 
 @media (orientation: portrait) {
-  .page-top {
-    /* flex-direction: column; */
-  }
-  .page-content {
-    /* padding-left: 0rem; */
-  }
   .book-wrapper {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
     overflow: hidden;
+    height: 100%;
+    min-height: 0; /* important for flex scroll children */
   }
 
   .page-content {
@@ -227,7 +228,7 @@
   .book-image {
     max-height: 70%;
     display: flex;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     overflow-y: auto;
@@ -239,6 +240,12 @@
     width: 100%;
     object-fit: fill;
     display: block;
+  }
+  .book-text {
+    margin-bottom: 13.5%;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-height: 0; /* critical in flex layouts */
   }
   /* no margi on 1st p */
   .book-text p {

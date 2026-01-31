@@ -1,27 +1,17 @@
-import { useEffect } from "react";
 import "../styles/TextControlsPanel.css";
 import { ScalerControls } from "./ScalerControls";
 import type { ReaderSettings } from "../hooks/useReaderSettings";
 
 export function TextControlsPanel(props: ReaderSettings) {
   const {
-    fontSize,
     setFontSize,
-    wordSpacing,
     setWordSpacing,
-    lineHeight,
     setLineHeight,
-    letterSpacing,
     setLetterSpacing,
+    currentTheme,
+    cycleTheme,
+    resetSettings,
   } = props;
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.style.setProperty("--font-size", `${fontSize}rem`);
-    root.style.setProperty("--letter-spacing", `${letterSpacing}em`);
-    root.style.setProperty("--line-height", `${lineHeight}`);
-    root.style.setProperty("--word-spacing", `${wordSpacing}em`);
-  }, [fontSize, letterSpacing, lineHeight, wordSpacing]);
 
   return (
     <div className="text-controls-panel scaler-cap">
@@ -65,6 +55,23 @@ export function TextControlsPanel(props: ReaderSettings) {
           step={0.05}
           className="word-spacing-controls"
         />
+      </div>
+      <div>
+        <button
+          className="colour-hanger scaler-cap"
+          onClick={cycleTheme}
+          aria-label="Change colour theme"
+        >
+          {currentTheme.name}
+        </button>
+
+        <button
+          className="reset-button scaler-cap"
+          onClick={resetSettings}
+          aria-label="Reset text settings to default"
+        >
+          Reset
+        </button>
       </div>
     </div>
   );

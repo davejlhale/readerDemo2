@@ -17,7 +17,9 @@ body,
   --word-spacing: 0.2em;
   --letter-spacing: 0em;
   --line-height: 1.4;
-  --scaler-cap: 3rem;
+  --reader-bg: none;
+  --reader-text: black;
+  --scaler-cap: 1.3rem;
 }
 
 .scaler-cap {

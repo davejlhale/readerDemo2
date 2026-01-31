@@ -5,10 +5,12 @@ export const getInitialSettings = () => {
       wordSpacing: 0.2,
       lineHeight: 1.4,
       letterSpacing: 0,
+      themeIndex: 0,
     };
   }
 
   const stored = localStorage.getItem("dho.reader-settings");
+  console.log("raw storage", localStorage.getItem("dho.reader-settings"));
 
   return stored
     ? JSON.parse(stored)
@@ -17,5 +19,6 @@ export const getInitialSettings = () => {
         wordSpacing: 0.2,
         lineHeight: 1.4,
         letterSpacing: 0,
+        themeIndex: 0,
       };
 };
