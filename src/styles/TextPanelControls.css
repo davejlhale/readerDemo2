@@ -10,15 +10,27 @@
   flex-shrink: 0; /* Prevent collapse */
   border-radius: 999px;
   padding: 1%;
+  flex-direction: column;
 }
-/* break lines */
+
+/* rows */
 .text-panel-controls > div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: auto;
+  border: 1px solid lime;
+  gap: 2rem;
+  justify-content: space-around;
+}
+/* pairs */
+.text-panel-controls > div > div {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  border: 1px solid pink;
+  gap: 0.3rem;
 }
 .text-panel-controls button {
-  /* padding: 0.3rem 0.6rem; */
   min-width: 48px;
   border: none;
   border-radius: 6px;

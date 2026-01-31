@@ -42,7 +42,7 @@ import { useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
 import "../styles/series-books.css";
-import { BookTextControlPanel } from "../components/BookTextControlPanel";
+import { TextPanelControls } from "../components/TextPanelControls";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 
 export function ReaderPage() {
@@ -128,7 +128,7 @@ export function ReaderPage() {
                 {/* TEXT */}
                 {currentPage <= totalPages && (
                   <div className="book-text-wrapper">
-                    <BookTextControlPanel />
+                    <TextPanelControls />
                     <div className="book-text">
                       {page.lines.map((line, i) => (
                         <p key={i}>{line}</p>
@@ -149,20 +149,18 @@ export function ReaderPage() {
             {/* NAVIGATION stays OUTSIDE the page */}
             <div className="book-navigation">
               <button
-                className="scaler-cap"
+                className="book-page-nav-button prev scaler-cap "
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage <= 1}
-              >
-                Prev
-              </button>
+                aria-label="Previous page"
+              ></button>
               <NavigateBackButton fallbackRoute={`/series/${seriesId}`} />
               <button
-                className="scaler-cap"
+                className="book-page-nav-button next scaler-cap"
                 onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}
                 disabled={currentPage >= maxPage}
-              >
-                Next
-              </button>
+                aria-label="Next page"
+              ></button>
             </div>
           </div>
         </div>

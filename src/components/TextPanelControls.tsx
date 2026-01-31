@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import "../styles/BookTextControlPanel.css";
+import "../styles/TextPanelControls.css";
 import { ScalerControls } from "./ScalerControls";
 
-export function BookTextControlPanel() {
+export function TextPanelControls() {
   const [fontSize, setFontSize] = useState(1.4);
   const [wordSpacing, setWordSpacing] = useState(0.1);
   const [lineHeight, setLineHeight] = useState(1.4);
@@ -27,7 +27,7 @@ export function BookTextControlPanel() {
           min={1}
           max={3}
           step={0.1}
-          className="font-size-controls"
+          className="font-size-controls zme"
         />
         <ScalerControls
           labelMinus="LS−"

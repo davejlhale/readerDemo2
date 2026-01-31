@@ -3,6 +3,7 @@ body,
 #root {
   height: 100%;
   margin: 0;
+  outline-color: limegreen;
 }
 
 .app {
@@ -21,4 +22,11 @@ body,
 
 .scaler-cap {
   font-size: min(var(--reader-font-size), var(--scaler-cap));
+}
+
+:focus-visible {
+  outline: 3px solid #000;
+  box-shadow: 0 0 0 6px #ffcc00;
+  z-index: 10;
+  position: relative;
 }
