@@ -1,12 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "../styles/TextControlsPanel.css";
 import { ScalerControls } from "./ScalerControls";
+import type { ReaderSettings } from "../hooks/useReaderSettings";
 
-export function TextControlsPanel() {
-  const [fontSize, setFontSize] = useState(1.4);
-  const [wordSpacing, setWordSpacing] = useState(0.2);
-  const [lineHeight, setLineHeight] = useState(1.4);
-  const [letterSpacing, setLetterSpacing] = useState(0);
+export function TextControlsPanel(props: ReaderSettings) {
+  const {
+    fontSize,
+    setFontSize,
+    wordSpacing,
+    setWordSpacing,
+    lineHeight,
+    setLineHeight,
+    letterSpacing,
+    setLetterSpacing,
+  } = props;
 
   useEffect(() => {
     const root = document.documentElement;

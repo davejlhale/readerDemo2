@@ -45,6 +45,7 @@ import "../styles/series-books.css";
 import { TextControlsPanel } from "../components/TextControlsPanel";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 import { TextControlsToggle } from "../components/buttons/TextControlsToggle";
+import { useReaderSettings } from "../hooks/useReaderSettings";
 
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
@@ -54,6 +55,7 @@ export function ReaderPage() {
   const totalPages = book?.pages.length ?? 0;
   const maxPage = totalPages + 1;
   const [showTextControls, setShowTextControls] = useState(false);
+  const readerSettings = useReaderSettings();
 
   const safePages = book
     ? book.pages.map((p) => ({
@@ -100,7 +102,7 @@ export function ReaderPage() {
                   <div className="book-image">
                     {/* SHOW TEXT CONTROLS OR IMAGE */}
                     {showTextControls ? (
-                      <TextControlsPanel />
+                      <TextControlsPanel {...readerSettings} />
                     ) : (
                       <img
                         // style={{ maxHeight: "200px", display: "block" }}
