@@ -53,6 +53,10 @@
   line-height: var(--line-height);
 }
 
+.book-image {
+  height: 100%;
+}
+
 /* =========================
    NAVIGATION
 ========================= */
@@ -191,9 +195,9 @@
   }
 
   .page-content {
-    padding-right: 1.5%;
+    padding-right: 3.2%;
     padding-left: 6.5%;
-    padding-top: 3%;
+    padding-top: 4%;
   }
 
   .stretch {
@@ -242,12 +246,24 @@
     transform: scaleX(-1);
   }
 
+  .book-wrapper.even-page .page-content {
+    padding-right: 7.2%;
+    padding-left: 3.5%;
+    padding-top: 4%;
+  }
   .book-image {
     max-height: 50svh;
+    overflow: hidden;
+    min-height: 0;
   }
 }
 @media (orientation: portrait) and (min-height: 1024px) {
   .page-content {
     padding-bottom: 3%;
   }
+}
+
+.book-nav-control-block {
+  display: flex;
+  flex-direction: row;
 }

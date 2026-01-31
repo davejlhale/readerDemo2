@@ -42,8 +42,9 @@ import { useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
 import "../styles/series-books.css";
-import { TextPanelControls } from "../components/TextPanelControls";
+import { TextControlsPanel } from "../components/TextControlsPanel";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
+import { TextControlsToggle } from "../components/buttons/TextControlsToggle";
 
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
@@ -52,6 +53,7 @@ export function ReaderPage() {
   const [currentPage, setCurrentPage] = useState(startPage);
   const totalPages = book?.pages.length ?? 0;
   const maxPage = totalPages + 1;
+  const [showTextControls, setShowTextControls] = useState(false);
 
   const safePages = book
     ? book.pages.map((p) => ({
@@ -96,16 +98,19 @@ export function ReaderPage() {
                 {/* IMAGE */}
                 {currentPage <= totalPages && (
                   <div className="book-image">
-                    <img
-                      // style={{ maxHeight: "200px", display: "block" }}
-                      src={page.imageBaseURL}
-                      alt={`Page ${currentPage}`}
-                      onError={(e) => {
-                        e.currentTarget.src =
-                          "/images/generic/books/no-page-image-placeholder.webp";
-                      }}
-                    />
-
+                    {showTextControls ? (
+                      <TextControlsPanel />
+                    ) : (
+                      <img
+                        // style={{ maxHeight: "200px", display: "block" }}
+                        src={page.imageBaseURL}
+                        alt={`Page ${currentPage}`}
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            "/images/generic/books/no-page-image-placeholder.webp";
+                        }}
+                      />
+                    )}
                     {!isLoaded && (
                       <div
                         style={{
@@ -128,7 +133,6 @@ export function ReaderPage() {
                 {/* TEXT */}
                 {currentPage <= totalPages && (
                   <div className="book-text-wrapper">
-                    <TextPanelControls />
                     <div className="book-text">
                       {page.lines.map((line, i) => (
                         <p key={i}>{line}</p>
@@ -146,6 +150,7 @@ export function ReaderPage() {
                 )}
               </div>
             </div>
+
             {/* NAVIGATION stays OUTSIDE the page */}
             <div className="book-navigation">
               <button
@@ -154,7 +159,15 @@ export function ReaderPage() {
                 disabled={currentPage <= 1}
                 aria-label="Previous page"
               ></button>
-              <NavigateBackButton fallbackRoute={`/series/${seriesId}`} />
+              {/* todo: accessibility toggle button same style as navback that simply opens closed a  <TextPanelControls />  */}
+
+              <div className="book-nav-control-block">
+                <TextControlsToggle
+                  isOpen={showTextControls}
+                  onToggle={() => setShowTextControls((s) => !s)}
+                />
+                <NavigateBackButton fallbackRoute={`/series/${seriesId}`} />
+              </div>
               <button
                 className="book-page-nav-button next scaler-cap"
                 onClick={() => setCurrentPage((p) => Math.min(maxPage, p + 1))}

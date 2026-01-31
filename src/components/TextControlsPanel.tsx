@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import "../styles/TextPanelControls.css";
+import "../styles/TextControlsPanel.css";
 import { ScalerControls } from "./ScalerControls";
 
-export function TextPanelControls() {
+export function TextControlsPanel() {
   const [fontSize, setFontSize] = useState(1.4);
-  const [wordSpacing, setWordSpacing] = useState(0.1);
+  const [wordSpacing, setWordSpacing] = useState(0.2);
   const [lineHeight, setLineHeight] = useState(1.4);
   const [letterSpacing, setLetterSpacing] = useState(0);
 
   useEffect(() => {
     const root = document.documentElement;
-
     root.style.setProperty("--font-size", `${fontSize}rem`);
     root.style.setProperty("--letter-spacing", `${letterSpacing}em`);
     root.style.setProperty("--line-height", `${lineHeight}`);
@@ -18,14 +17,14 @@ export function TextPanelControls() {
   }, [fontSize, letterSpacing, lineHeight, wordSpacing]);
 
   return (
-    <div className="text-panel-controls scaler-cap">
+    <div className="text-controls-panel scaler-cap">
       <div>
         <ScalerControls
           labelMinus="LH−"
           labelPlus="LH+"
           setter={setLineHeight}
           min={1}
-          max={3}
+          max={5}
           step={0.1}
           className="font-size-controls zme"
         />

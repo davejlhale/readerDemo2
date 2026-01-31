@@ -14,14 +14,14 @@ body,
 
 :root {
   --font-size: 1.4rem;
-  --word-spacing: 0.1em;
-  --letter-spacing: 1.4em;
-  --line-height: 1;
+  --word-spacing: 0.2em;
+  --letter-spacing: 0em;
+  --line-height: 1.4;
   --scaler-cap: 3rem;
 }
 
 .scaler-cap {
-  font-size: min(var(--reader-font-size), var(--scaler-cap));
+  font-size: min(var(--font-size), var(--scaler-cap));
 }
 
 :focus-visible {

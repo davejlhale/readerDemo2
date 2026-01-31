@@ -2,35 +2,32 @@
    Text panel controls
 ======================================== */
 
-.text-panel-controls {
+.text-controls-panel {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
   background-color: rgb(50, 54, 53);
   flex-shrink: 0; /* Prevent collapse */
-  border-radius: 999px;
   padding: 1%;
   flex-direction: column;
 }
 
 /* rows */
-.text-panel-controls > div {
+.text-controls-panel > div {
   display: flex;
   flex-direction: row;
   margin: auto;
-  border: 1px solid lime;
   gap: 2rem;
   justify-content: space-around;
 }
 /* pairs */
-.text-panel-controls > div > div {
+.text-controls-panel > div > div {
   display: flex;
   flex-direction: row;
   margin: auto;
-  border: 1px solid pink;
   gap: 0.3rem;
 }
-.text-panel-controls button {
+.text-controls-panel button {
   min-width: 48px;
   border: none;
   border-radius: 6px;
@@ -38,7 +35,26 @@
   margin: 2px;
 }
 @media (orientation: portrait) {
-  .text-panel-controls {
-    border-radius: 0px;
+  .text-controls-panel {
+    display: flex;
+    flex: 1 1 auto;
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    align-self: stretch;
+  }
+}
+
+@media (orientation: landscape) {
+  .text-controls-panel {
+    margin-left: 11.7%;
+    margin-right: 2.3%;
+    margin-top: 4%;
+    margin-bottom: 5%;
+
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    align-self: stretch;
   }
 }
