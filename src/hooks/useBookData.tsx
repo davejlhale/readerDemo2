@@ -1,15 +1,58 @@
 import { useEffect, useState } from "react";
 
 export type BookTextData = {
+  validator: ValidatorData;
+  pages: PageData[];
+};
+
+export type ValidatorData = {
   id: string;
-  seriesId: string;
+  seriesId: string | null;
   title: string;
-  pages: {
-    pageNumber: string;
-    imageBaseURL: string;
-    lines: string[];
-    metaData: string;
-  }[];
+  coverImage?: string | null;
+  band: string;
+  textual_content_only_band: string;
+  numeric_score: number;
+  dominant_phase: string;
+  structural_band_lock: string;
+  metrics: {
+    TotalTokens: number;
+    TypeTokenRatio: number;
+    Phase5Density: string;
+    PolysyllabicRate: string;
+    ExceptionDensity: string;
+    ComplexClusteringPerSentence: number;
+  };
+  structural_metrics: {
+    RepetitionFrameRate: number;
+    SlotFrameRate: number;
+    PrefixFrameRate: number;
+    CrossPageRecall: number;
+    CausalConnectivesPer100Tokens: number;
+    MultiPhaseArc: number;
+  };
+  phonicsProfiling: {
+    Phase2Load: string;
+    Phase3GraphemeDensity: string;
+    Phase4ClusterDensity: string;
+    Phase5Density: string;
+    Phase6MorphologyLoad: string;
+  };
+  flags: string[];
+};
+
+export type PageData = {
+  pageNumber: number;
+  imageBaseURL: null;
+  altText?: string;
+  lines: string[];
+  meta: {
+    pageWordCount: number;
+    seriesFlags: {
+      graphemeSpikeDetected: boolean;
+      structuralEscalationPage: number | null;
+    };
+  };
 };
 
 export function useBookData(seriesId?: string, bookId?: string) {

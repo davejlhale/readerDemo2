@@ -39,8 +39,12 @@ function buildInitialLoadOrder(start: number, total: number): number[] {
 // -----------------------------------------------------
 // Load a single image
 // -----------------------------------------------------
-function loadPageImage(url: string): Promise<void> {
+function loadPageImage(url: string | null): Promise<void> {
   return new Promise((resolve) => {
+    if (!url) {
+      resolve();
+      return;
+    }
     const img = new Image();
     img.src = url;
 
@@ -54,7 +58,7 @@ function loadPageImage(url: string): Promise<void> {
 // -----------------------------------------------------
 export function usePriorityPreloader(
   currentPage: number,
-  safePages: { page: number; imageBaseURL: string }[] | undefined,
+  safePages: { page: number; imageBaseURL: string | null }[] | undefined,
 ) {
   const [loadedPages, setLoadedPages] = useState<Set<number>>(new Set());
 
