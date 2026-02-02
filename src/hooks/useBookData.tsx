@@ -4,7 +4,6 @@ export type BookTextData = {
   id: string;
   seriesId: string;
   title: string;
-  cover: string;
   pages: {
     pageNumber: string;
     imageBaseURL: string;

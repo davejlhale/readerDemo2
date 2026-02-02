@@ -105,7 +105,10 @@ export function ReaderPage() {
                     ) : (
                       <img
                         // style={{ maxHeight: "200px", display: "block" }}
-                        src={page.imageBaseURL}
+                        src={
+                          page.imageBaseURL ||
+                          "/images/generic/books/no-page-image-placeholder.webp"
+                        }
                         alt={`Page ${currentPage}`}
                         onError={(e) => {
                           e.currentTarget.src =

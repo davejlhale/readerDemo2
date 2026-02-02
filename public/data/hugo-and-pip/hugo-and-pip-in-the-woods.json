@@ -1,128 +1,279 @@
 {
-  "id": "hugo-and-pip-in-the-woods",
-  "seriesId": "hugo-and-pip",
-  "title": "Hugo and Pip in the Woods",
-  "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/cover.webp",
+  "validator": {
+    "id": "pip-and-hugo-in-the-woods",
+    "seriesId": null,
+    "title": "Pip and Hugo in the Woods",
+    "coverImage": null,
+    "band": "Pink",
+    "textual_content_only_band": "Pink",
+    "numeric_score": 67,
+    "dominant_phase": "Phase 2/3 consolidation",
+    "structural_band_lock": "Pink",
+    "metrics": {
+      "Total Tokens": 67,
+      "Type Token Ratio": 0.49,
+      "Phase 5 Density": "0%",
+      "Polysyllabic Rate": "0%",
+      "Exception Density": "34%",
+      "Complex Clustering Per Sentence": 1.3
+    },
+    "structural_metrics": {
+      "Repetition Frame Rate": 0.85,
+      "Slot Frame Rate": 0.9,
+      "Prefix Frame Rate": 0.8,
+      "Cross Page Recall": 0,
+      "Causal Connectives per 100 Tokens": 0,
+      "Multi Phase Arc": 0
+    },
+    "Phonics Profiling": {
+      "Phase 2 Load": "58%",
+      "Phase 3 Grapheme Density": "18%",
+      "Phase 4 Cluster Density": "9%",
+      "Phase 5 Density": "0%",
+      "Phase 6 Morphology Load": "0%"
+    },
+    "flags": []
+  },
   "pages": [
     {
       "pageNumber": 1,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-01.webp",
+      "imageBaseURL": null,
       "lines": ["Pip walks."],
-      "meta": { "wordCount": 2 }
+      "meta": {
+        "page word Count": 2,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 2,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-02.webp",
+      "imageBaseURL": null,
       "lines": ["Hugo walks too."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 3,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-03.webp",
+      "imageBaseURL": null,
       "lines": ["They are in the woods."],
-      "meta": { "wordCount": 5 }
+      "meta": {
+        "page word Count": 5,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 4,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-04.webp",
+      "imageBaseURL": null,
       "lines": ["There are trees."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 5,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-05.webp",
+      "imageBaseURL": null,
       "lines": ["Pip looks up."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 6,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-06.webp",
+      "imageBaseURL": null,
       "lines": ["The trees move."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 7,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-07.webp",
+      "imageBaseURL": null,
       "lines": ["They walk on."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 8,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-08.webp",
+      "imageBaseURL": null,
       "lines": ["The ground is soft."],
-      "meta": { "wordCount": 4 }
+      "meta": {
+        "page word Count": 4,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 9,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-09.webp",
+      "imageBaseURL": null,
       "lines": ["Pip stops."],
-      "meta": { "wordCount": 2 }
+      "meta": {
+        "page word Count": 2,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 10,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-10.webp",
+      "imageBaseURL": null,
       "lines": ["Hugo stops too."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 11,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-11.webp",
+      "imageBaseURL": null,
       "lines": ["There are sticks."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 12,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-12.webp",
+      "imageBaseURL": null,
       "lines": ["Pip picks one up."],
-      "meta": { "wordCount": 4 }
+      "meta": {
+        "page word Count": 4,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 13,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-13.webp",
+      "imageBaseURL": null,
       "lines": ["Hugo picks one up too."],
-      "meta": { "wordCount": 5 }
+      "meta": {
+        "page word Count": 5,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 14,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-14.webp",
+      "imageBaseURL": null,
       "lines": ["They walk on."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 15,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-15.webp",
+      "imageBaseURL": null,
       "lines": ["There is a log."],
-      "meta": { "wordCount": 4 }
+      "meta": {
+        "page word Count": 4,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 16,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-16.webp",
+      "imageBaseURL": null,
       "lines": ["Pip sits."],
-      "meta": { "wordCount": 2 }
+      "meta": {
+        "page word Count": 2,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 17,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-17.webp",
+      "imageBaseURL": null,
       "lines": ["Hugo sits too."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 18,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-18.webp",
+      "imageBaseURL": null,
       "lines": ["They are happy."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 19,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-19.webp",
+      "imageBaseURL": null,
       "lines": ["Pip smiles."],
-      "meta": { "wordCount": 2 }
+      "meta": {
+        "page word Count": 2,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     },
     {
       "pageNumber": 20,
-      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-20.webp",
+      "imageBaseURL": null,
       "lines": ["Time to go."],
-      "meta": { "wordCount": 3 }
+      "meta": {
+        "page word Count": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": null
+        }
+      }
     }
   ]
 }
