@@ -143,6 +143,55 @@
   border-color: #999999;
 }
 
+.book-card-image-wrapper {
+  position: relative;
+}
+
+/* White circular badge */
+.book-band-badge {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  width: 10%;
+  aspect-ratio: 1/1;
+
+  background: #ffffff;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #e6e6e6;
+
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+
+  z-index: 2;
+}
+
+/* Star inside */
+.book-band-star {
+  width: 100%;
+  height: 100%;
+
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 /* =========================
    LANDSCAPE MODE
 ========================= */
@@ -155,7 +204,11 @@
     justify-content: space-around;
     min-height: 0;
   }
-
+  .book-card-image-wrapper {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+  }
   .book-image,
   .book-text-wrapper {
     max-width: 50%;
@@ -224,7 +277,11 @@
     flex: 1 1 auto;
     min-height: 0;
   }
-
+  .book-card-image-wrapper {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+  }
   .book-image {
     max-height: 70%;
     display: flex;

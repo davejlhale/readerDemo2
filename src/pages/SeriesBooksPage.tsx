@@ -107,6 +107,7 @@ export function SeriesBooksPage() {
                   key={book.id}
                   title={book.title}
                   seriesId={seriesId!}
+                  band={book.band}
                   imageBasePath={book.coverImage}
                   onSelect={() =>
                     navigate(`/reader/${seriesId}/${book.id}/1`, {
