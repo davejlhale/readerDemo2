@@ -84,6 +84,7 @@ export function ReaderPage() {
   const page = book.pages[currentPage - 1];
   const isLoaded = loadedPages.has(currentPage);
 
+  console.log(book);
   return (
     <>
       <div className="book-page">

@@ -1,279 +1,513 @@
 {
-  "validator": {
-    "id": "pip-and-hugo-at-the-park",
-    "seriesId": null,
-    "title": "Pip and Hugo at the Park",
-    "coverImage": null,
-    "band": "Pink",
-    "textual_content_only_band": "Pink",
-    "numeric_score": 66,
-    "dominant_phase": "Phase 2/3 consolidation",
-    "structural_band_lock": "Pink",
-    "metrics": {
-      "Total Tokens": 70,
-      "Type Token Ratio": 0.49,
-      "Phase 5 Density": "0%",
-      "Polysyllabic Rate": "0%",
-      "Exception Density": "33%",
-      "Complex Clustering Per Sentence": 1.4
+  "id": "pip-and-hugo=at-the-park",
+  "title": "Pip and Hugo at the Park",
+  "seriesId": "pip-and-hugo",
+  "band": "Red",
+  "compositeBandScore": 41,
+  "confidence": 0.87,
+
+  "dominantPhase": "Phase 3",
+  "bandInflationRiskScore": 0.14,
+  "artificialBandInflation": false,
+  "bandDeflationRiskScore": 0.08,
+  "artificialBandDeflation": false,
+
+  "compositeBreakdown": {
+    "normalisedScores": {
+      "phonicsPhaseFit": 35,
+      "morphologyLoad": 18,
+      "clusterComplexity": 22,
+      "structuralEscalation": 19,
+      "narrativeDevelopment": 28,
+      "repetitionReduction": 12,
+      "sentenceLengthFit": 92,
+      "recallBurden": 30
     },
-    "structural_metrics": {
-      "Repetition Frame Rate": 0.83,
-      "Slot Frame Rate": 0.88,
-      "Prefix Frame Rate": 0.79,
-      "Cross Page Recall": 0,
-      "Causal Connectives per 100 Tokens": 0,
-      "Multi Phase Arc": 0
+    "weightedContributions": {
+      "phonicsPhaseFit": 7.0,
+      "morphologyLoad": 2.7,
+      "clusterComplexity": 3.3,
+      "structuralEscalation": 2.9,
+      "narrativeDevelopment": 2.8,
+      "repetitionReduction": 1.2,
+      "sentenceLengthFit": 9.2,
+      "recallBurden": 1.5
     },
-    "Phonics Profiling": {
-      "Phase 2 Load": "60%",
-      "Phase 3 Grapheme Density": "17%",
-      "Phase 4 Cluster Density": "8%",
-      "Phase 5 Density": "0%",
-      "Phase 6 Morphology Load": "0%"
-    },
-    "flags": []
+    "finalCompositeScore": 40.6
   },
+
+  "metrics": {
+    "totalWords": 87,
+    "avgWordsPerPage": 4.35,
+    "maxWordsPerPage": 6,
+    "totalSentences": 20,
+    "avgSentenceLength": 4.35,
+    "maxSentenceLength": 6,
+    "patternRatio": 0.75,
+    "crossPageRecallIndex": 0.6,
+    "repetitionFrameRate": 0.88,
+    "narrativeComplexitySlope": 0.28,
+    "structuralEscalationIndex": 0.19,
+    "dialogueCount": 0,
+    "questionCount": 0,
+    "exclamationCount": 0
+  },
+
+  "phonics": {
+    "dominantPhase": "Phase 3",
+    "multiPhaseArc": false,
+    "phonicsPhaseConflictFlag": false,
+    "decodability": 0.82,
+    "exceptionDensity": 0.21,
+    "phase5Density": 0.05,
+    "CCPS": 0.11,
+    "notableGraphemes": ["ai", "ee", "oa", "ng", "oo"],
+    "Phonics Profiling": {
+      "Phase 2 Load": "46%",
+      "Phase 3 Grapheme Density": "34%",
+      "Phase 4 Cluster Density": "10%",
+      "Phase 5 Density": "5%",
+      "Phase 6 Morphology Load": "5%"
+    }
+  },
+
   "pages": [
     {
       "pageNumber": 1,
       "imageBaseURL": null,
       "lines": ["Pip runs."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "50%",
+          "Phase 3": "40%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 2,
       "imageBaseURL": null,
       "lines": ["Hugo runs too."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "35%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 3,
       "imageBaseURL": null,
       "lines": ["They are at the park."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 5,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "48%",
+          "Phase 3": "32%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 4,
       "imageBaseURL": null,
       "lines": ["There is grass."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "42%",
+          "Phase 3": "38%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 5,
       "imageBaseURL": null,
       "lines": ["Pip runs on the grass."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 5,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "36%",
+          "Phase 4": "8%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 6,
       "imageBaseURL": null,
       "lines": ["Hugo laughs."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "40%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 7,
       "imageBaseURL": null,
       "lines": ["There is a slide."],
       "meta": {
-        "page word Count": 4,
+        "pageWordCount": 4,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "47%",
+          "Phase 3": "33%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 8,
       "imageBaseURL": null,
       "lines": ["Pip goes up."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "48%",
+          "Phase 3": "32%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 9,
       "imageBaseURL": null,
       "lines": ["Pip goes down."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "48%",
+          "Phase 3": "32%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 10,
       "imageBaseURL": null,
       "lines": ["Hugo claps."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "39%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 11,
       "imageBaseURL": null,
       "lines": ["There are swings."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "35%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 12,
       "imageBaseURL": null,
       "lines": ["Pip swings."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "40%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 13,
       "imageBaseURL": null,
       "lines": ["Hugo swings too."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "44%",
+          "Phase 3": "36%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 14,
       "imageBaseURL": null,
       "lines": ["They stop."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "47%",
+          "Phase 3": "38%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 15,
       "imageBaseURL": null,
       "lines": ["They sit."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "47%",
+          "Phase 3": "38%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 16,
       "imageBaseURL": null,
       "lines": ["They eat."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "47%",
+          "Phase 3": "38%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 17,
       "imageBaseURL": null,
       "lines": ["Pip smiles."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "39%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 18,
       "imageBaseURL": null,
       "lines": ["Hugo smiles."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "39%",
+          "Phase 4": "5%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 19,
       "imageBaseURL": null,
       "lines": ["Pip is tired."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "morphological_shift"
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "35%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     },
+
     {
       "pageNumber": 20,
       "imageBaseURL": null,
       "lines": ["Time to go."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "inferential_shift"
+        },
+        "phaseDensity": {
+          "Phase 2": "48%",
+          "Phase 3": "32%",
+          "Phase 4": "10%",
+          "Phase 5": "5%",
+          "Phase 6": "5%"
         }
       }
     }
+  ],
+
+  "bandEvaluations": [
+    {
+      "band": "Pink 1B",
+      "hardPass": false,
+      "score": 62,
+      "reasons": [
+        "Sentence count and vocabulary exceed Pink limits.",
+        "Narrative sequence more developed than Pink."
+      ]
+    },
+    {
+      "band": "Red",
+      "hardPass": true,
+      "score": 88,
+      "reasons": [
+        "High repetition frame rate (0.88) consistent with Red.",
+        "Average sentence length (4.35) within Red expectations.",
+        "Minimal structural escalation.",
+        "Dominant Phase 3 grapheme profile."
+      ]
+    },
+    {
+      "band": "Yellow 3",
+      "hardPass": true,
+      "score": 61,
+      "reasons": [
+        "Structural escalation too low for secure Yellow.",
+        "Repetition remains above Yellow ceiling."
+      ]
+    }
+  ],
+  "teacherSummary": [
+    "Teacher Summary",
+    "Pip and Hugo at the Park validates as Red under Deterministic Composite Protocol v1.1.",
+    "The book is structurally simple, highly repetitive (RFR 0.88), and dominated by Phase 3 graphemes with low morphology and minimal sentence expansion. Structural escalation and narrative slope remain shallow, consistent with early guided reading expectations.",
+    "This makes it well suited for guided reading at Red, and appropriate for independent reading for secure Red readers transitioning upward."
   ]
 }

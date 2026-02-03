@@ -3,29 +3,39 @@
     {
       "id": "hugo-and-pip-go-to-the-zoo",
       "title": "Hugo and Pip Go to the Zoo",
-      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/cover.webp"
+      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-zoo/cover.webp",
+      "band": "Green",
+      "numeric_score": 72
     },
     {
       "id": "hugo-and-pip-by-the-pond",
       "title": "Hugo and Pip by the Pond",
-      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/cover.webp"
+      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-by-the-pond/cover.webp",
+      "band": "Yellow",
+      "numeric_score": 52
     },
 
     {
       "id": "hugo-and-pip-in-the-woods",
       "title": "Hugo and Pip in the Woods",
-      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/cover.webp"
+      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/cover.webp",
+      "band": "Red",
+      "numeric_score": 39
     },
 
     {
       "id": "hugo-and-pip-go-to-the-beach",
       "title": "Hugo and Pip Go to the Beach",
-      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/cover.webp"
+      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-beach/cover.webp",
+      "band": "Green",
+      "numeric_score": 69
     },
     {
       "id": "hugo-and-pip-go-to-the-park",
       "title": "Hugo and Pip Go to the Park",
-      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/cover.webp"
+      "coverImage": "/images/series/hugo-and-pip/hugo-and-pip-go-to-the-park/cover.webp",
+      "band": "Red",
+      "numeric_score": 41
     },
     {
       "id": "hugo-and-pip-go-to-the-fair",

@@ -11,7 +11,7 @@ export function NavigateBackButton({
 }: ExitButtonProps) {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(fallbackRoute);
+  // console.log(fallbackRoute);
   const handleBack = () => {
     if (location.state?.from) {
       navigate(location.state.from);

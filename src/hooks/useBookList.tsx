@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-
-export type BooksMeta = {
-  id: string;
-  title: string;
-  coverImage: string;
-};
+import type { BooksMeta } from "../_CONSTANTS/constants";
 
 export function useBookList(seriesId?: string) {
   const [data, setData] = useState<BooksMeta[] | null>(null);
@@ -38,8 +33,10 @@ export function useBookList(seriesId?: string) {
           id: String(b.id),
           title: String(b.title),
           coverImage: String(b.coverImage),
+          band: String(b.band) || null,
+          textualContentOnlyBand: String(b.textual_content_only_band),
+          numericScore: Number(b.numeric_score),
         }));
-
         setData(books);
       } catch (err) {
         if (err instanceof Error) {

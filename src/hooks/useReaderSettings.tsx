@@ -91,7 +91,7 @@ export function useReaderSettings() {
   };
 
   const initialSettings = getInitialSettings();
-  console.log("init settings", initialSettings);
+  // console.log("init settings", initialSettings);
   const [fontSize, setFontSize] = useState(initialSettings.fontSize);
   const [wordSpacing, setWordSpacing] = useState(initialSettings.wordSpacing);
   const [lineHeight, setLineHeight] = useState(initialSettings.lineHeight);
@@ -106,8 +106,8 @@ export function useReaderSettings() {
   const currentTheme = colourThemes[themeIndex];
   useEffect(() => {
     const root = document.documentElement;
-    console.log("themeIndex", themeIndex, typeof themeIndex);
-    console.log("themes length", colourThemes.length);
+    // console.log("themeIndex", themeIndex, typeof themeIndex);
+    // console.log("themes length", colourThemes.length);
 
     root.style.setProperty("--font-size", `${fontSize}rem`);
     root.style.setProperty("--word-spacing", `${wordSpacing}em`);

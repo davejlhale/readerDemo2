@@ -19,8 +19,8 @@ export function BookCoverCard({
 }: BookCardProps) {
   const [hasImage, setHasImage] = useState(true);
 
-  console.log(`book card for ${seriesId} and book ${title}`);
-
+  // console.log(`book card for ${seriesId} and book ${title}`);
+  seriesId = seriesId;
   const imageElement = (
     <img
       src={imageBasePath}

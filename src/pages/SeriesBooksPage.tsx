@@ -43,7 +43,7 @@ import { useBookPreloader } from "../hooks/useBookPreloader";
 import "../styles/series-index.css"; //needs a series-books.css fully done one day
 import "../styles/BookCardControlPanel.css";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
-
+import { BAND_ORDER } from "../_CONSTANTS/constants";
 export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
   const navigate = useNavigate();
@@ -78,6 +78,16 @@ export function SeriesBooksPage() {
   if (loading) return <p>Loading…</p>;
   if (!data) return null; // navigation will handle
 
+  console.log("DATA", data);
+  const bandSorted = data.slice().sort((a, b) => {
+    const bandDiff = BAND_ORDER[a.band] - BAND_ORDER[b.band];
+
+    if (bandDiff !== 0) return bandDiff;
+
+    return a.numericScore - b.numericScore; // or b.score - a.score
+  });
+  console.log("sorted", bandSorted);
+
   return (
     <main className="series-index-wrapper">
       <section className="series-list">
@@ -89,21 +99,25 @@ export function SeriesBooksPage() {
 
         <div className="series-row-wrapper">
           <div className="series-row">
-            {data.map((book) => (
-              <BookCoverCard
-                key={book.id}
-                title={book.title}
-                seriesId={seriesId!}
-                imageBasePath={book.coverImage}
-                onSelect={() =>
-                  navigate(`/reader/${seriesId}/${book.id}/1`, {
-                    state: { from: location.pathname },
-                  })
-                }
-                onPreload={() => preloadBook(seriesId!, book.id)}
-                preloadState={progress[book.id] ?? "idle"}
-              />
-            ))}
+            {bandSorted.map((book) => {
+              // console.log(book);
+
+              return (
+                <BookCoverCard
+                  key={book.id}
+                  title={book.title}
+                  seriesId={seriesId!}
+                  imageBasePath={book.coverImage}
+                  onSelect={() =>
+                    navigate(`/reader/${seriesId}/${book.id}/1`, {
+                      state: { from: location.pathname },
+                    })
+                  }
+                  onPreload={() => preloadBook(seriesId!, book.id)}
+                  preloadState={progress[book.id] ?? "idle"}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

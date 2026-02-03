@@ -10,7 +10,6 @@ export const getInitialSettings = () => {
   }
 
   const stored = localStorage.getItem("dho.reader-settings");
-  console.log("raw storage", localStorage.getItem("dho.reader-settings"));
 
   return stored
     ? JSON.parse(stored)

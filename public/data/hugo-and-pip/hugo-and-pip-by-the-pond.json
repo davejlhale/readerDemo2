@@ -1,38 +1,74 @@
 {
-  "validator": {
-    "id": "pip-and-hugo-by-the-pond",
-    "seriesId": null,
-    "title": "Pip and Hugo by the Pond",
-    "coverImage": null,
-    "band": "Yellow",
-    "textual_content_only_band": "Yellow",
-    "numeric_score": 64,
-    "dominant_phase": "Phase 3",
-    "structural_band_lock": "Yellow",
-    "metrics": {
-      "Total Tokens": 126,
-      "Type Token Ratio": 0.39,
-      "Phase 5 Density": "6%",
-      "Polysyllabic Rate": "0%",
-      "Exception Density": "31%",
-      "Complex Clustering Per Sentence": 1.7
+  "id": "pip-and-hugo-by-the-pond",
+  "title": "Pip and Hugo by the Pond",
+  "seriesId": "pip-and-hugo",
+  "band": "Yellow",
+  "compositeBandScore": 52,
+  "confidence": 0.89,
+  "teacherSummary": "This text validates as Yellow due to moderate structural repetition with increasing narrative demand in the final third. The ‘fall in’ event creates a clear tension spike followed by resolution, raising narrative slope above Red level. Sentence lengths remain short and highly decodable, but cross-page recall (fish, ducks, frogs, lily pads) increases cognitive load beyond Red expectations. Suitable for guided Yellow reading and independent reading for secure Yellow pupils.",
+  "dominantPhase": "Phase 3",
+  "bandInflationRiskScore": 0.18,
+  "artificialBandInflation": false,
+  "bandDeflationRiskScore": 0.12,
+  "artificialBandDeflation": false,
+
+  "compositeBreakdown": {
+    "normalisedScores": {
+      "phonicsPhaseFit": 35,
+      "morphologyLoad": 12,
+      "clusterComplexity": 18,
+      "structuralEscalation": 33,
+      "narrativeDevelopment": 52,
+      "repetitionReduction": 38,
+      "sentenceLengthFit": 95,
+      "recallBurden": 64
     },
-    "structural_metrics": {
-      "Repetition Frame Rate": 0.78,
-      "Slot Frame Rate": 0.82,
-      "Prefix Frame Rate": 0.74,
-      "Cross Page Recall": 1,
-      "Causal Connectives per 100 Tokens": 0,
-      "Multi Phase Arc": 0
+    "weightedContributions": {
+      "phonicsPhaseFit": 7.0,
+      "morphologyLoad": 1.8,
+      "clusterComplexity": 2.7,
+      "structuralEscalation": 4.95,
+      "narrativeDevelopment": 5.2,
+      "repetitionReduction": 3.8,
+      "sentenceLengthFit": 9.5,
+      "recallBurden": 3.2
     },
+    "finalCompositeScore": 52.15
+  },
+
+  "metrics": {
+    "totalWords": 115,
+    "avgWordsPerPage": 4.79,
+    "maxWordsPerPage": 6,
+    "totalSentences": 24,
+    "avgSentenceLength": 4.79,
+    "maxSentenceLength": 6,
+    "patternRatio": 0.58,
+    "crossPageRecallIndex": 1.04,
+    "repetitionFrameRate": 0.62,
+    "narrativeComplexitySlope": 0.52,
+    "structuralEscalationIndex": 0.33,
+    "dialogueCount": 0,
+    "questionCount": 0,
+    "exclamationCount": 2
+  },
+
+  "phonics": {
+    "dominantPhase": "Phase 3",
+    "multiPhaseArc": false,
+    "phonicsPhaseConflictFlag": false,
+    "decodability": 0.84,
+    "exceptionDensity": 0.18,
+    "phase5Density": 0.06,
+    "CCPS": 0.14,
+    "notableGraphemes": ["ee", "oa", "ai", "ow", "ng"],
     "Phonics Profiling": {
-      "Phase 2 Load": "44%",
-      "Phase 3 Grapheme Density": "26%",
+      "Phase 2 Load": "47%",
+      "Phase 3 Grapheme Density": "34%",
       "Phase 4 Cluster Density": "13%",
       "Phase 5 Density": "6%",
-      "Phase 6 Morphology Load": "0%"
-    },
-    "flags": []
+      "Phase 6 Morphology Load": "4%"
+    }
   },
 
   "pages": [
@@ -41,276 +77,510 @@
       "imageBaseURL": null,
       "lines": ["Pip and Hugo are by a pond."],
       "meta": {
-        "page word Count": 7,
+        "pageWordCount": 7,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "35%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 2,
       "imageBaseURL": null,
       "lines": ["A fish swims by."],
       "meta": {
-        "page word Count": 4,
+        "pageWordCount": 4,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "48%",
+          "Phase 3": "33%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 3,
       "imageBaseURL": null,
       "lines": ["A second fish swims by."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 0,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "0%",
+          "Phase 3": "0%",
+          "Phase 4": "0%",
+          "Phase 5": "0%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 4,
       "imageBaseURL": null,
-      "lines": ["Ripples spread."],
+      "lines": ["Lots of fish swim by."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 5,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "36%",
+          "Phase 4": "12%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 5,
       "imageBaseURL": null,
-      "lines": ["Some of the frogs sit."],
+      "lines": ["Ripples spread."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "44%",
+          "Phase 3": "37%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 6,
       "imageBaseURL": null,
-      "lines": ["Some of the frogs jump."],
+      "lines": ["Some frogs sit."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "47%",
+          "Phase 3": "33%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 7,
       "imageBaseURL": null,
-      "lines": ["Plop Ripples spread."],
+      "lines": ["Other frogs jump."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "34%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 8,
       "imageBaseURL": null,
-      "lines": ["Some of the ducks eat."],
+      "lines": ["Plop! Ripples spread again."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 4,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "43%",
+          "Phase 3": "38%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 9,
       "imageBaseURL": null,
-      "lines": ["Some of the ducks drink."],
+      "lines": ["Ducks eat at the edge."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 5,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "34%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 10,
       "imageBaseURL": null,
-      "lines": ["Some of the bugs buzz."],
+      "lines": ["Other ducks drink."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "36%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 11,
       "imageBaseURL": null,
-      "lines": ["There are lily pads."],
+      "lines": ["Bugs buzz over the water."],
       "meta": {
-        "page word Count": 4,
+        "pageWordCount": 5,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "35%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 12,
       "imageBaseURL": null,
-      "lines": ["Some of the fish swim near the lily pads."],
+      "lines": ["Lily pads float on the pond."],
       "meta": {
-        "page word Count": 9,
+        "pageWordCount": 6,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "44%",
+          "Phase 3": "35%",
+          "Phase 4": "15%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 13,
       "imageBaseURL": null,
-      "lines": ["Some of the ducks swim."],
+      "lines": ["Fish swim near the lily pads."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 6,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "44%",
+          "Phase 3": "36%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 14,
       "imageBaseURL": null,
-      "lines": ["Some of the ducks swim near the lily pads."],
+      "lines": ["Ducks swim across the pond."],
       "meta": {
-        "page word Count": 9,
+        "pageWordCount": 5,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "34%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 15,
       "imageBaseURL": null,
-      "lines": ["Some of the frogs sit on the lily pads."],
+      "lines": ["More ducks swim near the lily pads."],
       "meta": {
-        "page word Count": 9,
+        "pageWordCount": 7,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "43%",
+          "Phase 3": "36%",
+          "Phase 4": "15%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 16,
       "imageBaseURL": null,
-      "lines": ["Splash Pip falls in."],
+      "lines": ["Frogs sit on the lily pads."],
       "meta": {
-        "page word Count": 4,
+        "pageWordCount": 6,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "35%",
+          "Phase 4": "14%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 17,
       "imageBaseURL": null,
-      "lines": ["The ducks fly away."],
+      "lines": ["Splash! Pip falls in."],
       "meta": {
-        "page word Count": 4,
+        "pageWordCount": 4,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "narrative_tension_spike"
+        },
+        "phaseDensity": {
+          "Phase 2": "44%",
+          "Phase 3": "37%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 18,
       "imageBaseURL": null,
-      "lines": ["The frogs jump away."],
+      "lines": ["The ducks fly away."],
       "meta": {
-        "page word Count": 4,
+        "pageWordCount": 4,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "35%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 19,
       "imageBaseURL": null,
-      "lines": ["The fish swim away."],
+      "lines": ["The frogs jump away."],
       "meta": {
-        "page word Count": 4,
+        "pageWordCount": 4,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "35%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 20,
       "imageBaseURL": null,
-      "lines": ["The pond looks still now."],
+      "lines": ["The fish swim away."],
       "meta": {
-        "page word Count": 5,
+        "pageWordCount": 4,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "46%",
+          "Phase 3": "35%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 21,
       "imageBaseURL": null,
-      "lines": ["Pip laughs."],
+      "lines": ["The pond looks still now."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 5,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "45%",
+          "Phase 3": "36%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 22,
       "imageBaseURL": null,
-      "lines": ["Hugo laughs."],
+      "lines": ["Pip laughs."],
       "meta": {
-        "page word Count": 2,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "48%",
+          "Phase 3": "33%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 23,
       "imageBaseURL": null,
-      "lines": ["Time to go."],
+      "lines": ["Hugo laughs."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 2,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "48%",
+          "Phase 3": "33%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
         }
       }
+    },
+
+    {
+      "pageNumber": 24,
+      "imageBaseURL": null,
+      "lines": ["Time to go."],
+      "meta": {
+        "pageWordCount": 3,
+        "seriesFlags": {
+          "graphemeSpikeDetected": false,
+          "structuralEscalationPage": "inferential_shift"
+        },
+        "phaseDensity": {
+          "Phase 2": "49%",
+          "Phase 3": "32%",
+          "Phase 4": "13%",
+          "Phase 5": "6%",
+          "Phase 6": "0%"
+        }
+      }
+    }
+  ],
+
+  "bandEvaluations": [
+    {
+      "band": "Red 2",
+      "hardPass": true,
+      "score": 74,
+      "reasons": [
+        "High repetition but recall demand exceeds Red norms.",
+        "Narrative spike raises complexity beyond secure Red."
+      ]
+    },
+    {
+      "band": "Yellow",
+      "hardPass": true,
+      "score": 89,
+      "reasons": [
+        "Moderate escalation and narrative slope.",
+        "Controlled repetition (RFR 0.62).",
+        "Sentence length within Yellow range."
+      ]
+    },
+    {
+      "band": "Blue 4",
+      "hardPass": false,
+      "score": 63,
+      "reasons": [
+        "Dominant Phase 3 too low for Blue.",
+        "Morphology and CCPS below Blue ceiling."
+      ]
     }
   ]
 }

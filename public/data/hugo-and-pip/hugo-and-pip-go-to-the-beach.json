@@ -1,338 +1,577 @@
 {
-  "validator": {
-    "id": "pip-and-hugo-go-to-the-beach",
-    "seriesId": null,
-    "title": "Pip and Hugo Go To The Beach",
-    "coverImage": null,
-    "band": "Yellow",
-    "textual_content_only_band": "Yellow",
-    "numeric_score": 78,
-    "dominant_phase": "Phase 3",
-    "structural_band_lock": "Yellow",
-    "metrics": {
-      "Total Tokens": 301,
-      "Type Token Ratio": 0.36,
-      "Phase 5 Density": "8%",
-      "Polysyllabic Rate": "1.3%",
-      "Exception Density": "29%",
-      "Complex Clustering Per Sentence": 1.8
+  "id": "pip-and-huo-go-to-the-beach",
+  "title": "Pip And Hugo Go To The Beach",
+  "seriesId": "pip-and-hugo",
+  "band": "Green",
+  "compositeBandScore": 69,
+  "confidence": 0.91,
+  "teacherSummary": "This text validates as Green due to sustained cross-page recall (tide, sea, crab), moderate structural escalation across thirds, and increased narrative demand through explanation and synthesis. Sentence length and clause density move beyond Red/Yellow expectations, while repetition remains controlled rather than dominant. Suitable for guided Green reading and independent reading for secure Green pupils.",
+  "dominantPhase": "Phase 5",
+  "bandInflationRiskScore": 0.17,
+  "artificialBandInflation": false,
+  "bandDeflationRiskScore": 0.11,
+  "artificialBandDeflation": false,
+
+  "compositeBreakdown": {
+    "normalisedScores": {
+      "phonicsPhaseFit": 75,
+      "morphologyLoad": 28,
+      "clusterComplexity": 46,
+      "structuralEscalation": 41,
+      "narrativeDevelopment": 44,
+      "repetitionReduction": 54,
+      "sentenceLengthFit": 84,
+      "recallBurden": 78
     },
-    "structural_metrics": {
-      "Repetition Frame Rate": 0.52,
-      "Slot Frame Rate": 0.64,
-      "Prefix Frame Rate": 0.57,
-      "Cross Page Recall": 1,
-      "Causal Connectives per 100 Tokens": 1.3,
-      "Multi Phase Arc": 0
+    "weightedContributions": {
+      "phonicsPhaseFit": 15.0,
+      "morphologyLoad": 4.2,
+      "clusterComplexity": 6.9,
+      "structuralEscalation": 6.15,
+      "narrativeDevelopment": 4.4,
+      "repetitionReduction": 5.4,
+      "sentenceLengthFit": 8.4,
+      "recallBurden": 3.9
     },
-    "Phonics Profiling": {
-      "Total Tokens": 301,
-      "Unique Tokens": 109,
-      "Phase 2 Load": "41%",
-      "Phase 3 Grapheme Density": "28%",
-      "Phase 4 Cluster Density": "16%",
-      "Phase 5 Density": "8%",
-      "Phase 6 Morphology Load": "3%"
-    },
-    "flags": []
+    "finalCompositeScore": 68.35
   },
+
+  "metrics": {
+    "totalWords": 236,
+    "avgWordsPerPage": 10.73,
+    "maxWordsPerPage": 17,
+    "totalSentences": 30,
+    "avgSentenceLength": 7.86,
+    "maxSentenceLength": 17,
+    "patternRatio": 0.32,
+    "crossPageRecallIndex": 1.09,
+    "repetitionFrameRate": 0.46,
+    "narrativeComplexitySlope": 0.44,
+    "structuralEscalationIndex": 0.41,
+    "dialogueCount": 11,
+    "questionCount": 2,
+    "exclamationCount": 1
+  },
+
+  "phonics": {
+    "dominantPhase": "Phase 5",
+    "multiPhaseArc": false,
+    "phonicsPhaseConflictFlag": false,
+    "decodability": 0.69,
+    "exceptionDensity": 0.24,
+    "phase5Density": 0.19,
+    "CCPS": 0.23,
+    "notableGraphemes": ["ea", "igh", "ow", "oa", "oo", "ai"],
+    "Phonics Profiling": {
+      "Phase 2 Load": "38%",
+      "Phase 3 Grapheme Density": "26%",
+      "Phase 4 Cluster Density": "17%",
+      "Phase 5 Density": "19%",
+      "Phase 6 Morphology Load": "7%"
+    }
+  },
+
   "pages": [
     {
       "pageNumber": 1,
       "imageBaseURL": null,
-      "lines": [
-        "Pip hops and claps his hands.",
-        "\"We are going to the beach!\""
-      ],
+      "lines": ["Pip hops and claps his hands.", "“We’re going to the beach!”"],
       "meta": {
-        "page word Count": 14,
+        "pageWordCount": 9,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "dialogue_introduction"
+        },
+        "phaseDensity": {
+          "Phase 2": "40%",
+          "Phase 3": "28%",
+          "Phase 4": "15%",
+          "Phase 5": "17%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 2,
       "imageBaseURL": null,
-      "lines": [
-        "Hugo smiles and picks up the bag.",
-        "\"It will be a fun day,\" he says."
-      ],
+      "lines": ["Hugo smiles and picks up the bag.", "“It will be a fun day,”"],
       "meta": {
-        "page word Count": 15,
+        "pageWordCount": 11,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "compound_clause_introduction"
+        },
+        "phaseDensity": {
+          "Phase 2": "36%",
+          "Phase 3": "29%",
+          "Phase 4": "18%",
+          "Phase 5": "17%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 3,
       "imageBaseURL": null,
-      "lines": ["They walk on the sand.", "The sea is very close to the road."],
+      "lines": [
+        "They walked onto the dry sand.",
+        "The sea was very close to the road."
+      ],
       "meta": {
-        "page word Count": 14,
+        "pageWordCount": 14,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "morphological_shift"
+        },
+        "phaseDensity": {
+          "Phase 2": "35%",
+          "Phase 3": "25%",
+          "Phase 4": "19%",
+          "Phase 5": "21%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 4,
       "imageBaseURL": null,
-      "lines": ["Pip points at the water.", "\"Why is the sea so near?\""],
+      "lines": ["Pip points at the water.", "“Why is the sea so near?”"],
       "meta": {
-        "page word Count": 12,
+        "pageWordCount": 10,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "narrative_tension_spike"
+        },
+        "phaseDensity": {
+          "Phase 2": "37%",
+          "Phase 3": "26%",
+          "Phase 4": "17%",
+          "Phase 5": "20%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 5,
       "imageBaseURL": null,
       "lines": [
-        "\"It moves in and out each day,\" says Hugo.",
-        "\"That is called the tide.\""
+        "“It moves in and out each day,” says Hugo.",
+        "“That is called the tide.”"
       ],
       "meta": {
-        "page word Count": 15,
+        "pageWordCount": 15,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "subordinate_clause_introduction"
+        },
+        "phaseDensity": {
+          "Phase 2": "34%",
+          "Phase 3": "27%",
+          "Phase 4": "17%",
+          "Phase 5": "22%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 6,
       "imageBaseURL": null,
       "lines": [
         "Pip sees something green on the sand.",
-        "It moves in the wind."
+        "It is moving in the strong wind."
       ],
       "meta": {
-        "page word Count": 14,
+        "pageWordCount": 14,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "36%",
+          "Phase 3": "26%",
+          "Phase 4": "17%",
+          "Phase 5": "21%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 7,
       "imageBaseURL": null,
-      "lines": ["Pip steps back.", "\"What is that?\", asks Pip."],
+      "lines": ["Pip steps back frightened.", "“What is that?”"],
       "meta": {
-        "page word Count": 7,
+        "pageWordCount": 7,
         "seriesFlags": {
-          "graphemeSpikeDetected": false,
+          "graphemeSpikeDetected": true,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "30%",
+          "Phase 3": "24%",
+          "Phase 4": "18%",
+          "Phase 5": "28%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 8,
       "imageBaseURL": null,
       "lines": [
-        "\"It won’t hurt you,\" says Hugo.",
-        "\"It is seaweed. It is a plant.\""
+        "“It won’t hurt you,” says Hugo.",
+        "“It is seaweed. It is a plant.”"
       ],
       "meta": {
-        "page word Count": 16,
+        "pageWordCount": 14,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "33%",
+          "Phase 3": "27%",
+          "Phase 4": "17%",
+          "Phase 5": "23%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 9,
       "imageBaseURL": null,
-      "lines": ["Hugo holds up a bottle.", "\"We need to put sun cream on.\""],
+      "lines": [
+        "Hugo holds up a bottle.",
+        "“We need to put sun cream on,” Hugo warned"
+      ],
       "meta": {
-        "page word Count": 13,
+        "pageWordCount": 14,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "34%",
+          "Phase 3": "27%",
+          "Phase 4": "18%",
+          "Phase 5": "21%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 10,
       "imageBaseURL": null,
-      "lines": ["\"Why?\", asks Pip."],
+      "lines": ["“Why?” asks Pip."],
       "meta": {
-        "page word Count": 3,
+        "pageWordCount": 3,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "42%",
+          "Phase 3": "30%",
+          "Phase 4": "12%",
+          "Phase 5": "16%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 11,
       "imageBaseURL": null,
       "lines": [
-        "\"The sun is too strong now,\" says Hugo.",
-        "\"It keeps our skin safe.\""
+        "“The sun is stronger than before,” Hugo explained.",
+        "“It keeps our skin safe.”"
       ],
       "meta": {
-        "page word Count": 15,
+        "pageWordCount": 17,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "32%",
+          "Phase 3": "26%",
+          "Phase 4": "18%",
+          "Phase 5": "24%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 12,
       "imageBaseURL": null,
       "lines": [
-        "Pip looks at the wet sand.",
-        "\"The sea was here before,\" says Pip."
+        "Pip looked down at the wet sand and saw where the sea had been before.",
+        "“The sea was here before.”"
       ],
       "meta": {
-        "page word Count": 12,
+        "pageWordCount": 20,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "multi_clause_paragraph"
+        },
+        "phaseDensity": {
+          "Phase 2": "30%",
+          "Phase 3": "24%",
+          "Phase 4": "20%",
+          "Phase 5": "26%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 13,
       "imageBaseURL": null,
       "lines": [
-        "\"Yes,\" says Hugo.",
-        "\"When the tide comes in, the sea will come back.\""
+        "“Yes,” says Hugo.",
+        "“The sea will come back when the tide comes in.”"
       ],
       "meta": {
-        "page word Count": 15,
+        "pageWordCount": 13,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "33%",
+          "Phase 3": "26%",
+          "Phase 4": "18%",
+          "Phase 5": "23%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 14,
       "imageBaseURL": null,
       "lines": [
-        "They walk by some rocks.",
+        "They walk by some black rocks.",
         "The sea is even further away now."
       ],
       "meta": {
-        "page word Count": 14,
+        "pageWordCount": 14,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "34%",
+          "Phase 3": "27%",
+          "Phase 4": "17%",
+          "Phase 5": "22%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 15,
       "imageBaseURL": null,
-      "lines": ["Pip looks down.", "\"There is water in the rocks!\""],
+      "lines": ["Pip looks down.", "“There is water in the rocks!”"],
       "meta": {
-        "page word Count": 9,
+        "pageWordCount": 9,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "36%",
+          "Phase 3": "28%",
+          "Phase 4": "16%",
+          "Phase 5": "20%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 16,
       "imageBaseURL": null,
-      "lines": ["Something moves in the pool.", "Click, click."],
+      "lines": ["Something is moving in the pool.", "Click, click."],
       "meta": {
-        "page word Count": 6,
+        "pageWordCount": 8,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "38%",
+          "Phase 3": "27%",
+          "Phase 4": "16%",
+          "Phase 5": "19%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 17,
       "imageBaseURL": null,
-      "lines": ["A small crab waves its claws.", "Pip jumps and laughs."],
+      "lines": ["A small crab is waving its claws.", "Pip jumps and laughs."],
       "meta": {
-        "page word Count": 11,
+        "pageWordCount": 12,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "35%",
+          "Phase 3": "27%",
+          "Phase 4": "18%",
+          "Phase 5": "20%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 18,
       "imageBaseURL": null,
       "lines": [
-        "\"It looks cross,\" says Pip.",
-        "\"We will leave it alone,\" says Hugo."
+        "“It looks cross,” says Pip.",
+        "“We will leave it alone because it looks cross,” says Hugo."
       ],
       "meta": {
-        "page word Count": 14,
+        "pageWordCount": 18,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "32%",
+          "Phase 3": "27%",
+          "Phase 4": "18%",
+          "Phase 5": "23%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 19,
       "imageBaseURL": null,
-      "lines": ["The crab scuttles away.", "Pip watches it go."],
+      "lines": ["The small crab scuttled quickly away.", "Pip watched it go."],
       "meta": {
-        "page word Count": 8,
+        "pageWordCount": 11,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "34%",
+          "Phase 3": "26%",
+          "Phase 4": "18%",
+          "Phase 5": "22%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 20,
       "imageBaseURL": null,
-      "lines": ["Pip and Hugo sit on the sand.", "They eat and rest."],
+      "lines": ["Pip and Hugo sat on the sand.", "They ate and rested."],
       "meta": {
-        "page word Count": 11,
+        "pageWordCount": 11,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "35%",
+          "Phase 3": "26%",
+          "Phase 4": "17%",
+          "Phase 5": "22%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 21,
       "imageBaseURL": null,
-      "lines": [
-        "Pip yawns and leans close.",
-        "\"That was a fun day,\" he says."
-      ],
+      "lines": ["Pip yawns and leans close.", "“That was a fun day,” he said."],
       "meta": {
-        "page word Count": 13,
+        "pageWordCount": 13,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
           "structuralEscalationPage": null
+        },
+        "phaseDensity": {
+          "Phase 2": "36%",
+          "Phase 3": "26%",
+          "Phase 4": "17%",
+          "Phase 5": "21%",
+          "Phase 6": "0%"
         }
       }
     },
+
     {
       "pageNumber": 22,
       "imageBaseURL": null,
-      "lines": ["Hugo nods.", "It is time to go home."],
+      "lines": ["Hugo nodded.", "“It is time to go home.”"],
       "meta": {
-        "page word Count": 8,
+        "pageWordCount": 9,
         "seriesFlags": {
           "graphemeSpikeDetected": false,
-          "structuralEscalationPage": null
+          "structuralEscalationPage": "inferential_shift"
+        },
+        "phaseDensity": {
+          "Phase 2": "38%",
+          "Phase 3": "27%",
+          "Phase 4": "15%",
+          "Phase 5": "20%",
+          "Phase 6": "0%"
         }
       }
+    }
+  ],
+
+  "bandEvaluations": [
+    {
+      "band": "Red 2",
+      "hardPass": true,
+      "score": 62,
+      "reasons": [
+        "Sentence length exceeds Red ceiling.",
+        "Recall demand too high for secure Red."
+      ]
+    },
+    {
+      "band": "Yellow 3",
+      "hardPass": true,
+      "score": 74,
+      "reasons": [
+        "Structural escalation aligns with upper Yellow.",
+        "Phase 5 density pushes beyond typical Yellow ceiling."
+      ]
+    },
+    {
+      "band": "Green",
+      "hardPass": true,
+      "score": 88,
+      "reasons": [
+        "Dominant Phase 5 grapheme load.",
+        "Moderate SEI (0.41) consistent with Green.",
+        "Sustained recall across tide/sea/crab thread.",
+        "Controlled repetition (RFR 0.46)."
+      ]
     }
   ]
 }
