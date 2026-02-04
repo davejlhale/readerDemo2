@@ -71,13 +71,45 @@ export function useBookData(seriesId?: string, bookId?: string) {
       try {
         const url = `/data/${seriesId}/${bookId}.json`;
         const res = await fetch(url);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        if (!res.ok) {
+          if (res.status === 404) {
+            throw new Error("NOT_FOUND");
+          }
+          throw new Error("NETWORK_ERROR");
+        }
+
+        const contentType = res.headers.get("content-type");
+
+        if (!contentType || !contentType.includes("application/json")) {
+          throw new Error("INVALID_JSON");
+        }
 
         const json = await res.json();
-        if (!cancelled) setData(json);
-      } catch (err) {
+
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Unknown error");
+          setData(json);
+          setError(null);
+        }
+      } catch (err) {
+        if (cancelled) return;
+
+        if (err instanceof Error) {
+          switch (err.message) {
+            case "NOT_FOUND":
+              setError("not-found");
+              break;
+            case "INVALID_JSON":
+              setError("invalid-json");
+              break;
+            case "NETWORK_ERROR":
+              setError("network-error");
+              break;
+            default:
+              setError("network-error");
+          }
+        } else {
+          setError("network-error");
         }
       }
     }

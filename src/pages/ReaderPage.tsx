@@ -38,7 +38,7 @@
  * all staging responsibilities and BookReadyPage can be removed.
  */
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
 import "../styles/series-books.css";
@@ -46,16 +46,26 @@ import { TextControlsPanel } from "../components/TextControlsPanel";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 import { TextControlsToggle } from "../components/buttons/TextControlsToggle";
 import { useReaderSettings } from "../hooks/useReaderSettings";
-// import "../styles/booktext.css";
+
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
-  const startPage = Number(pageNumber);
-  const { data: book, error } = useBookData(seriesId, bookId);
-  const [currentPage, setCurrentPage] = useState(startPage);
-  const totalPages = book?.pages.length ?? 0;
-  const maxPage = totalPages + 1;
-  const [showTextControls, setShowTextControls] = useState(false);
+  const navigate = useNavigate();
   const readerSettings = useReaderSettings();
+
+  const { data: book, error } = useBookData(seriesId, bookId);
+
+  // ---- SAFE INITIAL PAGE (prevents negative hang) ----
+  const parsedPage = Number(pageNumber);
+
+  const initialPage =
+    !pageNumber || isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
+
+  const [currentPage, setCurrentPage] = useState(initialPage);
+
+  const totalPages = book?.pages.length ?? 0;
+  const maxPage = totalPages; // remove +1 unless you truly need it
+
+  const [showTextControls, setShowTextControls] = useState(false);
 
   const safePages = book
     ? book.pages.map((p) => ({
@@ -63,24 +73,49 @@ export function ReaderPage() {
         imageBaseURL: p.imageBaseURL,
       }))
     : [];
+
   const { loadedPages } = usePriorityPreloader(currentPage, safePages);
 
+  // ---- PAGE VALIDATION ----
   useEffect(() => {
     if (!book) return;
 
-    const start = Number(pageNumber);
-    if (start < 1 || start > maxPage) {
-      setCurrentPage(1);
+    const parsed = Number(pageNumber);
+
+    if (!pageNumber || isNaN(parsed) || parsed < 1 || parsed > maxPage) {
+      navigate(`/reader/${seriesId}/${bookId}/1`, {
+        replace: true,
+      });
+      return;
     }
-  }, [book, pageNumber, maxPage]);
+
+    // Keep state synced if URL changes
+    if (parsed !== currentPage) {
+      setCurrentPage(parsed);
+    }
+  }, [book, pageNumber, maxPage, navigate, seriesId, bookId, currentPage]);
+
+  // ---- ERROR NAVIGATION ----
+  useEffect(() => {
+    if (!error) return;
+
+    if (error === "invalid-json" || error === "not-found") {
+      navigate("/book-not-found", { replace: true });
+    }
+
+    if (error === "network-error") {
+      navigate("/network-error", { replace: true });
+    }
+  }, [error, navigate]);
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p>Error : {error}</p>;
   }
 
   if (!book) {
     return <p>Loading…</p>;
   }
+
   const page = book.pages[currentPage - 1];
   const isLoaded = loadedPages.has(currentPage);
 
