@@ -1,42 +1,3 @@
-/**
- * NOTE ON FUTURE ARCHITECTURE
- * --------------------------------------------------
- * ReaderPage is intended to become the single, unified
- * reading engine for the entire app. In the long term,
- * this page will replace BookReadyPage entirely.
- *
- * Today, ReaderPage assumes that BookReadyPage has:
- *   • loaded the book JSON
- *   • preloaded the first 1–2 pages
- *   • ensured the reader can render immediately
- *
- * But once ReaderPage supports:
- *   • starting at any page (1 or last-read)
- *   • loading the starting page immediately
- *   • priority-based preloading:
- *        - startPage first
- *        - then forward (start+1 → end)
- *        - then backward (start-1 → 1)
- *   • showing placeholders until images arrive
- *   • tracking reading behaviour (time on page, etc.)
- *   • updating last-read progress in the database
- *
- * …then BookReadyPage becomes unnecessary.
- *
- * In that future design:
- *   - "Read" opens ReaderPage at page 1
- *   - "Continue Reading" opens ReaderPage at the user's last-read page
- *   - ReaderPage handles all loading, caching, and UX staging internally
- *   - No separate staging screen is required
- *
- * Keeping BookReadyPage for now is intentional:
- *   • It isolates preload logic while we refine it
- *   • It keeps ReaderPage simpler during early development
- *   • It allows us to debug loading behaviour without affecting the reader UI
- *
- * When the reader engine is mature, ReaderPage will absorb
- * all staging responsibilities and BookReadyPage can be removed.
- */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
@@ -82,6 +43,7 @@ export function ReaderPage() {
 
     const parsed = Number(pageNumber);
 
+    // If URL invalid → fix it
     if (!pageNumber || isNaN(parsed) || parsed < 1 || parsed > maxPage) {
       navigate(`/reader/${seriesId}/${bookId}/1`, {
         replace: true,
@@ -89,11 +51,15 @@ export function ReaderPage() {
       return;
     }
 
-    // Keep state synced if URL changes
-    if (parsed !== currentPage) {
-      setCurrentPage(parsed);
-    }
-  }, [book, pageNumber, maxPage, navigate, seriesId, bookId, currentPage]);
+    // Only sync state if this is first load
+    setCurrentPage((prev) => {
+      // If state already changed via buttons, leave it alone
+      if (prev !== parsed && prev === initialPage) {
+        return parsed;
+      }
+      return prev;
+    });
+  }, [book, pageNumber, maxPage, navigate, seriesId, bookId]);
 
   // ---- ERROR NAVIGATION ----
   useEffect(() => {
@@ -134,54 +100,53 @@ export function ReaderPage() {
               <div className="stretch">
                 {/* PAGE IMAGE */}
                 {currentPage <= totalPages && (
-                  <div className="book-image">
-                    {/* SHOW TEXT CONTROLS OR IMAGE */}
-                    {showTextControls ? (
-                      <TextControlsPanel {...readerSettings} />
-                    ) : (
-                      <img
-                        // style={{ maxHeight: "200px", display: "block" }}
-                        src={
-                          page.imageBaseURL ||
-                          "/images/generic/books/no-page-image-placeholder.webp"
-                        }
-                        alt={`Page ${currentPage}`}
-                        onError={(e) => {
-                          e.currentTarget.src =
-                            "/images/generic/books/no-page-image-placeholder.webp";
-                        }}
-                      />
-                    )}
+                  <>
+                    <div className="book-image">
+                      {/* SHOW TEXT CONTROLS OR IMAGE */}
+                      {showTextControls ? (
+                        <TextControlsPanel {...readerSettings} />
+                      ) : (
+                        <img
+                          // style={{ maxHeight: "200px", display: "block" }}
+                          src={
+                            page.imageBaseURL ||
+                            "/images/generic/books/no-page-image-placeholder.webp"
+                          }
+                          alt={`Page ${currentPage}`}
+                          onError={(e) => {
+                            e.currentTarget.src =
+                              "/images/generic/books/no-page-image-placeholder.webp";
+                          }}
+                        />
+                      )}
 
-                    {/* loading spinner for priorityloader*/}
-                    {!isLoaded && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: "8px",
-                          right: "8px",
-                          background: "rgba(0,0,0,0.4)",
-                          color: "white",
-                          padding: "4px 6px",
-                          borderRadius: "4px",
-                          fontSize: "0.75rem",
-                        }}
-                      >
-                        Loading…
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* PAGE TEXT */}
-                {currentPage <= totalPages && (
-                  <div className="book-text-wrapper">
-                    <div className="book-text">
-                      {page.lines.map((line, i) => (
-                        <p key={i}>{line}</p>
-                      ))}
+                      {/* loading spinner for priorityloader*/}
+                      {!isLoaded && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "8px",
+                            right: "8px",
+                            background: "rgba(0,0,0,0.4)",
+                            color: "white",
+                            padding: "4px 6px",
+                            borderRadius: "4px",
+                            fontSize: "0.75rem",
+                          }}
+                        >
+                          Loading…
+                        </div>
+                      )}
                     </div>
-                  </div>
+
+                    <div className="book-text-wrapper">
+                      <div className="book-text">
+                        {page.lines.map((line, i) => (
+                          <p key={i}>{line}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </>
                 )}
 
                 {/* END PAGE */}
@@ -229,15 +194,6 @@ export function ReaderPage() {
           ></button>
         </div>
       </div>
-
-      {/* =========================
-          DEBUG / DEV OUTPUT
-         ========================= */}
-      {/* <div className="debug">
-        <h1>{book.title}</h1>
-        <p>Current page: {currentPage}</p>
-        <p>Loaded pages: {Array.from(loadedPages).join(", ")}</p>
-      </div> */}
     </>
   );
 }
