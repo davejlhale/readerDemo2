@@ -74,7 +74,7 @@
   "pages": [
     {
       "pageNumber": 1,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-01.webp",
       "lines": ["Pip and Hugo are in the woods."],
       "meta": {
         "pageWordCount": 7,
@@ -94,7 +94,7 @@
 
     {
       "pageNumber": 2,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-02.webp",
       "lines": ["“I can walk,” said Pip."],
       "meta": {
         "pageWordCount": 5,
@@ -114,7 +114,7 @@
 
     {
       "pageNumber": 3,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-03.webp",
       "lines": ["“So can I,” said Hugo."],
       "meta": {
         "pageWordCount": 5,
@@ -134,7 +134,7 @@
 
     {
       "pageNumber": 4,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-04.webp",
       "lines": ["“I can stop,” said Pip."],
       "meta": {
         "pageWordCount": 5,
@@ -154,7 +154,7 @@
 
     {
       "pageNumber": 5,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-05.webp",
       "lines": ["“So can I,” said Hugo."],
       "meta": {
         "pageWordCount": 5,
@@ -174,7 +174,7 @@
 
     {
       "pageNumber": 6,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-06.webp",
       "lines": ["“There are trees,” said Pip."],
       "meta": {
         "pageWordCount": 5,
@@ -194,7 +194,7 @@
 
     {
       "pageNumber": 7,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-07.webp",
       "lines": ["“I can look at the trees,” said Hugo."],
       "meta": {
         "pageWordCount": 7,
@@ -214,7 +214,7 @@
 
     {
       "pageNumber": 8,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-08.webp",
       "lines": ["“So can I,” said Pip."],
       "meta": {
         "pageWordCount": 5,
@@ -234,7 +234,7 @@
 
     {
       "pageNumber": 9,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-09.webp",
       "lines": ["“There are sticks,” said Hugo."],
       "meta": {
         "pageWordCount": 5,
@@ -254,7 +254,7 @@
 
     {
       "pageNumber": 10,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-10.webp",
       "lines": ["“I can get a stick,” said Pip."],
       "meta": {
         "pageWordCount": 6,
@@ -274,7 +274,7 @@
 
     {
       "pageNumber": 11,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-11.webp",
       "lines": ["“So can I,” said Hugo."],
       "meta": {
         "pageWordCount": 5,
@@ -294,7 +294,7 @@
 
     {
       "pageNumber": 12,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-12.webp",
       "lines": ["“There is a log,” said Pip."],
       "meta": {
         "pageWordCount": 6,
@@ -314,7 +314,7 @@
 
     {
       "pageNumber": 13,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-13.webp",
       "lines": ["“I can sit on the log,” said Hugo."],
       "meta": {
         "pageWordCount": 7,
@@ -334,7 +334,7 @@
 
     {
       "pageNumber": 14,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-14.webp",
       "lines": ["“So can I,” said Pip."],
       "meta": {
         "pageWordCount": 5,
@@ -354,7 +354,7 @@
 
     {
       "pageNumber": 15,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-15.webp",
       "lines": ["“I can smile,” said Pip."],
       "meta": {
         "pageWordCount": 5,
@@ -374,7 +374,7 @@
 
     {
       "pageNumber": 16,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-16.webp",
       "lines": ["“So can I,” said Hugo."],
       "meta": {
         "pageWordCount": 5,
@@ -394,7 +394,7 @@
 
     {
       "pageNumber": 17,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-17.webp",
       "lines": ["“I can go home,” said Hugo."],
       "meta": {
         "pageWordCount": 6,
@@ -414,7 +414,7 @@
 
     {
       "pageNumber": 18,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-18.webp",
       "lines": ["“So can I,” said Pip."],
       "meta": {
         "pageWordCount": 5,
@@ -434,7 +434,7 @@
 
     {
       "pageNumber": 19,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-19.webp",
       "lines": ["Pip and Hugo go home."],
       "meta": {
         "pageWordCount": 5,
@@ -454,7 +454,7 @@
 
     {
       "pageNumber": 20,
-      "imageBaseURL": null,
+      "imageBaseURL": "/images/series/hugo-and-pip/hugo-and-pip-in-the-woods/pages/page-20.webp",
       "lines": ["They smile."],
       "meta": {
         "pageWordCount": 2,
