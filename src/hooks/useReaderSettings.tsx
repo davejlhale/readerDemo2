@@ -15,6 +15,11 @@ export function useReaderSettings() {
     // Top Recommended (Low Contrast)
     // =====================================
     {
+      name: "Default Theme",
+      bg: "none",
+      text: "black",
+    },
+    {
       name: "Antique White",
       bg: "#faebd7",
       text: "#1a1919",

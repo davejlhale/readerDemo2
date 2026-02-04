@@ -46,7 +46,7 @@ import { TextControlsPanel } from "../components/TextControlsPanel";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 import { TextControlsToggle } from "../components/buttons/TextControlsToggle";
 import { useReaderSettings } from "../hooks/useReaderSettings";
-
+// import "../styles/booktext.css";
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const startPage = Number(pageNumber);
