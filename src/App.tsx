@@ -15,12 +15,12 @@ export default function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/series" element={<SeriesIndexPage />} />
           <Route path="/series/:seriesId" element={<SeriesBooksPage />} />
-          <Route
+          {/* <Route
             path="/reader/:seriesId/:bookId"
             element={<Navigate to="1" replace />}
-          />
+          /> */}
           <Route
-            path="/reader/:seriesId/:bookId/:pageNumber"
+            path="/reader/:seriesId/:bookId/:pageNumber?/*"
             element={<ReaderPage />}
           />
           <Route path="/book-not-found" element={<BookNotFound />} />

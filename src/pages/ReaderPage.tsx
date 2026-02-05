@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
 import "../styles/series-books.css";
@@ -10,7 +10,6 @@ import { useReaderSettings } from "../hooks/useReaderSettings";
 
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
-  const navigate = useNavigate();
   const readerSettings = useReaderSettings();
 
   const { data: book, error } = useBookData(seriesId, bookId);
@@ -23,9 +22,7 @@ export function ReaderPage() {
 
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  const totalPages = book?.pages.length ?? 0;
-  const maxPage = totalPages; // remove +1 unless you truly need it
-
+  const maxPage = (book?.pages.length ?? 0) + 1;
   const [showTextControls, setShowTextControls] = useState(false);
 
   const safePages = book
@@ -45,9 +42,7 @@ export function ReaderPage() {
 
     // If URL invalid → fix it
     if (!pageNumber || isNaN(parsed) || parsed < 1 || parsed > maxPage) {
-      navigate(`/reader/${seriesId}/${bookId}/1`, {
-        replace: true,
-      });
+      setCurrentPage(1); // ← THIS is the missing piece
       return;
     }
 
@@ -59,25 +54,23 @@ export function ReaderPage() {
       }
       return prev;
     });
-  }, [book, pageNumber, maxPage, navigate, seriesId, bookId]);
+  }, [book, pageNumber, maxPage]);
 
   // ---- ERROR NAVIGATION ----
-  useEffect(() => {
-    if (!error) return;
 
-    if (error === "invalid-json" || error === "not-found") {
-      navigate("/book-not-found", { replace: true });
-    }
+  if (error === "invalid-json" || error === "not-found") {
+    return <Navigate to="/book-not-found" replace />;
+  }
 
-    if (error === "network-error") {
-      navigate("/network-error", { replace: true });
-    }
-  }, [error, navigate]);
+  if (error === "network-error") {
+    return <Navigate to="/network-error" replace />;
+  }
 
   if (error) {
     return <p>Error : {error}</p>;
   }
 
+  // -------- NO ERROR SO RENDER PAGE -------//
   if (!book) {
     return <p>Loading…</p>;
   }
@@ -99,7 +92,7 @@ export function ReaderPage() {
             <div className="page-content">
               <div className="stretch">
                 {/* PAGE IMAGE */}
-                {currentPage <= totalPages && (
+                {currentPage <= book.pages.length && (
                   <>
                     <div className="book-image">
                       {/* SHOW TEXT CONTROLS OR IMAGE */}
