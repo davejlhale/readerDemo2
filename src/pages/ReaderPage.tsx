@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData } from "../hooks/useBookData";
@@ -12,50 +12,40 @@ export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const readerSettings = useReaderSettings();
 
+  //gets books json file
   const { data: book, error } = useBookData(seriesId, bookId);
 
-  // ---- SAFE INITIAL PAGE (prevents negative hang) ----
-  const parsedPage = Number(pageNumber);
+  const maxPage = useMemo(() => (book ? book.pages.length + 1 : 1), [book]);
 
-  const initialPage =
-    !pageNumber || isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
-
-  const [currentPage, setCurrentPage] = useState(initialPage);
-
-  const maxPage = (book?.pages.length ?? 0) + 1;
-  const [showTextControls, setShowTextControls] = useState(false);
-
-  const safePages = book
-    ? book.pages.map((p) => ({
-        page: Number(p.pageNumber),
-        imageBaseURL: p.imageBaseURL,
-      }))
-    : [];
-
-  const { loadedPages } = usePriorityPreloader(currentPage, safePages);
+  //default to page 1,
+  // let paramater verification in useffect change staring page
+  //after book json loads
+  const [currentPage, setCurrentPage] = useState(1);
 
   // ---- PAGE VALIDATION ----
   useEffect(() => {
     if (!book) return;
-
     const parsed = Number(pageNumber);
-
-    // If URL invalid → fix it
-    if (!pageNumber || isNaN(parsed) || parsed < 1 || parsed > maxPage) {
-      setCurrentPage(1); // ← THIS is the missing piece
-      return;
-    }
-
-    // Only sync state if this is first load
-    setCurrentPage((prev) => {
-      // If state already changed via buttons, leave it alone
-      if (prev !== parsed && prev === initialPage) {
-        return parsed;
-      }
-      return prev;
-    });
+    const safePage = parsed >= 1 && parsed <= maxPage ? parsed : 1;
+    setCurrentPage(safePage);
   }, [book, pageNumber, maxPage]);
 
+  const safePages = useMemo(() => {
+    if (!book) return [];
+    return book.pages.map((p) => ({
+      page: p.pageNumber,
+      imageBaseURL: p.imageBaseURL,
+    }));
+  }, [book]);
+
+  const { loadedPages } = usePriorityPreloader(currentPage, safePages);
+
+  /* ===============
+   used in conditional renders
+   ================== */
+
+  const isLoaded = loadedPages.has(currentPage);
+  const [showTextControls, setShowTextControls] = useState(false);
   // ---- ERROR NAVIGATION ----
 
   if (error === "invalid-json" || error === "not-found") {
@@ -75,8 +65,8 @@ export function ReaderPage() {
     return <p>Loading…</p>;
   }
 
-  const page = book.pages[currentPage - 1];
-  const isLoaded = loadedPages.has(currentPage);
+  const isStoryPage = currentPage <= book.pages.length;
+  const page = isStoryPage ? book.pages[currentPage - 1] : null;
 
   console.log(book);
   return (
@@ -100,9 +90,8 @@ export function ReaderPage() {
                         <TextControlsPanel {...readerSettings} />
                       ) : (
                         <img
-                          // style={{ maxHeight: "200px", display: "block" }}
                           src={
-                            page.imageBaseURL ||
+                            page?.imageBaseURL ||
                             "/images/generic/books/no-page-image-placeholder.webp"
                           }
                           alt={`Page ${currentPage}`}
@@ -134,7 +123,7 @@ export function ReaderPage() {
 
                     <div className="book-text-wrapper">
                       <div className="book-text">
-                        {page.lines.map((line, i) => (
+                        {page?.lines.map((line, i) => (
                           <p key={i}>{line}</p>
                         ))}
                       </div>
