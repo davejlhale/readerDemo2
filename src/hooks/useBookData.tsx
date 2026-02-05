@@ -115,6 +115,7 @@ export function useBookData(seriesId?: string, bookId?: string) {
     }
 
     load();
+
     return () => {
       cancelled = true;
     };

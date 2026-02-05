@@ -43,7 +43,7 @@ import { useBookPreloader } from "../hooks/useBookPreloader";
 import "../styles/series-index.css"; //needs a series-books.css fully done one day
 import "../styles/BookCardControlPanel.css";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
-import { BAND_ORDER } from "../_CONSTANTS/constants";
+import { useSortedBooks } from "../hooks/useSortedBooks";
 export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
   const navigate = useNavigate();
@@ -74,19 +74,13 @@ export function SeriesBooksPage() {
       });
     }
   }, [error, navigate, seriesId]);
+  const sortedBooks = useSortedBooks(data);
 
   if (loading) return <p>Loading…</p>;
   if (!data) return null; // navigation will handle
 
   console.log("DATA", data);
-  const bandSorted = data.slice().sort((a, b) => {
-    const bandDiff = BAND_ORDER[a.band] - BAND_ORDER[b.band];
-
-    if (bandDiff !== 0) return bandDiff;
-
-    return a.numericScore - b.numericScore; // or b.score - a.score
-  });
-  console.log("sorted", bandSorted);
+  console.log("sorted", sortedBooks);
 
   return (
     <main className="series-index-wrapper">
@@ -99,7 +93,7 @@ export function SeriesBooksPage() {
 
         <div className="series-row-wrapper">
           <div className="series-row">
-            {bandSorted.map((book) => {
+            {sortedBooks.map((book) => {
               // console.log(book);
 
               return (

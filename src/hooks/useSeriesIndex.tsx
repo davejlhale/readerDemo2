@@ -8,19 +8,20 @@ export type SeriesMeta = {
 
 export function useSeriesIndex() {
   const [data, setData] = useState<SeriesMeta[] | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const loading = data === null && !error;
 
   useEffect(() => {
     fetch("/data/series.index.json")
       .then((r) => r.json())
       .then((json) => {
         setData(json.series);
-        setLoading(false);
+        // setLoading(false);
       })
       .catch(() => {
         setError(true);
-        setLoading(false);
+        // setLoading(false);
       });
   }, []);
 
