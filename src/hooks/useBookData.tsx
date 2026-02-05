@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { AppError } from "../utility/errors/AppError";
 
 export type BookTextData = {
   validator: ValidatorData;
@@ -54,72 +54,48 @@ export type PageData = {
     };
   };
 };
+// useBookData.suspense.ts
+let cache = new Map();
 
 export function useBookData(seriesId?: string, bookId?: string) {
-  const [data, setData] = useState<BookTextData | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  if (!seriesId || !bookId) {
+    throw new Error("Missing seriesId or bookId");
+  }
 
-  useEffect(() => {
-    if (!seriesId || !bookId) {
-      setError("Missing seriesId or bookId");
-      return;
-    }
+  const key = `${seriesId}/${bookId}`;
 
-    let cancelled = false;
+  // If cached, return immediately
+  if (cache.has(key)) {
+    const entry = cache.get(key);
+    if (entry.error) throw entry.error;
+    if (entry.data) return entry.data;
+    throw entry.promise;
+  }
 
-    async function load() {
-      try {
-        const url = `/data/${seriesId}/${bookId}.json`;
-        const res = await fetch(url);
-
-        if (!res.ok) {
-          if (res.status === 404) {
-            throw new Error("NOT_FOUND");
-          }
-          throw new Error("NETWORK_ERROR");
-        }
-
-        const contentType = res.headers.get("content-type");
-
-        if (!contentType || !contentType.includes("application/json")) {
-          throw new Error("INVALID_JSON");
-        }
-
-        const json = await res.json();
-
-        if (!cancelled) {
-          setData(json);
-          setError(null);
-        }
-      } catch (err) {
-        if (cancelled) return;
-
-        if (err instanceof Error) {
-          switch (err.message) {
-            case "NOT_FOUND":
-              setError("not-found");
-              break;
-            case "INVALID_JSON":
-              setError("invalid-json");
-              break;
-            case "NETWORK_ERROR":
-              setError("network-error");
-              break;
-            default:
-              setError("network-error");
-          }
-        } else {
-          setError("network-error");
-        }
+  // Create a load entry
+  let entry: any = {};
+  entry.promise = fetch(`/data/${seriesId}/${bookId}.json`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new AppError("NETWORK_ERROR");
       }
-    }
 
-    load();
+      const type = res.headers.get("content-type");
+      if (!type || !type.includes("application/json")) {
+        const msg = "random";
+        throw new AppError("BOOK_NOT_FOUND", { seriesId, bookId, msg });
+      }
 
-    return () => {
-      cancelled = true;
-    };
-  }, [seriesId, bookId]);
+      return res.json();
+    })
+    .then((json) => {
+      entry.data = json;
+    })
+    .catch((err) => {
+      entry.error = err;
+    });
 
-  return { data, error };
+  cache.set(key, entry);
+
+  throw entry.promise;
 }

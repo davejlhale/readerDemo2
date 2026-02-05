@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
-import { useBookData } from "../hooks/useBookData";
+import { useBookData, type PageData } from "../hooks/useBookData";
 import "../styles/series-books.css";
 import { TextControlsPanel } from "../components/TextControlsPanel";
 import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
@@ -17,8 +17,8 @@ export function ReaderPage() {
   const navigate = useNavigate();
 
   //gets books json file
-  const { data: book, error } = useBookData(seriesId, bookId);
-
+  // const { data: book, error } = useBookData(seriesId, bookId);
+  const book = useBookData(seriesId, bookId);
   const maxPage = useMemo(() => (book ? book.pages.length + 1 : 1), [book]);
 
   // ---- PAGE VALIDATION ----
@@ -27,7 +27,17 @@ export function ReaderPage() {
     const parsed = Number(pageNumber);
     return parsed >= 1 && parsed <= maxPage ? parsed : 1;
   }, [pageNumber, maxPage]);
+  useEffect(() => {
+    const parsed = Number(pageNumber);
 
+    if (parsed !== currentPage) {
+      navigate(`/reader/${seriesId}/${bookId}/${currentPage}`, {
+        replace: true,
+      });
+    }
+  }, [pageNumber, currentPage, seriesId, bookId, navigate]);
+
+  // navigate(`/reader/${seriesId}/${bookId}/${currentPage}`);
   //book nav
   const goPrev = () =>
     navigate(`/reader/${seriesId}/${bookId}/${currentPage - 1}`);
@@ -36,7 +46,7 @@ export function ReaderPage() {
 
   const pageAssets = useMemo(
     () =>
-      book?.pages.map((p) => ({
+      book?.pages.map((p: PageData) => ({
         page: p.pageNumber,
         imageBaseURL: p.imageBaseURL,
       })) ?? [],
@@ -52,21 +62,6 @@ export function ReaderPage() {
   const isLoaded = loadedPages.has(currentPage);
   const [showTextControls, setShowTextControls] = useState(false);
   const page = book?.pages[currentPage - 1];
-
-  // ---- ERROR NAVIGATION ----
-  if (error === "invalid-json" || error === "not-found") {
-    return <Navigate to="/book-not-found" replace />;
-  }
-  if (error === "network-error") {
-    return <Navigate to="/network-error" replace />;
-  }
-  if (error) {
-    return <p>Error : {error}</p>;
-  }
-
-  if (!book) {
-    return <p>Loading…</p>;
-  }
 
   // -------- RENDER PAGE  -------//
   console.log(page);
@@ -104,7 +99,7 @@ export function ReaderPage() {
                   {/* BOOK TEXT*/}
                   <div className="book-text-wrapper">
                     <div className="book-text">
-                      {page?.lines.map((line, i) => (
+                      {page?.lines.map((line: String, i: number) => (
                         <p key={i}>{line}</p>
                       ))}
                     </div>

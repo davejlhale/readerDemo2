@@ -1,29 +1,44 @@
-import { useEffect, useState } from "react";
+import { AppError } from "../utility/errors/AppError";
 
 export type SeriesMeta = {
   id: string;
   title: string;
   cardImage: string;
 };
+let cache = new Map();
 
 export function useSeriesIndex() {
-  const [data, setData] = useState<SeriesMeta[] | null>(null);
-  const [error, setError] = useState(false);
+  const key = "series-index";
+  if (cache.has(key)) {
+    const entry = cache.get(key);
+    if (entry.error) throw entry.error;
+    if (entry.data) return entry.data;
+    throw entry.promise;
+  }
 
-  const loading = data === null && !error;
+  const entry: any = {};
+  entry.promise = fetch(`/data/series-index.json`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new AppError("NETWORK_ERROR");
+      }
 
-  useEffect(() => {
-    fetch("/data/series.index.json")
-      .then((r) => r.json())
-      .then((json) => {
-        setData(json.series);
-        // setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        // setLoading(false);
-      });
-  }, []);
+      const contentType = res.headers.get("content-type");
 
-  return { data, loading, error };
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new AppError("SERIES_LIST_MISSING");
+      }
+
+      return res.json();
+    })
+    .then((json) => {
+      entry.data = json.series;
+    })
+    .catch((err) => {
+      entry.error = err;
+    });
+
+  cache.set(key, entry);
+
+  throw entry.promise;
 }

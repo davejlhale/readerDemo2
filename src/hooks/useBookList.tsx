@@ -1,56 +1,40 @@
-import { useEffect, useState } from "react";
-import type { BooksMeta } from "../_CONSTANTS/constants";
+import { AppError } from "../utility/errors/AppError";
+
+let cache = new Map();
 
 export function useBookList(seriesId?: string) {
-  const [data, setData] = useState<BooksMeta[] | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  if (!seriesId) throw new Error("missing-series-id");
 
-  useEffect(() => {
-    if (!seriesId) {
-      setError("No seriesId provided.");
-      return;
-    }
+  if (cache.has(seriesId)) {
+    const entry = cache.get(seriesId);
+    if (entry.error) throw entry.error;
+    if (entry.data) return entry.data;
+    throw entry.promise;
+  }
 
-    const fetchBooks = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const cleanId = seriesId.replace(/^\//, "");
-        const url = `/data/${cleanId}/book-list.json`;
-
-        console.log("Fetching:", url);
-
-        const res = await fetch(url);
-
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status} – ${res.statusText}`);
-        }
-
-        const json = await res.json();
-        const books: BooksMeta[] = json.books.map((b: any) => ({
-          id: String(b.id),
-          title: String(b.title),
-          coverImage: String(b.coverImage),
-          band: String(b.band) || null,
-          textualContentOnlyBand: String(b.textual_content_only_band),
-          numericScore: Number(b.numeric_score),
-        }));
-        setData(books);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("Unknown error");
-        }
-      } finally {
-        setLoading(false);
+  const entry: any = {};
+  entry.promise = fetch(`/data/${seriesId}/book-list.json`)
+    .then((r) => {
+      if (!r.ok) {
+        throw new AppError("NETWORK_ERROR");
       }
-    };
 
-    fetchBooks();
-  }, [seriesId]);
+      const contentType = r.headers.get("content-type");
 
-  return { data, loading, error };
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new AppError("MISSING_SERIES_ID", { seriesId });
+      }
+
+      return r.json();
+    })
+    .then((json) => {
+      entry.data = json.books;
+    })
+    .catch((err) => {
+      entry.error = err;
+    });
+
+  cache.set(seriesId, entry);
+
+  throw entry.promise;
 }

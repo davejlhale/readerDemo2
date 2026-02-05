@@ -38,7 +38,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBookList } from "../hooks/useBookList";
 import { BookCoverCard } from "../components/cards/BookCoverCard";
-import { useEffect } from "react";
 import { useBookPreloader } from "../hooks/useBookPreloader";
 import "../styles/series-index.css"; //needs a series-books.css fully done one day
 import "../styles/BookCardControlPanel.css";
@@ -48,35 +47,11 @@ export function SeriesBooksPage() {
   const { seriesId } = useParams<{ seriesId: string }>();
   const navigate = useNavigate();
   const { preloadBook, progress } = useBookPreloader();
-  const { data, loading, error } = useBookList(seriesId);
+  const data = useBookList(seriesId);
   const location = useLocation();
 
-  useEffect(() => {
-    if (!seriesId) {
-      navigate("/error", {
-        state: {
-          seriesId,
-          message: "No seriesId provided.",
-          source: "SeriesBooksPage",
-        },
-      });
-    }
-  }, [seriesId, navigate]);
-
-  useEffect(() => {
-    if (error) {
-      navigate("/error", {
-        state: {
-          seriesId,
-          message: error,
-          source: "SeriesBooksPage",
-        },
-      });
-    }
-  }, [error, navigate, seriesId]);
   const sortedBooks = useSortedBooks(data);
 
-  if (loading) return <p>Loading…</p>;
   if (!data) return null; // navigation will handle
 
   console.log("DATA", data);
