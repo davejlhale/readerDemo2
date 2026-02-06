@@ -35,7 +35,8 @@ export function useSeriesIndex() {
       entry.data = json.series;
     })
     .catch((err) => {
-      entry.error = err;
+      entry.error =
+        err instanceof AppError ? err : new AppError("NETWORK_ERROR");
     });
 
   cache.set(key, entry);

@@ -46,6 +46,7 @@ export function BookCoverCard({
         decoding="async"
         onError={(e) => {
           setHasImage(false);
+          e.currentTarget.onerror = null; // prevent loop
           e.currentTarget.src = "/images/generic/books/coming-soon.webp";
         }}
       />

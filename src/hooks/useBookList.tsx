@@ -31,7 +31,8 @@ export function useBookList(seriesId?: string) {
       entry.data = json.books;
     })
     .catch((err) => {
-      entry.error = err;
+      entry.error =
+        err instanceof AppError ? err : new AppError("NETWORK_ERROR");
     });
 
   cache.set(seriesId, entry);

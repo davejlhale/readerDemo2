@@ -3,7 +3,8 @@ export type AppErrorCode =
   | "NETWORK_ERROR"
   | "MISSING_SERIES_ID"
   | "BOOK_NOT_FOUND"
-  | "SERIES_LIST_MISSING";
+  | "SERIES_LIST_MISSING"
+  | "PAGE_NOT_FOUND";
 
 export class AppError extends Error {
   code: AppErrorCode;

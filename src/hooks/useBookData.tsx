@@ -92,7 +92,8 @@ export function useBookData(seriesId?: string, bookId?: string) {
       entry.data = json;
     })
     .catch((err) => {
-      entry.error = err;
+      entry.error =
+        err instanceof AppError ? err : new AppError("NETWORK_ERROR");
     });
 
   cache.set(key, entry);

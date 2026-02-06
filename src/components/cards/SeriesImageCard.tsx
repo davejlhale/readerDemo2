@@ -20,6 +20,10 @@ export function SeriesImageCard({
         alt={title}
         loading="lazy"
         draggable={false}
+        onError={(e) => {
+          e.currentTarget.onerror = null; // prevent loop
+          e.currentTarget.src = "/images/generic/books/coming-soon.webp";
+        }}
       />
       <span>{title}</span>
     </button>

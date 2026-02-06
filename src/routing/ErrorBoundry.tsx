@@ -1,7 +1,7 @@
 import { Component } from "react";
 import type { ReactNode } from "react";
-import { AppError } from "./utility/errors/AppError";
-import { errorViewMap } from "./utility/errors/errorViewMap";
+import { AppError } from "../utility/errors/AppError";
+import { errorViewMap } from "../utility/errors/errorViewMap";
 
 type Props = { children: ReactNode };
 type State = { error: Error | null };

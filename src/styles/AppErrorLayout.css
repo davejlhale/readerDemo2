@@ -1,0 +1,47 @@
+.error-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  text-align: center;
+  font-size: 1.5em;
+  padding-bottom: 1.5rem;
+  min-height: 0;
+  flex: 1;
+}
+.error-page-content {
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+}
+.error-page-title {
+  margin: 0.1em;
+}
+.error-page-message-block-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+}
+.error-page-children p {
+  padding: 0.3rem 1.3rem;
+}
+.error-page-actions-wrapper {
+  display: flex;
+  font-size: 1.7em;
+  margin: 0.5rem;
+  padding: 0.8rem;
+}
+.error-page-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+.error-page-links button {
+  border: 4px outset rgb(243, 142, 243);
+  border-radius: 999px;
+  padding: 0.2rem 1.2rem;
+}
