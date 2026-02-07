@@ -179,7 +179,7 @@
     },
     {
       "pageNumber": 15,
-      "lines": ["Rocco turns around.", "Behind the sofa"],
+      "lines": ["Rocco turns around.", "Behind the sofa."],
       "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-15.webp",
 
       "meta": { "pageWordCount": 5 }
