@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData, type PageData } from "../hooks/useBookData";
@@ -10,40 +10,34 @@ import { useReaderSettings } from "../hooks/useReaderSettings";
 import { LoadingBadge } from "../components/badges/LoadingBadge";
 import { TopFade, BottomFade } from "../components/buttons/TextFaders";
 import { IMAGE_PATHS } from "../_CONSTANTS/constants";
+import { useScrollableText } from "../hooks/useScrollableText";
 
 export function ReaderPage() {
+  const navigate = useNavigate();
+
   const { seriesId, bookId, pageNumber } = useParams();
   const readerSettings = useReaderSettings();
-
-  const navigate = useNavigate();
-  const textRef = useRef<HTMLDivElement | null>(null);
-  const [isOverflowing, setIsOverflowing] = useState(false);
-
-  //gets books json file
-  // const { data: book, error } = useBookData(seriesId, bookId);
+  const [showTextControls, setShowTextControls] = useState(false);
   const book = useBookData(seriesId, bookId);
-  const maxPage = book ? book.pages.length + 1 : 1;
-  // ---- PAGE VALIDATION ----
 
+  /*=======
+  replacing url with in range page number
+  ==========*/
+  const maxPage = book ? book.pages.length + 1 : 1;
   const parsed = Number(pageNumber);
   const currentPage = parsed >= 1 && parsed <= maxPage ? parsed : 1;
   useEffect(() => {
-    const parsed = Number(pageNumber);
-
     if (parsed !== currentPage) {
       navigate(`/reader/${seriesId}/${bookId}/${currentPage}`, {
         replace: true,
       });
     }
-  }, [pageNumber, currentPage, seriesId, bookId, navigate]);
+  }, [currentPage, seriesId, bookId, navigate]);
 
-  // navigate(`/reader/${seriesId}/${bookId}/${currentPage}`);
-  //book nav
-  const goPrev = () =>
-    navigate(`/reader/${seriesId}/${bookId}/${currentPage - 1}`);
-  const goNext = () =>
-    navigate(`/reader/${seriesId}/${bookId}/${currentPage + 1}`);
-
+  /* ========
+get an array of image urls per page
+and preload them
+===========*/
   const pageAssets = book
     ? book.pages.map((p: PageData) => ({
         page: p.pageNumber,
@@ -54,129 +48,28 @@ export function ReaderPage() {
   const { loadedPages } = usePriorityPreloader(currentPage, pageAssets);
 
   const isLoaded = loadedPages.has(currentPage);
-  const [showTextControls, setShowTextControls] = useState(false);
   const page = book?.pages[currentPage - 1];
 
-  const [atTop, setAtTop] = useState(true);
-  const [atBottom, setAtBottom] = useState(false);
+  const {
+    textRef,
+    topFadeRef,
+    bottomFadeRef,
+    isOverflowing,
+    atTop,
+    atBottom,
+    scrollUp,
+    scrollDown,
+  } = useScrollableText(currentPage);
 
-  useEffect(() => {
-    const el = textRef.current;
-    if (!el) return;
-
-    const updateState = () => {
-      const overflowing = el.scrollHeight > el.clientHeight;
-
-      setIsOverflowing(overflowing);
-      setAtTop(el.scrollTop === 0);
-      setAtBottom(Math.ceil(el.scrollTop + el.clientHeight) >= el.scrollHeight);
-    };
-
-    // Initial check
-    updateState();
-
-    // Scroll listener
-    el.addEventListener("scroll", updateState);
-
-    // Resize observer
-    const resizeObserver = new ResizeObserver(() => {
-      updateState();
-    });
-
-    resizeObserver.observe(el);
-
-    return () => {
-      el.removeEventListener("scroll", updateState);
-      resizeObserver.disconnect();
-    };
-  }, [page, showTextControls]);
-
-  const scrollByAmount = (amount: number) => {
-    const el = textRef.current;
-    if (!el) return;
-
-    el.scrollBy({
-      top: amount,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollUp = useCallback(() => {
-    scrollByAmount(-elScrollAmount());
-  }, []);
-
-  const scrollDown = useCallback(() => {
-    scrollByAmount(elScrollAmount());
-  }, []);
-
-  function elScrollAmount() {
-    const el = textRef.current;
-    if (!el) return 0;
-
-    return Math.floor(el.clientHeight * 0.5); // 50% page scroll
+  if (!book) {
+    return (
+      <div className="book-page">
+        <LoadingBadge />
+      </div>
+    );
   }
-  useEffect(() => {
-    const el = textRef.current;
-    if (!el) return;
-
-    el.scrollTo({
-      top: 0,
-      behavior: "auto", // don't animate page reset
-    });
-  }, [currentPage]);
-
-  const topFadeRef = useRef<HTMLButtonElement | null>(null);
-  const bottomFadeRef = useRef<HTMLButtonElement | null>(null);
-
-  /* ==========
-  key handler
-  ========== */
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (
-        e.target instanceof HTMLElement &&
-        ["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)
-      ) {
-        return;
-      }
-      if (!isOverflowing) return;
-
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        scrollDown();
-
-        if (!atBottom && bottomFadeRef.current) {
-          setTimeout(() => {
-            topFadeRef.current?.blur();
-
-            bottomFadeRef.current?.focus();
-          }, 100);
-        }
-      }
-
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        scrollUp();
-
-        if (!atTop && topFadeRef.current) {
-          setTimeout(() => {
-            bottomFadeRef.current?.blur();
-
-            topFadeRef.current?.focus();
-          }, 100);
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOverflowing, scrollUp, scrollDown, atTop, atBottom]);
 
   // -------- RENDER PAGE  -------//
-  console.log(isOverflowing);
   return (
     <div className="book-page">
       {/* =========================
@@ -265,7 +158,9 @@ export function ReaderPage() {
       <div className="book-navigation">
         <button
           className="book-page-nav-button prev scaler-cap "
-          onClick={goPrev}
+          onClick={() =>
+            navigate(`/reader/${seriesId}/${bookId}/${currentPage - 1}`)
+          }
           disabled={currentPage <= 1}
           aria-label="Previous page"
         ></button>
@@ -278,7 +173,9 @@ export function ReaderPage() {
         </div>
         <button
           className="book-page-nav-button next scaler-cap"
-          onClick={goNext}
+          onClick={() =>
+            navigate(`/reader/${seriesId}/${bookId}/${currentPage + 1}`)
+          }
           disabled={currentPage >= maxPage}
           aria-label="Next page"
         ></button>
