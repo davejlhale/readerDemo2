@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData, type PageData } from "../hooks/useBookData";
@@ -106,8 +106,13 @@ export function ReaderPage() {
     });
   };
 
-  const scrollUp = () => scrollByAmount(-elScrollAmount());
-  const scrollDown = () => scrollByAmount(elScrollAmount());
+  const scrollUp = useCallback(() => {
+    scrollByAmount(-elScrollAmount());
+  }, []);
+
+  const scrollDown = useCallback(() => {
+    scrollByAmount(elScrollAmount());
+  }, []);
 
   function elScrollAmount() {
     const el = textRef.current;
@@ -124,6 +129,56 @@ export function ReaderPage() {
       behavior: "auto", // don't animate page reset
     });
   }, [currentPage]);
+
+  const topFadeRef = useRef<HTMLButtonElement | null>(null);
+  const bottomFadeRef = useRef<HTMLButtonElement | null>(null);
+
+  /* ==========
+  key handler
+  ========== */
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.target instanceof HTMLElement &&
+        ["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)
+      ) {
+        return;
+      }
+      if (!isOverflowing) return;
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        scrollDown();
+
+        if (!atBottom && bottomFadeRef.current) {
+          setTimeout(() => {
+            topFadeRef.current?.blur();
+
+            bottomFadeRef.current?.focus();
+          }, 100);
+        }
+      }
+
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        scrollUp();
+
+        if (!atTop && topFadeRef.current) {
+          setTimeout(() => {
+            bottomFadeRef.current?.blur();
+
+            topFadeRef.current?.focus();
+          }, 100);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOverflowing, scrollUp, scrollDown, atTop, atBottom]);
 
   // -------- RENDER PAGE  -------//
   console.log(isOverflowing);
@@ -165,14 +220,17 @@ export function ReaderPage() {
                       ref={textRef}
                       role="region"
                       aria-label="Book text"
+                      tabIndex={-1}
                     >
                       {page?.lines.map((line: String, i: number) => (
                         <p key={i}>{line}</p>
                       ))}
                     </div>
-                    {isOverflowing && !atTop && <TopFade onClick={scrollUp} />}
+                    {isOverflowing && !atTop && (
+                      <TopFade ref={topFadeRef} onClick={scrollUp} />
+                    )}
                     {isOverflowing && !atBottom && (
-                      <BottomFade onClick={scrollDown} />
+                      <BottomFade ref={bottomFadeRef} onClick={scrollDown} />
                     )}
                   </div>
                 </>

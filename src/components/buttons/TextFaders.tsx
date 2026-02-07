@@ -1,19 +1,31 @@
-type FadeProps = {
-  onClick: () => void;
-};
+// type FadeProps = {
+//   onClick: () => void;
+// };
+import { forwardRef } from "react";
 
-export function TopFade({ onClick }: FadeProps) {
-  return (
-    <button className="top-fade" onClick={onClick} aria-label="Scroll up">
+export const TopFade = forwardRef<HTMLButtonElement, { onClick: () => void }>(
+  ({ onClick }, ref) => (
+    <button
+      className="top-fade"
+      ref={ref}
+      onClick={onClick}
+      aria-label="Scroll up"
+    >
       ☝
     </button>
-  );
-}
+  ),
+);
 
-export function BottomFade({ onClick }: FadeProps) {
-  return (
-    <button className="bottom-fade" onClick={onClick} aria-label="Scroll Down">
-      👇
-    </button>
-  );
-}
+export const BottomFade = forwardRef<
+  HTMLButtonElement,
+  { onClick: () => void }
+>(({ onClick }, ref) => (
+  <button
+    className="bottom-fade"
+    ref={ref}
+    onClick={onClick}
+    aria-label="Scroll Down"
+  >
+    👇
+  </button>
+));
