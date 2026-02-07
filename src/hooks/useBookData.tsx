@@ -43,7 +43,7 @@ export type ValidatorData = {
 
 export type PageData = {
   pageNumber: number;
-  imageBaseURL: null;
+  imageBaseURL: string | null;
   altText?: string;
   lines: string[];
   meta: {
