@@ -2,7 +2,9 @@ import "../styles/TextControlsPanel.css";
 import { ScalerControls } from "./ScalerControls";
 import type { ReaderSettings } from "../hooks/useReaderSettings";
 
-export function TextControlsPanel(props: ReaderSettings) {
+export function TextControlsPanel(
+  props: ReaderSettings & { onClose: () => void },
+) {
   const {
     setFontSize,
     setWordSpacing,
@@ -11,10 +13,18 @@ export function TextControlsPanel(props: ReaderSettings) {
     currentTheme,
     cycleTheme,
     resetSettings,
+    onClose,
   } = props;
 
   return (
     <div className="text-controls-panel scaler-cap">
+      <button
+        className="panel-close-button"
+        onClick={onClose}
+        aria-label="Close text settings panel"
+      >
+        ✕
+      </button>
       <div>
         <ScalerControls
           labelMinus="LH−"
@@ -23,7 +33,7 @@ export function TextControlsPanel(props: ReaderSettings) {
           min={1}
           max={5}
           step={0.1}
-          className="font-size-controls zme"
+          className="font-size-controls scaler-pair"
         />
         <ScalerControls
           labelMinus="LS−"
@@ -32,7 +42,7 @@ export function TextControlsPanel(props: ReaderSettings) {
           min={0}
           max={0.5}
           step={0.02}
-          className="font-size-controls"
+          className="font-size-controls scaler-pair"
         />
       </div>
       <div>
@@ -43,7 +53,7 @@ export function TextControlsPanel(props: ReaderSettings) {
           min={0.8}
           max={6}
           step={0.1}
-          className="font-size-controls"
+          className="font-size-controls scaler-pair"
         />
 
         <ScalerControls
@@ -53,7 +63,7 @@ export function TextControlsPanel(props: ReaderSettings) {
           min={0}
           max={5}
           step={0.05}
-          className="word-spacing-controls"
+          className="word-spacing-controls scaler-pair"
         />
       </div>
       <div>

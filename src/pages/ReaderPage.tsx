@@ -200,7 +200,10 @@ export function ReaderPage() {
                   <div className="book-image">
                     {/* SHOW TEXT CONTROLS OR IMAGE */}
                     {showTextControls ? (
-                      <TextControlsPanel {...readerSettings} />
+                      <TextControlsPanel
+                        {...readerSettings}
+                        onClose={() => setShowTextControls(false)}
+                      />
                     ) : (
                       <img
                         src={page?.imageBaseURL || FALLBACK_IMAGE}

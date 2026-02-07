@@ -5,11 +5,16 @@
 .text-controls-panel {
   display: flex;
   gap: 1rem;
-  background-color: rgb(50, 54, 53);
+  background-color: rgb(143, 143, 143);
   flex-shrink: 0; /* Prevent collapse */
   padding: 1%;
   flex-direction: column;
   flex-wrap: wrap;
+  position: relative;
+}
+.text-controls-panel * {
+  border-color: rgb(46, 45, 45);
+  border-radius: 6px;
 }
 
 /* rows */
@@ -23,26 +28,42 @@
 }
 
 .text-controls-panel button {
-  min-width: 68px;
-  border: none;
-  border-radius: 6px;
   cursor: pointer;
-  margin: 2px;
 }
+
 .reset-button {
   background: #eb7878;
   color: rgb(20, 20, 20);
 }
 .colour-hanger,
 .reset-button {
-  padding: 0.5rem 1.5rem;
+  padding: 5px 15px;
 }
 
+.panel-close-button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #a33d3d;
+  background: #ee5d5d; /* bright red */
+  color: white; /* white arrow */
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+.scaler-pair button {
+  border: none;
+  padding: 2px 6px;
+  min-width: 48px;
+  margin: 0.1rem 0.1rem;
+}
 @media (orientation: portrait) {
   .text-controls-panel {
     display: flex;
     flex: 1 0 auto;
-    color: #faebd7;
   }
 }
 
@@ -57,9 +78,5 @@
     display: flex;
     min-height: 0;
     justify-content: space-evenly;
-  }
-  .text-controls-panel > div {
-    justify-content: space-evenly;
-    align-items: center;
   }
 }
