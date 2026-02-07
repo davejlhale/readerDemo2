@@ -1,5 +1,7 @@
 :root {
   --bkcol: #363636;
+  --nav-button-background-color: #005fcc;
+  --nav-button-border-color: 3px solid #003f8a;
 }
 
 .book-page {
@@ -46,6 +48,7 @@
   min-height: 0; /* CRITICAL for flex scrolling */
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .book-text {
@@ -62,7 +65,24 @@
   letter-spacing: var(--letter-spacing);
   line-height: var(--line-height);
 }
+.top-fade,
+.bottom-fade {
+  background-color: var(--nav-button-background-color);
+  /* border: 81px solid var(--nav-button-border-color); */
+  padding: 5px;
+  font-size: 1.5rem;
+  border-radius: 100%;
+  position: absolute;
+  z-index: 10;
+}
 
+.top-fade {
+  right: 0px;
+}
+.bottom-fade {
+  right: 0px;
+  bottom: 1rem;
+}
 /* =========================
    NAVIGATION
 ========================= */
@@ -88,8 +108,8 @@
   width: 5rem;
   height: 3rem;
   border-radius: 45%;
-  background: #005fcc;
-  border: 3px solid #003f8a;
+  background: var(--nav-button-background-color);
+  border: 3px solid var(--nav-button-border-color);
   cursor: pointer;
   box-shadow:
     0 4px 0 #003f8a,
@@ -233,12 +253,20 @@
     padding-bottom: 8%;
   }
   .book-text {
+    background-color: red;
     margin-bottom: 8%;
     padding: 0.2rem 0.5rem;
   }
   /* no margi on 1st p */
   .book-text p + p {
     margin-top: 1.4rem;
+  }
+  .top-fade,
+  .bottom-fade {
+    right: 1.8rem;
+  }
+  .bottom-fade {
+    bottom: 1.8rem;
   }
   .book-wrapper {
     background-image: url("/images/generic/books/blank-book-landscape.webp");

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePriorityPreloader } from "../hooks/usePriorityPreloader";
 import { useBookData, type PageData } from "../hooks/useBookData";
@@ -8,6 +8,7 @@ import { NavigateBackButton } from "../components/buttons/NavigateBackButton";
 import { TextControlsToggle } from "../components/buttons/TextControlsToggle";
 import { useReaderSettings } from "../hooks/useReaderSettings";
 import { LoadingBadge } from "../components/badges/LoadingBadge";
+import { TopFade, BottomFade } from "../components/buttons/TextFaders";
 
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
@@ -15,6 +16,8 @@ export function ReaderPage() {
   const FALLBACK_IMAGE = "/images/generic/books/no-page-image-placeholder.webp";
   const ENDPAGE_IMAGE = "/images/generic/books/end-page--floral.webp";
   const navigate = useNavigate();
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
 
   //gets books json file
   // const { data: book, error } = useBookData(seriesId, bookId);
@@ -55,16 +58,75 @@ export function ReaderPage() {
 
   const { loadedPages } = usePriorityPreloader(currentPage, pageAssets);
 
-  /* ===============
-   used in conditional renders
-   ================== */
-
   const isLoaded = loadedPages.has(currentPage);
   const [showTextControls, setShowTextControls] = useState(false);
   const page = book?.pages[currentPage - 1];
 
+  const [atTop, setAtTop] = useState(true);
+  const [atBottom, setAtBottom] = useState(false);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+
+    const updateState = () => {
+      const overflowing = el.scrollHeight > el.clientHeight;
+
+      setIsOverflowing(overflowing);
+      setAtTop(el.scrollTop === 0);
+      setAtBottom(Math.ceil(el.scrollTop + el.clientHeight) >= el.scrollHeight);
+    };
+
+    // Initial check
+    updateState();
+
+    // Scroll listener
+    el.addEventListener("scroll", updateState);
+
+    // Resize observer
+    const resizeObserver = new ResizeObserver(() => {
+      updateState();
+    });
+
+    resizeObserver.observe(el);
+
+    return () => {
+      el.removeEventListener("scroll", updateState);
+      resizeObserver.disconnect();
+    };
+  }, [page, showTextControls]);
+
+  const scrollByAmount = (amount: number) => {
+    const el = textRef.current;
+    if (!el) return;
+
+    el.scrollBy({
+      top: amount,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollUp = () => scrollByAmount(-elScrollAmount());
+  const scrollDown = () => scrollByAmount(elScrollAmount());
+
+  function elScrollAmount() {
+    const el = textRef.current;
+    if (!el) return 0;
+
+    return Math.floor(el.clientHeight * 0.5); // 50% page scroll
+  }
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+
+    el.scrollTo({
+      top: 0,
+      behavior: "auto", // don't animate page reset
+    });
+  }, [currentPage]);
+
   // -------- RENDER PAGE  -------//
-  console.log(page);
+  console.log(isOverflowing);
   return (
     <div className="book-page">
       {/* =========================
@@ -98,11 +160,20 @@ export function ReaderPage() {
                   </div>
                   {/* BOOK TEXT*/}
                   <div className="book-text-wrapper">
-                    <div className="book-text">
+                    <div
+                      className="book-text"
+                      ref={textRef}
+                      role="region"
+                      aria-label="Book text"
+                    >
                       {page?.lines.map((line: String, i: number) => (
                         <p key={i}>{line}</p>
                       ))}
                     </div>
+                    {isOverflowing && !atTop && <TopFade onClick={scrollUp} />}
+                    {isOverflowing && !atBottom && (
+                      <BottomFade onClick={scrollDown} />
+                    )}
                   </div>
                 </>
               )}
