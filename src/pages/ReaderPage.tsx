@@ -9,12 +9,12 @@ import { TextControlsToggle } from "../components/buttons/TextControlsToggle";
 import { useReaderSettings } from "../hooks/useReaderSettings";
 import { LoadingBadge } from "../components/badges/LoadingBadge";
 import { TopFade, BottomFade } from "../components/buttons/TextFaders";
+import { IMAGE_PATHS } from "../_CONSTANTS/constants";
 
 export function ReaderPage() {
   const { seriesId, bookId, pageNumber } = useParams();
   const readerSettings = useReaderSettings();
-  const FALLBACK_IMAGE = "/images/generic/books/no-page-image-placeholder.webp";
-  const ENDPAGE_IMAGE = "/images/generic/books/end-page--floral.webp";
+
   const navigate = useNavigate();
   const textRef = useRef<HTMLDivElement | null>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -22,14 +22,11 @@ export function ReaderPage() {
   //gets books json file
   // const { data: book, error } = useBookData(seriesId, bookId);
   const book = useBookData(seriesId, bookId);
-  const maxPage = useMemo(() => (book ? book.pages.length + 1 : 1), [book]);
-
+  const maxPage = book ? book.pages.length + 1 : 1;
   // ---- PAGE VALIDATION ----
 
-  const currentPage = useMemo(() => {
-    const parsed = Number(pageNumber);
-    return parsed >= 1 && parsed <= maxPage ? parsed : 1;
-  }, [pageNumber, maxPage]);
+  const parsed = Number(pageNumber);
+  const currentPage = parsed >= 1 && parsed <= maxPage ? parsed : 1;
   useEffect(() => {
     const parsed = Number(pageNumber);
 
@@ -47,14 +44,12 @@ export function ReaderPage() {
   const goNext = () =>
     navigate(`/reader/${seriesId}/${bookId}/${currentPage + 1}`);
 
-  const pageAssets = useMemo(
-    () =>
-      book?.pages.map((p: PageData) => ({
+  const pageAssets = book
+    ? book.pages.map((p: PageData) => ({
         page: p.pageNumber,
         imageBaseURL: p.imageBaseURL,
-      })) ?? [],
-    [book],
-  );
+      }))
+    : [];
 
   const { loadedPages } = usePriorityPreloader(currentPage, pageAssets);
 
@@ -206,10 +201,12 @@ export function ReaderPage() {
                       />
                     ) : (
                       <img
-                        src={page?.imageBaseURL || FALLBACK_IMAGE}
+                        src={
+                          page?.imageBaseURL || IMAGE_PATHS.NO_IMAGE_FALLBACK
+                        }
                         alt={`Page ${currentPage}`}
                         onError={(e) => {
-                          e.currentTarget.src = FALLBACK_IMAGE;
+                          e.currentTarget.src = IMAGE_PATHS.NO_IMAGE_FALLBACK;
                         }}
                       />
                     )}
@@ -244,10 +241,10 @@ export function ReaderPage() {
                 <>
                   <div className="book-image end-book-page">
                     <img
-                      src={ENDPAGE_IMAGE}
+                      src={IMAGE_PATHS.END_PAGE}
                       alt="The End"
                       onError={(e) => {
-                        e.currentTarget.src = FALLBACK_IMAGE;
+                        e.currentTarget.src = IMAGE_PATHS.NO_IMAGE_FALLBACK;
                       }}
                     />
                   </div>

@@ -23,6 +23,12 @@ export const BAND_ORDER: Record<Band, number> = {
   White: 10,
 };
 
+// C:\pathwaysReader\src\_CONSTANTS\constants.tsx
+
+export const IMAGE_PATHS = {
+  NO_IMAGE_FALLBACK: "/images/generic/books/no-page-image-placeholder.webp",
+  END_PAGE: "/images/generic/books/end-page--floral.webp",
+} as const;
 export interface BandingMeta {
   band: Band;
   score: number;
