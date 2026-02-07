@@ -78,21 +78,28 @@
     {
       "pageNumber": 1,
       "lines": ["Rocco is looking."],
+      "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-01.webp",
       "meta": { "pageWordCount": 3 }
     },
     {
       "pageNumber": 2,
       "lines": ["He sniffs.", "Sniff. Sniff."],
+      "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-02.webp",
+
       "meta": { "pageWordCount": 4 }
     },
     {
       "pageNumber": 3,
       "lines": ["Rocco looks under the table.", "Not here!"],
+      "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-03.webp",
+
       "meta": { "pageWordCount": 7 }
     },
     {
       "pageNumber": 4,
       "lines": ["Rocco looks behind the sofa.", "Not here!"],
+      "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-04.webp",
+
       "meta": { "pageWordCount": 7 }
     },
     {
@@ -105,33 +112,29 @@
       "lines": ["Rocco looks in the hall.", "Not here!"],
       "meta": { "pageWordCount": 7 }
     },
+
     {
       "pageNumber": 7,
-      "lines": ["Rocco looks by the stairs.", "Not here!"],
-      "meta": { "pageWordCount": 7 }
-    },
-    {
-      "pageNumber": 8,
       "lines": ["Rocco looks in the toy box.", "Boing!", "Not here!"],
       "meta": { "pageWordCount": 9 }
     },
     {
-      "pageNumber": 9,
+      "pageNumber": 8,
       "lines": ["Rocco runs outside."],
       "meta": { "pageWordCount": 3 }
     },
     {
-      "pageNumber": 10,
+      "pageNumber": 9,
       "lines": ["Rocco looks by the tree.", "Not here!"],
       "meta": { "pageWordCount": 7 }
     },
     {
-      "pageNumber": 11,
+      "pageNumber": 10,
       "lines": ["Rocco looks by the gate.", "Not here!"],
       "meta": { "pageWordCount": 7 }
     },
     {
-      "pageNumber": 12,
+      "pageNumber": 11,
       "lines": [
         "Rocco looks by the big flower pot.",
         "Sniff. Sniff.",
@@ -140,34 +143,38 @@
       "meta": { "pageWordCount": 11 }
     },
     {
-      "pageNumber": 13,
+      "pageNumber": 12,
       "lines": ["Rocco stops."],
       "meta": { "pageWordCount": 2 }
     },
     {
-      "pageNumber": 14,
+      "pageNumber": 13,
       "lines": ["He listens.", "Very quiet."],
       "meta": { "pageWordCount": 4 }
     },
     {
-      "pageNumber": 15,
+      "pageNumber": 14,
       "lines": ["Rocco’s ears pop up.", "Giggle! Giggle!"],
       "meta": { "pageWordCount": 6 }
     },
     {
-      "pageNumber": 16,
+      "pageNumber": 15,
       "lines": ["Rocco turns around.", "Behind the sofa"],
       "meta": { "pageWordCount": 5 }
     },
     {
-      "pageNumber": 17,
-      "lines": [
-        "There she is!",
-        "Rocco jumps.",
-        "Rocco wiggles.",
-        "Rocco licks.",
-        "He found his friend!"
-      ],
+      "pageNumber": 16,
+      "lines": ["There she is!", "Rocco jumps."],
+      "meta": { "pageWordCount": 11 }
+    },
+    {
+      "pageNumber": 16,
+      "lines": ["There she is!", "Rocco wiggles."],
+      "meta": { "pageWordCount": 11 }
+    },
+    {
+      "pageNumber": 16,
+      "lines": ["There she is!", "Rocco licks.", "He found his friend!"],
       "meta": { "pageWordCount": 11 }
     }
   ],
