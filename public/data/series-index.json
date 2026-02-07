@@ -1,11 +1,18 @@
 {
   "series": [
     {
+      "id": "the-adventures-of-rocco-and-emily",
+      "title": "The Adventures of Rocco and Emily",
+      "cardImage": "/images/series/the-adventures-of-rocco-and-emily/book-series-card.webp",
+      "shortDescription": "Gentle stories exploring contrast, friendship, and perspective."
+    },
+    {
       "id": "hugo-and-pip",
       "title": "Hugo & Pip",
       "cardImage": "/images/series/hugo-and-pip/book-series-card.webp",
       "shortDescription": "Guided-discovery reading adventures with Hugo and Pip."
     },
+
     {
       "id": "big-dog-little-dog",
       "title": "Big Dog, Little Dog",

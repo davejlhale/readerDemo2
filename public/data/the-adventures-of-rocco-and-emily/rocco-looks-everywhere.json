@@ -1,0 +1,176 @@
+{
+  "id": "rocco-looks-everywhere",
+  "title": "Rocco Looks Everywhere",
+  "seriesId": "the-adventures-of-rocco-and-emily",
+  "band": "Red",
+  "confidence": 0.89,
+  "dominantPhase": "Phase 2",
+  "bandInflationRiskScore": 0.08,
+  "artificialBandInflation": false,
+  "bandDeflationRiskScore": 0.21,
+  "artificialBandDeflation": false,
+  "metrics": {
+    "totalWords": 116,
+    "avgWordsPerPage": 6.82,
+    "maxWordsPerPage": 12,
+    "totalSentences": 34,
+    "avgSentenceLength": 3.41,
+    "maxSentenceLength": 6,
+    "patternRatio": 0.41,
+    "crossPageRecallIndex": 0.22,
+    "repetitionFrameRate": 0.47,
+    "narrativeComplexitySlope": 0.14,
+    "structuralEscalationIndex": 0.18,
+    "dialogueCount": 0,
+    "questionCount": 0,
+    "exclamationCount": 6
+  },
+  "phonics": {
+    "dominantPhase": "Phase 2",
+    "multiPhaseArc": false,
+    "phonicsPhaseConflictFlag": false,
+    "decodability": 0.79,
+    "exceptionDensity": 0.21,
+    "phase5Density": 0.05,
+    "CCPS": 0.09,
+    "notableGraphemes": ["oo", "ea", "igh", "ow"],
+    "Phonics Profiling": {
+      "Phase 2 Load": "61%",
+      "Phase 3 Grapheme Density": "24%",
+      "Phase 4 Cluster Density": "10%",
+      "Phase 5 Density": "5%",
+      "Phase 6 Morphology Load": "0%"
+    }
+  },
+  "bandEvaluations": [
+    {
+      "band": "Pink",
+      "hardPass": false,
+      "score": 63,
+      "reasons": [
+        "Page word counts exceed Pink limits.",
+        "Repetition frame complexity above Pink ceiling."
+      ]
+    },
+    {
+      "band": "Red",
+      "hardPass": true,
+      "score": 94,
+      "reasons": [
+        "Strong repetition frame ('Rocco looks…', 'Not here!').",
+        "Simple declarative sentences.",
+        "Low clause density.",
+        "Minimal morphology load.",
+        "Linear search narrative."
+      ]
+    },
+    {
+      "band": "Yellow",
+      "hardPass": true,
+      "score": 71,
+      "reasons": [
+        "Insufficient structural escalation for Yellow.",
+        "Sentence length below Yellow median."
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "pageNumber": 1,
+      "lines": ["Rocco is looking."],
+      "meta": { "pageWordCount": 3 }
+    },
+    {
+      "pageNumber": 2,
+      "lines": ["He sniffs.", "Sniff. Sniff."],
+      "meta": { "pageWordCount": 4 }
+    },
+    {
+      "pageNumber": 3,
+      "lines": ["Rocco looks under the table.", "Not here!"],
+      "meta": { "pageWordCount": 7 }
+    },
+    {
+      "pageNumber": 4,
+      "lines": ["Rocco looks behind the sofa.", "Not here!"],
+      "meta": { "pageWordCount": 7 }
+    },
+    {
+      "pageNumber": 5,
+      "lines": ["Rocco looks in the kitchen.", "Clink! Clatter!", "Not here!"],
+      "meta": { "pageWordCount": 9 }
+    },
+    {
+      "pageNumber": 6,
+      "lines": ["Rocco looks in the hall.", "Not here!"],
+      "meta": { "pageWordCount": 7 }
+    },
+    {
+      "pageNumber": 7,
+      "lines": ["Rocco looks by the stairs.", "Not here!"],
+      "meta": { "pageWordCount": 7 }
+    },
+    {
+      "pageNumber": 8,
+      "lines": ["Rocco looks in the toy box.", "Boing!", "Not here!"],
+      "meta": { "pageWordCount": 9 }
+    },
+    {
+      "pageNumber": 9,
+      "lines": ["Rocco runs outside."],
+      "meta": { "pageWordCount": 3 }
+    },
+    {
+      "pageNumber": 10,
+      "lines": ["Rocco looks by the tree.", "Not here!"],
+      "meta": { "pageWordCount": 7 }
+    },
+    {
+      "pageNumber": 11,
+      "lines": ["Rocco looks by the gate.", "Not here!"],
+      "meta": { "pageWordCount": 7 }
+    },
+    {
+      "pageNumber": 12,
+      "lines": [
+        "Rocco looks by the big flower pot.",
+        "Sniff. Sniff.",
+        "Not here!"
+      ],
+      "meta": { "pageWordCount": 11 }
+    },
+    {
+      "pageNumber": 13,
+      "lines": ["Rocco stops."],
+      "meta": { "pageWordCount": 2 }
+    },
+    {
+      "pageNumber": 14,
+      "lines": ["He listens.", "Very quiet."],
+      "meta": { "pageWordCount": 4 }
+    },
+    {
+      "pageNumber": 15,
+      "lines": ["Rocco’s ears pop up.", "Giggle! Giggle!"],
+      "meta": { "pageWordCount": 6 }
+    },
+    {
+      "pageNumber": 16,
+      "lines": ["Rocco turns around.", "Behind the sofa"],
+      "meta": { "pageWordCount": 5 }
+    },
+    {
+      "pageNumber": 17,
+      "lines": [
+        "There she is!",
+        "Rocco jumps.",
+        "Rocco wiggles.",
+        "Rocco licks.",
+        "He found his friend!"
+      ],
+      "meta": { "pageWordCount": 11 }
+    }
+  ],
+  "bandingExplanation": "The text demonstrates strong repetition frames, low sentence complexity, minimal morphology load, and dominant Phase 2 phonics. Page word counts remain within Red tolerances. Narrative complexity remains linear and predictable with controlled escalation at final reveal.",
+  "bandQualification": "Secure Red — suitable for mid-to-upper Red guided reading and independent decoding practice."
+}
