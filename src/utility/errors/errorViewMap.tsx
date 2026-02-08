@@ -10,4 +10,8 @@ export const errorViewMap: Record<AppErrorCode, React.ComponentType<any>> = {
   NOT_FOUND: SeriesIndexMissing,
   MISSING_SERIES_ID: SeriesIndexMissing,
   PAGE_NOT_FOUND: PageNotFound,
+  OFFLINE: OfflineError,
 };
+function OfflineError() {
+  return <p>You’re offline. Connect to load this series.</p>;
+}

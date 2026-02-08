@@ -182,28 +182,28 @@
       "lines": ["Rocco turns around.", "Behind the sofa."],
       "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-15.webp",
 
-      "meta": { "pageWordCount": 5 }
+      "meta": { "pageWordCount": 6 }
     },
     {
       "pageNumber": 16,
       "lines": ["There she is!", "Rocco jumps."],
       "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-16.webp",
 
-      "meta": { "pageWordCount": 11 }
+      "meta": { "pageWordCount": 5 }
     },
     {
       "pageNumber": 17,
       "lines": ["There she is!", "Rocco wiggles."],
       "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-17.webp",
 
-      "meta": { "pageWordCount": 11 }
+      "meta": { "pageWordCount": 5 }
     },
     {
       "pageNumber": 18,
       "lines": ["There she is!", "Rocco licks.", "He found his friend!"],
       "imageBaseURL": "/images/series/the-adventures-of-rocco-and-emily/rocco-looks-everywhere/pages/page-18.webp",
 
-      "meta": { "pageWordCount": 11 }
+      "meta": { "pageWordCount": 9 }
     }
   ],
   "bandingExplanation": "The text demonstrates strong repetition frames, low sentence complexity, minimal morphology load, and dominant Phase 2 phonics. Page word counts remain within Red tolerances. Narrative complexity remains linear and predictable with controlled escalation at final reveal.",

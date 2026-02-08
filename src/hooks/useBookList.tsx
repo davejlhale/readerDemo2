@@ -5,14 +5,16 @@ let cache = new Map();
 export function useBookList(seriesId?: string) {
   if (!seriesId) throw new Error("missing-series-id");
 
-  if (cache.has(seriesId)) {
-    const entry = cache.get(seriesId);
-    if (entry.error) throw entry.error;
-    if (entry.data) return entry.data;
-    throw entry.promise;
+  const cached = cache.get(seriesId);
+
+  if (cached) {
+    if (cached.error) throw cached.error;
+    if (cached.data) return cached.data;
+    throw cached.promise;
   }
 
   const entry: any = {};
+
   entry.promise = fetch(`/data/${seriesId}/book-list.json`)
     .then((r) => {
       if (!r.ok) {
@@ -31,8 +33,13 @@ export function useBookList(seriesId?: string) {
       entry.data = json.books;
     })
     .catch((err) => {
-      entry.error =
-        err instanceof AppError ? err : new AppError("NETWORK_ERROR");
+      if (err instanceof AppError) {
+        // Real content error — cache it
+        entry.error = err;
+      } else {
+        // Likely offline
+        entry.error = new AppError("OFFLINE", { seriesId });
+      }
     });
 
   cache.set(seriesId, entry);

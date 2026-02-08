@@ -32,6 +32,11 @@
   color: #333;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
 /* =========================================
    Primary Action
    ========================================= */

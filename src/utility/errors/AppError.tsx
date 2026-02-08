@@ -4,6 +4,7 @@ export type AppErrorCode =
   | "MISSING_SERIES_ID"
   | "BOOK_NOT_FOUND"
   | "SERIES_LIST_MISSING"
+  | "OFFLINE"
   | "PAGE_NOT_FOUND";
 
 export class AppError extends Error {
